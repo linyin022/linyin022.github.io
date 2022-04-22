@@ -4,6 +4,35 @@
   
   
   <entry>
+    <title>利用GitHub+jsDelivr[第三方CDN加速]创建属于自己的床图</title>
+    <link href="/2022/04/22/%E5%88%A9%E7%94%A8GItHub-jsDelivr-%E7%AC%AC%E4%B8%89%E6%96%B9CDN%E5%8A%A0%E9%80%9F-%E5%88%9B%E5%BB%BA%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E5%BA%8A%E5%9B%BE/"/>
+    <url>/2022/04/22/%E5%88%A9%E7%94%A8GItHub-jsDelivr-%E7%AC%AC%E4%B8%89%E6%96%B9CDN%E5%8A%A0%E9%80%9F-%E5%88%9B%E5%BB%BA%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E5%BA%8A%E5%9B%BE/</url>
+    
+    <content type="html"><![CDATA[<blockquote><p>本文章转载自[烟雨星空]的文章并且二次简化修改<br>原文章：<a href="https://www.cnblogs.com/starry-skys/p/13905766.html">https://www.cnblogs.com/starry-skys/p/13905766.html</a></p></blockquote><p><strong>1. 创建一个GitHub仓库[任意名字]</strong><br><strong>2. 在仓库中上传你的图片</strong><br><strong>3. 使用jsDelivr加速访问GitHub的床图</strong></p><p><img src="https://xiaoke022.ml/usr/uploads/2022/04/3086131500.png" alt="l1rymp2g.png"><br>创建好床图之后如果想要原生查看床图就进入任意图片，后查看url，<br>例如<br><img src="https://xiaoke022.ml/usr/uploads/2022/04/1783989775.png" alt="l1ryop33.png"><br>这是我当前的床图中的一个logo，他的url地址为：</p><blockquote><p><a href="https://github.com/linyin022/image/blob/main/logo.png">https://github.com/linyin022/image/blob/main/logo.png</a></p></blockquote><p>如果想要使用原生床图就将url路径中的blob修改成raw。或者是在原本的url路径末尾加上?raw&#x3D;true。以下是两种原生查看床图的方法实例</p><p><a href="https://github.com/linyin022/image/raw/main/logo.png">https://github.com/linyin022/image/raw/main/logo.png</a><br><a href="https://github.com/linyin022/image/blob/main/logo.png?raw=true">https://github.com/linyin022/image/blob/main/logo.png?raw=true</a></p><p>如果使用GitHub的原生床图访问速度非常慢。我们就得利用cdn来加速实现快速访问。</p><p><strong>使用jsDelivr实现CDN加速</strong></p><p>jsDelivr是一个开源免费的CDN床图加速项目</p><p>使用的方法为以下：<br>jsDelivr的路径为</p><blockquote><p><a href="https://cdn.jsdelivr.net/gh/">https://cdn.jsdelivr.net/gh/</a>&lt;你的github用户名&gt;&#x2F;&lt;你的图床仓库名&gt;@&lt;仓库版本号&gt;&#x2F;图片的路径</p></blockquote><p>这是我GitHub的logo床图的url路径<br><img src="https://xiaoke022.ml/usr/uploads/2022/04/4124722373.png" alt="l1rzm3zc.png"></p><p>将这些url路径修改进jsDelivr中，路径就是为：</p><blockquote><p><a href="https://cdn.jsdelivr.net/gh/linyin022/image@main/logo.png">https://cdn.jsdelivr.net/gh/linyin022/image@main/logo.png</a></p></blockquote><p>👆可以点击查看并且cdn加速之后的链接是否有比GitHub原生查看图片有更快的访问速度</p><p>总结：</p><ul><li>使用CDN加速可以实现某些图片、文件、资源等等使用国内网络时访问速度过慢或者无法打开时，使用CDN加速可以帮助我们有效更快的访问。</li></ul><blockquote><p>以下介绍什么是CDN及CDN加速原理[全部转载自网络搜索]</p></blockquote><p>CDN的全称是(Content Delivery Network)，即内容分发网络。其目的是通过在现有的Internet中增加一层新的CACHE(缓存)层，将网站的内容发布到最接近用户的网络”边缘“的节点，使用户可以就近取得所需的内容，提高用户访问网站的响应速度。从技术上全面解决由于网络带宽小、用户访问量大、网点分布不均等原因，提高用户访问网站的响应速度。<br>简单的说，CDN的工作原理就是将您源站的资源缓存到位于全球各地的CDN节点上，用户请求资源时，就近返回节点上缓存的资源，而不需要每个用户的请求都回您的源站获取，避免网络拥塞、缓解源站压力，保证用户访问资源的速度和体验</p><p><img src="https://xiaoke022.ml/usr/uploads/2022/04/2718497112.png" alt="l1s03z54.png"><br><img src="https://xiaoke022.ml/usr/uploads/2022/04/210631655.png" alt="l1s04e9j.png"><br><img src="https://xiaoke022.ml/usr/uploads/2022/04/884058262.png" alt="l1s04ze9.png"><br><img src="https://xiaoke022.ml/usr/uploads/2022/04/3127988837.png" alt="l1s057di.png"></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Github</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Git</tag>
+      
+      <tag>GitHub</tag>
+      
+      <tag>jsDelivr</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>ThinkPHP6-Notes</title>
     <link href="/2022/04/19/ThinkPHP6-Notes/"/>
     <url>/2022/04/19/ThinkPHP6-Notes/</url>
@@ -11,6 +40,18 @@
     <content type="html"><![CDATA[<h1 id="ThinkPHP6-Notes"><a href="#ThinkPHP6-Notes" class="headerlink" title="ThinkPHP6-Notes"></a>ThinkPHP6-Notes</h1><h2 id="View-视图"><a href="#View-视图" class="headerlink" title="View-视图"></a>View-视图</h2><table><thead><tr><th align="left">运算符</th><th align="left">示例</th></tr></thead><tbody><tr><td align="left">+</td><td align="left">{$a+$b}</td></tr><tr><td align="left">-</td><td align="left">{$a-$b}</td></tr><tr><td align="left">*</td><td align="left">{$a*$b}</td></tr><tr><td align="left">&#x2F;</td><td align="left">{$a&#x2F;$b}</td></tr><tr><td align="left">%</td><td align="left">{$a%$b}</td></tr><tr><td align="left">++</td><td align="left">{$a++} 或 {++$a}</td></tr><tr><td align="left">–</td><td align="left">{$a–} 或{–$a}</td></tr><tr><td align="left">综合运算</td><td align="left">{$a+$b*10+$c}</td></tr><tr><td align="left">三元运算符</td><td align="left">{$a&#x3D;&#x3D;$b ? ‘yes’ : ‘no’}</td></tr></tbody></table><p><strong>Controller文件</strong></p><figure class="highlight php"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><pre><code class="hljs php"><span class="hljs-keyword">namespace</span> <span class="hljs-title class_">app</span>\<span class="hljs-title class_">controller</span>;<br><span class="hljs-keyword">use</span> <span class="hljs-title">app</span>\<span class="hljs-title">BaseController</span>;<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Index</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">BaseController</span></span><br><span class="hljs-class"></span>&#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">index</span>(<span class="hljs-params"></span>)</span>&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;hello ThinkPHP6!&#x27;</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure><p><em>这一段代码是直接输出返回 hello ThinkPHP6!</em></p><p>如若需要输出html页面请更换代码&#x3D;&gt;</p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-keyword">namespace</span> <span class="hljs-title class_">app</span>\<span class="hljs-title class_">controller</span>;<br><span class="hljs-keyword">use</span> <span class="hljs-title">app</span>\<span class="hljs-title">BaseController</span>;<br><span class="hljs-keyword">use</span> <span class="hljs-title">think</span>\<span class="hljs-title">fecade</span>\<span class="hljs-title">View</span>;<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Index</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">BaseController</span></span><br><span class="hljs-class"></span>&#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">index</span>(<span class="hljs-params"></span>)</span>&#123;<br>        <span class="hljs-title class_">View</span>::<span class="hljs-title function_ invoke__">fetch</span>(<span class="hljs-string">&#x27;Index&#x27;</span>)<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure><ul><li>这里的View是门面的模块-&gt;fecade</li></ul><p><strong>View文件</strong></p><ul><li><p>View&#x2F;[class_name]&#x2F;[fetch[‘name’]]</p></li><li><p>View&#x2F;index&#x2F;index.html</p></li></ul>]]></content>
     
     
+    <categories>
+      
+      <category>thinkphp</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>thinkphp</tag>
+      
+    </tags>
     
   </entry>
   
