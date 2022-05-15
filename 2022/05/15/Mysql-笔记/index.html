@@ -1,0 +1,771 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/header.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Linyin">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="1.主键和外键的区别主键 可以是表的任何字段或列，对于每条记录或一行，主键应是唯一的非空值。  外键 是一个字段，其中包含用于在彼此之间建立连接的其他表的主键。  主键及外键的用途 主键是能确定一条记录的唯一标识，比如，一条记录包括身份正号，姓名，年龄。身份证号是唯一能确定你这个人的，其他都可能有重复，所以，身份证号是主键。 外键用于与另一张表的关联。是能确定另一张表记录的字段，用于保持数据的一致">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mysql-笔记">
+<meta property="og:url" content="https://linyin022.github.io/2022/05/15/Mysql-%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="Linyin Blog">
+<meta property="og:description" content="1.主键和外键的区别主键 可以是表的任何字段或列，对于每条记录或一行，主键应是唯一的非空值。  外键 是一个字段，其中包含用于在彼此之间建立连接的其他表的主键。  主键及外键的用途 主键是能确定一条记录的唯一标识，比如，一条记录包括身份正号，姓名，年龄。身份证号是唯一能确定你这个人的，其他都可能有重复，所以，身份证号是主键。 外键用于与另一张表的关联。是能确定另一张表记录的字段，用于保持数据的一致">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-05-15T11:59:55.000Z">
+<meta property="article:modified_time" content="2022-05-15T12:22:10.569Z">
+<meta property="article:author" content="Linyin">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="Mysql">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  <title>Mysql-笔记 - Linyin Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/css/indeximg-hover.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<link rel="stylesheet" href="/css/macpanel.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/shubiao.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/gundongtiao.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"linyin022.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"rSllHJKjYBogFmbybYuOOakj-gzGzoHsz","app_key":"T7SurrJ1mE0qztatMpRyvEWT","server_url":null,"path":"window.location.pathname","ignore_local":true}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Lin Yin</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://s2.loli.net/2022/04/22/MLhQyNEFtk5we7d.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Mysql-笔记">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-05-15 19:59" pubdate>
+        2022年5月15日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      5.5k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      46 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-page-views"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Mysql-笔记</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2022年5月15日 晚上
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h3 id="1-主键和外键的区别"><a href="#1-主键和外键的区别" class="headerlink" title="1.主键和外键的区别"></a>1.主键和外键的区别</h3><h5 id="主键"><a href="#主键" class="headerlink" title="主键"></a>主键</h5><ul>
+<li>可以是表的任何字段或列，对于每条记录或一行，主键应是唯一的非空值。</li>
+</ul>
+<h5 id="外键"><a href="#外键" class="headerlink" title="外键"></a>外键</h5><ul>
+<li>是一个字段，其中包含用于在彼此之间建立连接的其他表的主键。</li>
+</ul>
+<h5 id="主键及外键的用途"><a href="#主键及外键的用途" class="headerlink" title="主键及外键的用途"></a>主键及外键的用途</h5><ol>
+<li>主键是能确定一条记录的唯一标识，比如，一条记录包括身份正号，姓名，年龄。身份证号是唯一能确定你这个人的，其他都可能有重复，所以，身份证号是主键。</li>
+<li>外键用于与另一张表的关联。是能确定另一张表记录的字段，用于保持数据的一致性。<ul>
+<li>比如，A表中的一个字段，是B表的主键，那他就可以是A表的外键。</li>
+</ul>
+</li>
+</ol>
+<h5 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h5><ul>
+<li>主键是唯一标识一条记录，不能重复，不允许为空；而外键可以重复，可以是空值；</li>
+<li>主键是用来保持数据完整性，外键是用来建立与其他表联系用的；</li>
+<li>主键只有一个，外键可以有多个。</li>
+</ul>
+<h3 id="2-MYSQL-的内连接、左连接、右连接有什么区别"><a href="#2-MYSQL-的内连接、左连接、右连接有什么区别" class="headerlink" title="2.MYSQL 的内连接、左连接、右连接有什么区别"></a>2.MYSQL 的内连接、左连接、右连接有什么区别</h3><h5 id="内连接"><a href="#内连接" class="headerlink" title="内连接"></a>内连接</h5><ul>
+<li>系统会自动忽略两个表中对应不起来的数据，只显示两个表中关联的数据</li>
+</ul>
+<h5 id="左连接"><a href="#左连接" class="headerlink" title="左连接"></a>左连接</h5><ul>
+<li>一左边的表为基准，将左边的数据全部显示出来，右表中没有对应的数据用null补齐，数据多了不显示</li>
+</ul>
+<h5 id="右连接"><a href="#右连接" class="headerlink" title="右连接"></a>右连接</h5><ul>
+<li>以右表为准，将右表的数据全部显示出来，左表中没有相对应的数据用null补齐，数据多了不显示</li>
+</ul>
+<h3 id="3-说一下数据库的三大范式"><a href="#3-说一下数据库的三大范式" class="headerlink" title="3.说一下数据库的三大范式"></a>3.说一下数据库的三大范式</h3><h5 id="第一范式"><a href="#第一范式" class="headerlink" title="第一范式"></a>第一范式</h5><ul>
+<li><strong>确保每列保持原子性</strong></li>
+</ul>
+<h5 id="第二范式"><a href="#第二范式" class="headerlink" title="第二范式"></a>第二范式</h5><ul>
+<li><strong>确保表中的每列都和主键相关</strong></li>
+</ul>
+<h5 id="第三范式"><a href="#第三范式" class="headerlink" title="第三范式"></a>第三范式</h5><ul>
+<li><strong>确保每列都和主键列直接相关,而不是间接相关</strong></li>
+</ul>
+<blockquote>
+<p> [数据库设计三大范式](<a target="_blank" rel="noopener" href="https://www.cnblogs.com/linjiqin/archive/2012/04/01/2428695.html#:~:text=%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1%E4%B8%89%E5%A4%A7%E8%8C%83%E5%BC%8F">https://www.cnblogs.com/linjiqin/archive/2012/04/01/2428695.html#:~:text=数据库设计三大范式</a> 1 第一范式(确保每列保持原子性),2 第二范式(确保表中的每列都和主键相关) 3 第三范式(确保每列都和主键列直接相关%2C而不是间接相关))  [作者:Ruthless]</p>
+</blockquote>
+<h3 id="4-MYSQL-约束有哪几种"><a href="#4-MYSQL-约束有哪几种" class="headerlink" title="4.MYSQL 约束有哪几种"></a>4.MYSQL 约束有哪几种</h3><blockquote>
+<ol>
+<li><strong>非空约束“not null”</strong></li>
+<li><strong>唯一性约束“unique”</strong></li>
+<li><strong>主键约束“primary key”</strong></li>
+<li><strong>外键约束“foreign key”</strong></li>
+<li><strong>默认值约束“Default”</strong></li>
+</ol>
+</blockquote>
+<h3 id="5-什么是数据库事务"><a href="#5-什么是数据库事务" class="headerlink" title="5.什么是数据库事务"></a>5.什么是数据库事务</h3><h5 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h5><ol>
+<li>数据库事务是访问并可能操作各种数据项的一个数据库操作序列，这些操作要么全部执行,要么全部不执行，是一个不可分割的工作单位。事务由事务开始与事务结束之间执行的全部数据库操作组成。</li>
+<li>关于事务的定义有几点需要解释下：<ul>
+<li>1.数据库事务可以包含一个或多个数据库操作,但这些操作构成一个逻辑上的整体。</li>
+<li>2.构成逻辑整体的这些数据库操作,要么全部执行成功,要么全部不执行。</li>
+<li>3.构成事务的所有操作,要么全都对数据库产生影响,要么全都不产生影响,即不管事务是否执行成功,数据库总能保持一致性状态。</li>
+<li>4.以上即使在数据库出现故障以及并发事务存在的情况下依然成立。</li>
+</ul>
+</li>
+</ol>
+<h5 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h5><p><strong>事务是数据库系统进行并发控制的基本单位,是数据库系统进行故障恢复的基本单位,从而也是保持数据库状态一致性的基本单位。ACID是事务的基本特性,数据库系统是通过并发控制技术和日志恢复技术来对事务的ACID进行保证的,从而可以得到如下的关于数据库事务的概念体系结构。</strong></p>
+<h3 id="6-分别简述MYSQL中MyISAM和InnoDB存储引擎的使用场景"><a href="#6-分别简述MYSQL中MyISAM和InnoDB存储引擎的使用场景" class="headerlink" title="6.分别简述MYSQL中MyISAM和InnoDB存储引擎的使用场景"></a>6.分别简述MYSQL中MyISAM和InnoDB存储引擎的使用场景</h3><blockquote>
+<p>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_37814112/article/details/78633136">MyISAM引擎和InnoDB引擎介绍及应用场景</a>  [作者:东城绝神]</p>
+</blockquote>
+<h5 id="MyISAM引擎"><a href="#MyISAM引擎" class="headerlink" title="MyISAM引擎"></a>MyISAM引擎</h5><h6 id="什么是MyISAM引擎"><a href="#什么是MyISAM引擎" class="headerlink" title="什么是MyISAM引擎"></a>什么是MyISAM引擎</h6><blockquote>
+<p>MyISAM引擎是MySQL关系数据库管理系统的默认存储引擎（MySQL5.5版本以前）。这种MySQL</p>
+<p>表存储结构从旧的ISAM代码扩展出许多有用的功能。在新版本的MySQL中，InnoDB引擎由于其对事物参照完整性，以及更高的并发性等优点开始逐步的取代MyISAM引擎。</p>
+<p>小结：事物参照完整性可理解为数据的一致性。</p>
+</blockquote>
+<h6 id="MyISAM引擎的特点"><a href="#MyISAM引擎的特点" class="headerlink" title="MyISAM引擎的特点"></a>MyISAM引擎的特点</h6><ol>
+<li><p>不支持事务（事务就是逻辑上的一组SQL语句操作，组成这组操作的各个SQL语句，执行时要么全部成功，要么全部失败）</p>
+</li>
+<li><p>表级锁定（更新是锁整个表）：其锁定机制是表级锁定，虽然可以让锁定的实现成本很小，但是大大的降低了其并发性能。<strong>小结：MyISAM锁定的范围太大</strong></p>
+</li>
+<li><p>读写互相堵塞：不仅会在写入的时候阻塞读取，MyISAM还会在读取的时候阻塞写入，但读本身并不会阻塞另外的读。</p>
+</li>
+<li><p>只会缓存索引：MyISAM可以通过key_buffer_size缓存索引，大大提高访问性能，减少磁盘的I&#x2F;O，但是缓存区只会缓存索引，不会缓存数据。</p>
+</li>
+<li><p>读取速度较快，占用资源相对少。</p>
+</li>
+<li><p>不支持外键约束，但支持全文索引。</p>
+</li>
+<li><p>MyISQM引擎是mysql_5.5.5之前的索引。</p>
+</li>
+</ol>
+<h6 id="MyISAM引擎使用的生产业务场景"><a href="#MyISAM引擎使用的生产业务场景" class="headerlink" title="MyISAM引擎使用的生产业务场景"></a>MyISAM引擎使用的生产业务场景</h6><ol>
+<li><p>不需要事务支持的业务（转账、充值、付款这种就不行）。</p>
+</li>
+<li><p>一般为读数据比较多的应用。读写都频繁的不适合，读多或写多都适合。</p>
+</li>
+<li><p>并发访问相对低的业务（纯读、纯写高并发也可以）。</p>
+</li>
+<li><p>数据修改相对较少的业务（阻塞问题）。</p>
+</li>
+<li><p>以读为主的业务，例如：www，blog，图片信息数据库，用户数据库，商品库等业务。</p>
+</li>
+<li><p>对数据一致性要求不是很高的业务。</p>
+</li>
+<li><p>硬件资源比较差的机器可以用MyISAM。</p>
+</li>
+<li></li>
+</ol>
+<p><strong>小结：单一对数据库的操作都可以使用MyISAM引擎。</strong></p>
+<h5 id="InnoDB引擎"><a href="#InnoDB引擎" class="headerlink" title="InnoDB引擎"></a>InnoDB引擎</h5><h6 id="什么是InnoDB引擎"><a href="#什么是InnoDB引擎" class="headerlink" title="什么是InnoDB引擎"></a>什么是InnoDB引擎</h6><blockquote>
+<p>InnoDB引擎是MySQL数据库的另一个重要的存储引擎，正成为目前MySQL所发行新版本的标准，被包含在所有二进制安装包里。和其它的存储引擎相比，InnoDB引擎的优点是支持兼容ACID的事务（类似于PostgreSQL）,以及参数的完整性（即对外键的支持）。</p>
+<p>mysql&gt; select version();</p>
+<p>+———–+</p>
+<p>| version() |</p>
+<p>+———–+</p>
+<p>| 5.6.17    |</p>
+<p>+———–+</p>
+<p>1 row in set (0.00 sec)</p>
+</blockquote>
+<h6 id="InnoDB引擎特点"><a href="#InnoDB引擎特点" class="headerlink" title="InnoDB引擎特点"></a>InnoDB引擎特点</h6><ol>
+<li><p>支持事务：支持事务的四个级别（ACID）。</p>
+</li>
+<li><p>行级锁定：通过索引实现，全表扫描仍然是表锁。</p>
+</li>
+<li><p>读写阻塞与事务隔离级别相关。</p>
+</li>
+<li><p>具有非常高效的缓存特性：能缓存索引，也能缓存数据。</p>
+</li>
+<li><p>整个表和主键以cluster方式存储，组成一颗平衡树。</p>
+</li>
+<li><p>所有secondary inex都会保存主键信息。</p>
+</li>
+<li><p>支持分区，表空间，类似oracle数据库。</p>
+</li>
+<li><p>支持外键约束，不支持全文索引。5.5版本以前不支持全文索引，5.5版本之后支持。</p>
+</li>
+<li><p>和MyISAM相比对硬件的资源要求比较高。</p>
+</li>
+</ol>
+<h6 id="InnoDB引擎使用的生产业务场景"><a href="#InnoDB引擎使用的生产业务场景" class="headerlink" title="InnoDB引擎使用的生产业务场景"></a>InnoDB引擎使用的生产业务场景</h6><ol>
+<li><p>需要事务支持的业务（具有较好的事务特性）。</p>
+</li>
+<li><p>行级锁定对高并发有很好的适用能力，但需要确保查询是通过索引来来完成的。</p>
+</li>
+<li><p>数据读写及更新都较为频繁的场景,如：BBS、SNS、微博等。</p>
+</li>
+<li><p>数据一致性要求较高的业务，如：充值转账。</p>
+</li>
+<li><p>硬件设备内存较大，可以利用InnoDB较好的缓存能力来提高内存使用率，尽可能的较少磁盘的I&#x2F;O。</p>
+</li>
+</ol>
+<h3 id="7-简述视图的优点、缺点"><a href="#7-简述视图的优点、缺点" class="headerlink" title="7.简述视图的优点、缺点"></a>7.简述视图的优点、缺点</h3><h5 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h5><ul>
+<li><strong>简单性</strong><ul>
+<li>视图不仅可以简化用户对数据的理解，也可以简化他们的操作。那些被经常使用的查询可以被定义为视图，从而使用户不必为以后的操作每次都指定全部的条件。</li>
+</ul>
+</li>
+<li><strong>安全性</strong><ul>
+<li>通过视图用户只能查询和修改他们所能见到的数据。数据库中的其他数据则既看不见也取不到。数据库授权命令可以使每个用户对数据库的检索限制到特定的数据库对象上，但不能授权到数据库特定行和特定的列上。通过视图，用户可以被限制在数据的不同子集上。</li>
+</ul>
+</li>
+<li><strong>逻辑数据独立性</strong><ul>
+<li>视图可以使应用程序和数据库表在一定程度上独立。如果没有视图，应用一定是建立在表上的。有了视图之后，程序可以建立在视图之上，从而程序与数据库表被视图分割开来。</li>
+</ul>
+</li>
+</ul>
+<h5 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h5><ul>
+<li><strong>性能</strong> <ul>
+<li>数据库必须把视图的查询转化成对基本表的查询，如果这个视图是由一个复杂的多表查询所定义，那么，即使是视图的一个简单查询，SQL Server也把它变成一个复杂的结合体，需要花费一定的时间。</li>
+</ul>
+</li>
+<li><strong>修改限制</strong> <ul>
+<li>当用户试图修改视图的某些行时，数据库必须把它转化为对基本表的某些行的修改。对于简单视图来说，这是很方便的，但是，对于比较复杂的视图，可能是不可修改的。</li>
+</ul>
+</li>
+</ul>
+<h3 id="8-简述索引的优点、缺点"><a href="#8-简述索引的优点、缺点" class="headerlink" title="8.简述索引的优点、缺点"></a>8.简述索引的优点、缺点</h3><h5 id="优点-1"><a href="#优点-1" class="headerlink" title="优点"></a>优点</h5><ol>
+<li>通过创建唯一性索引，可以保证数据库表中每一行数据的唯一性。 </li>
+<li>可以大大加快 数据的检索速度，这也是创建索引的最主要的原因。 </li>
+<li>可以加速表和表之间的连接，特别是在实现数据的参考完整性方面特别有意义</li>
+<li>在使用分组和排序子句进行数据检索时，同样可以显著减少查询中分组和排序的时间</li>
+<li>通过使用索引，可以在查询的过程中，使用优化隐藏器，提高系统的性能。</li>
+</ol>
+<h5 id="缺点-1"><a href="#缺点-1" class="headerlink" title="缺点"></a>缺点</h5><ol>
+<li>创建索引和维护索引要耗费时间，这种时间随着数据量的增加而增加。</li>
+<li>索引需要占物理空间，除了数据表占数据空间之外，每一个索引还要占一定的物理空间。如果要建立聚簇索引，那么需要的空间就会更大。</li>
+<li>当对表中的数据进行增加、删除和修改的时候，索引也要动态的维护，这样就降低了数据的维护速度。</li>
+</ol>
+<h5 id="什么样的字段下适合创建索引"><a href="#什么样的字段下适合创建索引" class="headerlink" title="什么样的字段下适合创建索引"></a>什么样的字段下适合创建索引</h5><ul>
+<li>在经常需要搜索的列上，可以加快搜索的速度</li>
+<li>在作为主键的列上，强制该列的唯一性和组织表中数据的排列结构</li>
+<li>在经常用在连接的列上，这些列主要是一些外键，可以加快连接的速度</li>
+<li>在经常需要根据范围进行搜索的列上创建索引，因为索引已经排序，其指定的范围是连续的</li>
+<li>在经常需要排序的列上创建索引，因为索引已经排序，这样查询可以利用索引的排序，加快排序查询时间</li>
+<li>在经常使用在WHERE子句中的列上面创建索引，加快条件的判断速度。</li>
+</ul>
+<h3 id="9-什么是存储过程？有哪些优缺点？"><a href="#9-什么是存储过程？有哪些优缺点？" class="headerlink" title="9.什么是存储过程？有哪些优缺点？"></a>9.什么是存储过程？有哪些优缺点？</h3><ul>
+<li><strong>存储过程可以说是一个记录集，它是由一些T-SQL语句组成的代码块， 这些T-SQL语句代码像一个方法一样实现一些功能（对单表或多表的增删改查），然后再给这 个代码块取一个名字，在用到这个功能的时候调用他就行了。</strong></li>
+<li><strong>存储过程是一个预编译的代码块，执行效率比较高,一个存储过程替代大量T_SQL语句 ， 可以降低网络通信量，提高通信速率,可以一定程度上确保数据安全</strong></li>
+</ul>
+<h5 id="好处"><a href="#好处" class="headerlink" title="好处"></a>好处</h5><ol>
+<li><strong>减少网络通信量</strong> <ul>
+<li>调用一个行数不多的存储过程与直接调用SQL语句的网络通信量可能不会有很大的差别，可是如果存储过程包含上百行SQL语句，那么其性能绝对比一条一条的调用SQL语句要高得多。</li>
+</ul>
+</li>
+<li><strong>执行速度更快</strong> <ul>
+<li>在存储过程创建的时候，数据库已经对其进行了一次解析和优化。</li>
+<li>存储过程一旦执行，在内存中就会保留一份这个存储过程，这样下次再执行同样的存储过程时，可以从内存中直接调用。</li>
+</ul>
+</li>
+<li><strong>更强的适应性</strong><ul>
+<li>由于存储过程对数据库的访问是通过存储过程来进行的，因此数据库开发人员可以在不改动存储过程接口的情况下对数据库进行任何改动，而这些改动不会对应用程序造成影响。</li>
+</ul>
+</li>
+<li><strong>布式工作</strong><ul>
+<li>应用程序和数据库的编码工作可以分别独立进行，而不会相互压制。</li>
+</ul>
+</li>
+</ol>
+<h3 id="10-MySQL中都有哪些触发器，并简述触发器的优缺点"><a href="#10-MySQL中都有哪些触发器，并简述触发器的优缺点" class="headerlink" title="10.MySQL中都有哪些触发器，并简述触发器的优缺点"></a>10.MySQL中都有哪些触发器，并简述触发器的优缺点</h3><h5 id="创建触发器"><a href="#创建触发器" class="headerlink" title="创建触发器"></a>创建触发器</h5><p>  创建触发器的语法结构是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><pre><code class="hljs mysql">CREATE TRIGGER 触发器名称<br>&#123;BEFORE | AFTER&#125;<br>&#123;INSERT | UPDATE | DELETE &#125; ON 表名 FOR EACH ROW<br>触发器执行的语句块;<br></code></pre></td></tr></table></figure>
+
+<p>说明：</p>
+<p>①表名 ：表示触发器监控的对象。</p>
+<p>②BEFORE|AFTER ：表示触发的时间。BEFORE 表示在事件之前触发；AFTER 表示在事件之后触发。</p>
+<p>③INSERT|UPDATE|DELETE ：表示触发的事件。</p>
+<p>INSERT 表示插入记录；</p>
+<p>UPDATE 表示更新记录；</p>
+<p>DELETE 表示删除记录。</p>
+<p>④触发器执行的语句块 ：可以是单条SQL语句，也可以是由BEGIN…END结构组成的复合语句块。</p>
+<p>举例：</p>
+<p>①创建数据表：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs mysql">CREATE TABLE test_trigger ( id  INT PRIMARY KEY  AUTO_INCREMENT,    t_note  VARCHAR (30) ); <br> CREATE TABLE test_trigger_log ( id  INT PRIMARY KEY  AUTO_INCREMENT, t_log VARCHAR (30) );<br></code></pre></td></tr></table></figure>
+
+<p>②创建触发器：创建名称为before_insert的触发器，向test_trigger数据表插入数据之前，向test_trigger_log数据表中插入before_insert的日志信息。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs mysql">DELIMITER //<br>CREATE TRIGGER before_insert BEFORE INSERT ON test_trigger FOR EACH ROW BEGIN <br>INSERT INTO test_trigger_log (t_log)  VALUES (&#x27;before_insert&#x27;); END<br>// DELIMITER ;<br></code></pre></td></tr></table></figure>
+
+<p>③向test_trigger数据表中插入数据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">INSERT INTO test_trigger (t_note) VALUES (&#x27;测试 BEFORE INSERT 触发器&#x27;);<br></code></pre></td></tr></table></figure>
+
+<p>④查看test_trigger_log数据表中的数据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs mysql">mysql&gt; SELECT * FROM test_trigger_log;<br>+----+---------------+<br>| id | t_log |<br>+----+---------------+<br>| 1 | before_insert |<br>+----+---------------+<br>1 row in set 0.00 sec)<br></code></pre></td></tr></table></figure>
+
+
+
+<h5 id="优点-2"><a href="#优点-2" class="headerlink" title="优点"></a>优点</h5><ol>
+<li>SQL触发器提供了检查数据完整性的替代方法。</li>
+<li>SQL触发器可以捕获数据库层中业务逻辑中的错误。</li>
+<li>SQL触发器提供了<strong>运行计划任务</strong>的另一种方法。通过使用SQL触发器，您不必等待运行计划的任务，因为在对表中的数据进行更改之前或之后自动调用触发器。</li>
+<li>SQL触发器对于审核表中数据的更改非常有用。</li>
+</ol>
+<h5 id="缺点-2"><a href="#缺点-2" class="headerlink" title="缺点"></a>缺点</h5><ol>
+<li>SQL触发器只能提供扩展验证，并且无法替换所有验证。一些简单的验证必须在应用层完成。 例如，您可以使用JavaScript或服务器端使用服务器端脚本语言(如JPS , PHP , ASP.NET , Perl等)来验证客户端的用户输入。</li>
+<li>从客户端应用程序调用和执行SQL触发器不可见，因此很难弄清数据库层中发生的情况。</li>
+<li>SQL触发器可能会增加数据库服务器的开销。</li>
+</ol>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Mysql/">Mysql</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Mysql/">Mysql</a>
+                    
+                  </div>
+                
+              </div>
+<!--              -->
+<!--                <p class="note note-warning">-->
+<!--                  -->
+<!--                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！-->
+<!--                  -->
+<!--                </p>-->
+<!--              -->
+
+            <p class="note note-warning">
+              <strong>本文作者: </strong><a href="/">Linyin</a> <br>
+              <strong>本文链接: </strong><a href="https://linyin022.github.io/2022/05/15/Mysql-%E7%AC%94%E8%AE%B0/">https://linyin022.github.io/2022/05/15/Mysql-%E7%AC%94%E8%AE%B0/</a> <br>
+              <strong>版权声明: </strong>本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+            </p>
+            
+            
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/05/11/Markdown-%E8%AF%AD%E6%B3%95/">
+                        <span class="hidden-mobile">Markdown-语法</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> , <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- LeanCloud 统计PV -->
+        <span id="leancloud-site-pv-container" style="display: none">
+            总访问量 
+            <span id="leancloud-site-pv"></span>
+             次
+          </span>
+      
+      
+        <!-- LeanCloud 统计UV -->
+        <span id="leancloud-site-uv-container" style="display: none">
+            总访客数 
+            <span id="leancloud-site-uv"></span>
+             人
+          </span>
+      
+
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  
+<script src="/js/FunnyTitle.js"></script>
+<script src="//cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<script src="//cdn.jsdelivr.net/gh/metowolf/Metingjs@1.2/dist/Meting.min.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/love.js"></script>
+<script src="//cdn.jsdelivr.net/gh/EmoryHuang/BlogBeautify@1.1/Cherry.min.js"></script>
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+<script type="text/javascript" src="/js/caidai.js"></script><!--动态彩带-->
+</html>
