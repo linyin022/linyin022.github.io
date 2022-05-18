@@ -1,0 +1,812 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/header.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Linyin">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="1. PHP 中传值与传引用的区别，什么时候传值,什么时候传引用传值 将实参的值赋值给行参那么对行参的修改，不会影响实参的值。  传地址 是传值的一种特殊方式，只是他传递的是地址，不是普通的如int，那么传地址以后，实参和行参都指向同一个对象。  传引用 真正的以地址的方式传递参数传递以后，行参和实参都是同一个对象，只是他们名字不同而已对行参的修改将影响实参的值。  传值与传引用的使用场景 按值传">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PHP-笔记">
+<meta property="og:url" content="https://linyin022.github.io/2022/05/18/PHP-%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="Linyin Blog">
+<meta property="og:description" content="1. PHP 中传值与传引用的区别，什么时候传值,什么时候传引用传值 将实参的值赋值给行参那么对行参的修改，不会影响实参的值。  传地址 是传值的一种特殊方式，只是他传递的是地址，不是普通的如int，那么传地址以后，实参和行参都指向同一个对象。  传引用 真正的以地址的方式传递参数传递以后，行参和实参都是同一个对象，只是他们名字不同而已对行参的修改将影响实参的值。  传值与传引用的使用场景 按值传">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-05-18T13:24:00.000Z">
+<meta property="article:modified_time" content="2022-05-18T15:36:42.585Z">
+<meta property="article:author" content="Linyin">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="PHP">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  <title>PHP-笔记 - Linyin Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/css/indeximg-hover.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<link rel="stylesheet" href="/css/macpanel.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/shubiao.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/gundongtiao.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"linyin022.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"rSllHJKjYBogFmbybYuOOakj-gzGzoHsz","app_key":"T7SurrJ1mE0qztatMpRyvEWT","server_url":null,"path":"window.location.pathname","ignore_local":true}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Lin Yin</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://s2.loli.net/2022/04/22/MLhQyNEFtk5we7d.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="PHP-笔记">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-05-18 21:24" pubdate>
+        2022年5月18日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      6k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      50 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-page-views"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">PHP-笔记</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2022年5月18日 晚上
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h3 id="1-PHP-中传值与传引用的区别，什么时候传值-什么时候传引用"><a href="#1-PHP-中传值与传引用的区别，什么时候传值-什么时候传引用" class="headerlink" title="1. PHP 中传值与传引用的区别，什么时候传值,什么时候传引用"></a>1. PHP 中传值与传引用的区别，什么时候传值,什么时候传引用</h3><h5 id="传值"><a href="#传值" class="headerlink" title="传值"></a>传值</h5><ul>
+<li>将实参的值赋值给行参那么对行参的修改，不会影响实参的值。</li>
+</ul>
+<h5 id="传地址"><a href="#传地址" class="headerlink" title="传地址"></a>传地址</h5><ul>
+<li>是传值的一种特殊方式，只是他传递的是地址，不是普通的如int，那么传地址以后，实参和行参都指向同一个对象。</li>
+</ul>
+<h5 id="传引用"><a href="#传引用" class="headerlink" title="传引用"></a>传引用</h5><ul>
+<li>真正的以地址的方式传递参数传递以后，行参和实参都是同一个对象，只是他们名字不同而已对行参的修改将影响实参的值。</li>
+</ul>
+<h5 id="传值与传引用的使用场景"><a href="#传值与传引用的使用场景" class="headerlink" title="传值与传引用的使用场景"></a>传值与传引用的使用场景</h5><ul>
+<li>按<strong>值传递</strong>：函数范围内对值的任何改变在函数外部都会被忽略。</li>
+<li>按<strong>引用传递</strong>：函数范围内对值的任何改变在函数外部也能反映出这些修改。<ol>
+<li>优缺点：按值传递时，php必须复制值。特别是对于大型的<strong>字符串</strong>和<strong>对象</strong>来说，这将会是一个代价很大的操作。</li>
+<li>按引用传递则不需要复制值，对于性能提高很有好处。</li>
+</ol>
+</li>
+</ul>
+<h3 id="2-SESSION-与-COOKIE的区别是什么"><a href="#2-SESSION-与-COOKIE的区别是什么" class="headerlink" title="2. SESSION 与 COOKIE的区别是什么"></a>2. SESSION 与 COOKIE的区别是什么</h3><h5 id="什么是-Cookie"><a href="#什么是-Cookie" class="headerlink" title="什么是 Cookie"></a><strong>什么是 Cookie</strong></h5><blockquote>
+<p>HTTP Cookie（也叫 Web Cookie或浏览器 Cookie）是服务器发送到用户浏览器并保存在本地的一小块数据，它会在浏览器下次向同一服务器再发起请求时被携带并发送到服务器上。通常，它用于告知服务端两个请求是否来自同一浏览器，如保持用户的登录状态。Cookie 使基于无状态的 HTTP 协议记录稳定的状态信息成为了可能。</p>
+</blockquote>
+<p><strong>Cookie 主要用于以下三个方面</strong>：</p>
+<ul>
+<li>会话状态管理（如用户登录状态、购物车、游戏分数或其它需要记录的信息）</li>
+<li>个性化设置（如用户自定义设置、主题等）</li>
+<li>浏览器行为跟踪（如跟踪分析用户行为等）</li>
+</ul>
+<h5 id="什么是-Session"><a href="#什么是-Session" class="headerlink" title="什么是 Session"></a><strong>什么是 Session</strong></h5><blockquote>
+<p>Session 代表着服务器和客户端一次会话的过程。Session 对象存储特定用户会话所需的属性及配置信息。这样，当用户在应用程序的 Web 页之间跳转时，存储在 Session 对象中的变量将不会丢失，而是在整个用户会话中一直存在下去。当客户端关闭会话，或者 Session 超时失效时会话结束。</p>
+</blockquote>
+<h5 id="Cookie-和-Session-有什么不同"><a href="#Cookie-和-Session-有什么不同" class="headerlink" title="Cookie 和 Session 有什么不同"></a>Cookie 和 Session 有什么不同</h5><ul>
+<li>作用范围不同，Cookie 保存在客户端（浏览器），Session 保存在服务器端。</li>
+<li>存取方式的不同，Cookie 只能保存 ASCII，Session 可以存任意数据类型，一般情况下我们可以在 Session 中保持一些常用变量信息，比如说 UserId 等。</li>
+<li>有效期不同，Cookie 可设置为长时间保持，比如我们经常使用的默认登录功能，Session 一般失效时间较短，客户端关闭或者 Session 超时都会失效。</li>
+<li>隐私策略不同，Cookie 存储在客户端，比较容易遭到不法获取，早期有人将用户的登录名和密码存储在 Cookie 中导致信息被窃取；Session 存储在服务端，安全性相对 Cookie 要好一些。</li>
+<li>存储大小不同， 单个 Cookie 保存的数据不能超过 4K，Session 可存储数据远高于 Cookie。</li>
+</ul>
+<h3 id="3-表单中get和post提交方式的区别"><a href="#3-表单中get和post提交方式的区别" class="headerlink" title="3. 表单中get和post提交方式的区别"></a>3. 表单中get和post提交方式的区别</h3><h5 id="两者区别"><a href="#两者区别" class="headerlink" title="两者区别"></a>两者区别</h5><ol>
+<li>Get是用来从服务器上获得数据，而Post是用来向服务器上传递数据。</li>
+<li>Get将表单中数据的按照variable&#x3D;value的形式，添加到action所指向的URL后面，并且两者使用“?”连接，而各个变量之间使用“&amp;”连接；Post是将表单中的数据放在form的数据体中，按照变量和值相对应的方式，传递到action所指向URL。</li>
+<li>Get是不安全的，因为在传输过程，数据被放在请求的URL中，而如今现有的很多服务器、代理服务器或者用户代理都会将请求URL记录到日志文件中，然后放在某个地方，这样就可能会有一些隐私的信息被第三方看到。另外，用户也可以在浏览器上直接看到提交的数据，一些系统内部消息将会一同显示在用户面前。Post的所有操作对用户来说都是不可见的。</li>
+<li>Get传输的数据量小，这主要是因为受URL长度限制；而Post可以传输大量的数据，所以在上传文件只能使用Post（当然还有一个原因，将在后面的提到）。</li>
+<li>Get限制Form表单的数据集的值必须为ASCII字符；而Post支持整个ISO10646字符集。</li>
+<li>Get是Form的默认方法。</li>
+</ol>
+<h5 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h5><ul>
+<li>Get 方式传输的数据量非常小，一般限制在 2 KB 左右，但是执行效率却比 Post 方法好；而 Post 方式传递的数据量相对较大，它是等待服务器来读取数据，不过也有字节限制，这是为了避免对服务器用大量数据进行恶意攻击，根据微软方面的说法，微软对用 Request.Form() 可接收的最大数据有限制，IIS 4 中为 80 KB 字节，IIS 5 中为 100 KB 字节。</li>
+<li>Get 方式提交数据，会带来安全问题，比如一个登陆页面，通过 Get 方式提交数据时，用户名和密码将出现在 URL 上，如果页面可以被缓存或者其他人可以访问客户这台机器，就可以从历史记录获得该用户的帐号和密码，所以表单提交建议使用 Post 方法；Post 方法提交的表单页面常见的问题是，该页面如果刷新的时候，会弹出一个对话框</li>
+</ul>
+<p><strong>建议出于安全性考虑，建议最好使用 Post 提交数据</strong></p>
+<h3 id="4-简述PHP中-isset、empty、is-null的区别"><a href="#4-简述PHP中-isset、empty、is-null的区别" class="headerlink" title="4 .简述PHP中 isset、empty、is_null的区别"></a>4 .简述PHP中 isset、empty、is_null的区别</h3><h5 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h5><ul>
+<li>isset 判断变量是否已存在（配置）</li>
+<li>unset 把变量删除（释放）掉</li>
+<li>empty 判断变量是否为空</li>
+<li>is_null 判断变量是否为NULL</li>
+</ul>
+<h5 id="图表"><a href="#图表" class="headerlink" title="图表"></a>图表</h5><table>
+<thead>
+<tr>
+<th>变量</th>
+<th>empty</th>
+<th>is_null</th>
+<th>isset</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$a &#x3D; “”</td>
+<td>true</td>
+<td>false</td>
+<td>true</td>
+</tr>
+<tr>
+<td>$a&#x3D;null</td>
+<td>true</td>
+<td>true</td>
+<td>false</td>
+</tr>
+<tr>
+<td>var $a</td>
+<td>true</td>
+<td>true</td>
+<td>false</td>
+</tr>
+<tr>
+<td>$a &#x3D; arrary()</td>
+<td>true</td>
+<td>false</td>
+<td>true</td>
+</tr>
+<tr>
+<td>$a &#x3D; false</td>
+<td>true</td>
+<td>false</td>
+<td>true</td>
+</tr>
+<tr>
+<td>$a &#x3D; 15</td>
+<td>false</td>
+<td>false</td>
+<td>true</td>
+</tr>
+<tr>
+<td>$a &#x3D; 1</td>
+<td>false</td>
+<td>false</td>
+<td>true</td>
+</tr>
+<tr>
+<td>$a &#x3D; 0</td>
+<td>true</td>
+<td>false</td>
+<td>true</td>
+</tr>
+<tr>
+<td>$a &#x3D; “0”</td>
+<td>true</td>
+<td>false</td>
+<td>true</td>
+</tr>
+<tr>
+<td>$a &#x3D; “true”</td>
+<td>false</td>
+<td>false</td>
+<td>true</td>
+</tr>
+<tr>
+<td>$a &#x3D; “false”</td>
+<td>false</td>
+<td>false</td>
+<td>true</td>
+</tr>
+</tbody></table>
+<h3 id="5-简述PHP中单引号双引号的区别"><a href="#5-简述PHP中单引号双引号的区别" class="headerlink" title="5.简述PHP中单引号双引号的区别"></a>5.简述PHP中单引号双引号的区别</h3><h5 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h5><p> 双引号串中的内容可以被解释而且替换，而单引号串中的内容总被认为是普通字符。</p>
+<p> 例如：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><pre><code class="hljs php"><span class="hljs-variable">$foo</span> = <span class="hljs-number">2</span>; <br><span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;foo is <span class="hljs-subst">$foo</span>&quot;</span>; <br><br><span class="hljs-comment">// 打印结果: foo is 2 </span><br><br><span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;foo is $foo&#x27;</span>; <br><br><span class="hljs-comment">// 打印结果: foo is $foo </span><br></code></pre></td></tr></table></figure>
+
+<p><strong>php中单引号和双引号的区别，哪个速度更快？为什么？</strong></p>
+<ul>
+<li><p><strong>答：单引号更快。</strong></p>
+<ul>
+<li><p>在php中，单引号内的数据不会被解析(任何变量和特殊转义字符)，所以速度更快，而双引号内的数据会被解析，如变量($var)值会代入字符串中，特殊转义字符也会被解析成特定的单个字。</p>
+</li>
+<li><p>数组中，如果下标不是整型，而是字符串类型。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="6-简述PHP-OOP的三大特性"><a href="#6-简述PHP-OOP的三大特性" class="headerlink" title="6.简述PHP OOP的三大特性"></a>6.简述PHP OOP的三大特性</h3><h5 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h5><ul>
+<li>简单形象的解释就是，把功能放在一个盒子里，要用到这个功能的时候，打开盒子，取出就可以使用。<ol>
+<li>封装是指把客观事物封装成抽象的类，并且类可以把自己的数据和方法只让可信的类或者对象操作，对不可信的进行<strong>信息隐藏</strong>。</li>
+<li>简单的说，一个类就是一个封装了数据以及操作这些数据的代码的逻辑实体。在一个对象内部，某些代码或某些数据可以是私有的，不能被外界访问。通过这种方式，对象对内部数据提供了不同级别的保护，以防止程序中无关的部分意外的改变或错误的使用了对象的私有部分。</li>
+</ol>
+</li>
+</ul>
+<h5 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h5><ul>
+<li><p>子类自动继承一个或多个父类中的属性与方法，并可以重写或者添加新的属性或方法。（这个特性简化了<strong>类和对象</strong>的创建，提高了代码的可重用性。）</p>
+<ol>
+<li>继承是指可以让某个类型的对象获得另一个类型的对象的属性的方法,它支持按级分类的概念。</li>
+<li>它可以使用现有类的所有功能，并在无需重新编写原来的类的情况下对这些功能进行扩展。 通过继承创建的新类称为“子类”或“派生类”，被继承的类称为“基类”、“父类”或“超类”。继承的过程，就是从一般到特殊的过程。要实现继承，可以通过“继承”（Inheritance）和“组合”（Composition）来实现。继承概念的实现方式有二类：实现继承与接口继承。实现继承是指直接使用基类的属性和方法而无需额外编码的能力；接口继承是指仅使用属性和方法的名称、但是子类必须提供实现的能力；</li>
+</ol>
+</li>
+</ul>
+<h5 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h5><ul>
+<li>指的是一个类可以创建多个对象，获取不同的结果。<ol>
+<li>多态就是指一个类实例的相同方法在不同情形有不同表现形式。</li>
+<li>多态机制使具有不同内部结构的对象可以共享相同的外部接口。这意味着，虽然针对不同对象的具体操作不同，但通过一个公共的类，它们（那些操作）可以通过相同的方式予以调用。</li>
+</ol>
+</li>
+</ul>
+<h3 id="7-简述MVC的优缺点"><a href="#7-简述MVC的优缺点" class="headerlink" title="7.简述MVC的优缺点"></a>7.简述MVC的优缺点</h3><h5 id="MVC原理"><a href="#MVC原理" class="headerlink" title="MVC原理"></a>MVC原理</h5><blockquote>
+<p><strong>MVC 是一种程序开发设计模式,它实现了显示模块与功能模块的分离。提高了程序的可维护性、可移植性、可扩展性与可重用性，降低了程序的开发难度。它主要分模型、视图、控制器三层</strong></p>
+</blockquote>
+<h5 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h5><ol>
+<li>可定制性：可以为一个模型在运行时同时建立和使用多个视图。变化-传播机制可以确保所有相关的视图及时得到模型数据变化，从而使所有关联的视图和控制器做到行为同步。</li>
+<li>代码清晰，便于维护：模型的可移植性。因为模型是独立于视图的，所以可以把一个模型独立地移植到新的平台工作。需要做的只是在新平台上对视图和控制器进行新的修改</li>
+<li>视图与控制器的可接插性，允许更换视图和控制器对象，而且可以根据需求动态的打开或关闭、甚至在运行期间进行对象替换。</li>
+<li>潜在的框架结构。可以基于此模型建立应用程序框架，不仅仅是用在设计界面的设计中</li>
+</ol>
+<h5 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h5><ol>
+<li>增加了系统结构和实现的复杂性：增加了系统结构和实现的复杂性。对于简单的界面，严格遵循MVC，使模型、视图与控制器分离，会增加结构的复杂性，并可能产生过多的更新操作，降低运行效率。</li>
+<li>视图跟控制器过于紧密的连接：视图与控制器间的过于紧密的连接。视图与控制器是相互分离，但确实联系紧密的部件，视图没有控制器的存在，其应用是很有限的，反之亦然，这样就妨碍了他们的独立重用</li>
+<li>视图对模型数据的低效率访问。依据模型操作接口的不同，视图可能需要多次调用才能获得足够的显示数据。对未变化数据的不必要的频繁访问，也将损害操作性能。</li>
+<li>目前，一般高级的界面工具或构造器不支持模式。改造这些工具以适应MVC需要和建立分离的部件的代价是很高的，从而造成MVC使用的困难。<ul>
+<li><strong>使用mvc，会增加代码量、相应地也会增加软件开发的成文，设计的难度也会增加。</strong></li>
+</ul>
+</li>
+</ol>
+<h3 id="8-如何理解单一入口文件？"><a href="#8-如何理解单一入口文件？" class="headerlink" title="8.如何理解单一入口文件？"></a>8.如何理解单一入口文件？</h3><h5 id="了解区分单入口及多入口"><a href="#了解区分单入口及多入口" class="headerlink" title="了解区分单入口及多入口"></a>了解区分单入口及多入口</h5><p>在解释什么是单一入口之前，先说说与之对应的多入口。多入口即通过访问不同的 php 文件运行对应的功能。比如刚开始学习 php 的时候，我们做一个项目通常都会如下这样做：</p>
+<blockquote>
+<p>index.php - 网站首页</p>
+</blockquote>
+<blockquote>
+<p>list.php?page&#x3D;5 - 内容列表页</p>
+</blockquote>
+<blockquote>
+<p>info.php?id&#x3D;12 - 内容详细页</p>
+</blockquote>
+<blockquote>
+<p>login.php - 用户登录页</p>
+</blockquote>
+<p>对于这个项目来说，这其实就是一个多入口。</p>
+<p>那么单一入口的应用程序就是说用一个文件处理所有的HTTP请求，例如不管是内容列表页，用户登录页还是内容详细页，都是通过从浏览器访问 index.php 文件来进行处理的，这里这个 index.php 文件就是这个应用程序的单一入口。</p>
+<h3 id="9-简述中间件的优缺点"><a href="#9-简述中间件的优缺点" class="headerlink" title="9.简述中间件的优缺点"></a>9.简述中间件的优缺点</h3><h5 id="好处"><a href="#好处" class="headerlink" title="好处"></a>好处</h5><ul>
+<li>复杂系统的<strong>解耦</strong></li>
+<li>复杂链路的<strong>异步</strong>调用</li>
+<li>瞬时高峰的<strong>削峰</strong>处理</li>
+</ul>
+<h5 id="缺点-1"><a href="#缺点-1" class="headerlink" title="缺点"></a>缺点</h5><ul>
+<li>系统可用性降低</li>
+<li>系统稳定性降低 || 系统复杂度提高<ul>
+<li>网络故障- -消息丢失；</li>
+<li>消息重复- -脏数据的产生；</li>
+<li>宕机，无法消费消息- -消息积压</li>
+</ul>
+</li>
+<li>分布式一致性问题</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/eaafb1581e55">中间件-消息队列的优缺点，区别</a> [简书]</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/eluanshi12/article/details/85275044">消息中间件- -优缺点及使用</a> [CSDN]</p>
+<h3 id="10-简述restful-api接口规范"><a href="#10-简述restful-api接口规范" class="headerlink" title="10.简述restful api接口规范"></a>10.简述restful api接口规范</h3><h5 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h5><p>REST：英文representational state transfer直译为表现层状态转移，或者表述性状态转移；Rest是web服务的一种架构风格，一种设计风格，是一种思想；同时Rest不是针对某一种编程语言的。</p>
+<p>以<a target="_blank" rel="noopener" href="http://www.360doc.com/content/21/1103/23/75593589_1002656623.shtml">WebService</a>为例通俗解释。</p>
+<h5 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h5><p>非Rest设计，以往我们都会这么写：</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="http://localhost:8080/admin/getUser">http://localhost:8080/admin/getUser</a> （查询用户）</p>
+</blockquote>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="http://localhost:8080/admin/addUser">http://localhost:8080/admin/addUser</a> （新增用户）</p>
+</blockquote>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="http://localhost:8080/admin/updateUser">http://localhost:8080/admin/updateUser</a> （更新用户）</p>
+</blockquote>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="http://localhost:8080/admin/deleteUser">http://localhost:8080/admin/deleteUser</a>  （删除用户）</p>
+</blockquote>
+<p>总结：<strong>以不同的URL（主要为使用动词）进行不同的操作。</strong></p>
+<p>Rest架构：</p>
+<blockquote>
+<p>GET <a target="_blank" rel="noopener" href="http://localhost:8080/admin/user">http://localhost:8080/admin/user</a> （查询用户）</p>
+</blockquote>
+<blockquote>
+<p>POST <a target="_blank" rel="noopener" href="http://localhost:8080/admin/user">http://localhost:8080/admin/user</a> （新增用户）</p>
+</blockquote>
+<blockquote>
+<p>PUT <a target="_blank" rel="noopener" href="http://localhost:8080/admin/user">http://localhost:8080/admin/user</a> （更新用户）</p>
+</blockquote>
+<blockquote>
+<p>DELETE <a target="_blank" rel="noopener" href="http://localhost:8080/admin/user">http://localhost:8080/admin/user</a> （删除用户）</p>
+</blockquote>
+<p>总结：<u><strong>URL只指定资源，以HTTP方法动词进行不同的操作。用HTTP STATUS&#x2F;CODE定义操作结果。</strong></u></p>
+<p><u><strong>Restful：遵守了rest风格的web服务便可称为Restful。</strong></u></p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/a6d9cf64e954">Restful API接口规范</a> [简书]</p>
+<h3 id="11-简述容器、依赖注入的原理"><a href="#11-简述容器、依赖注入的原理" class="headerlink" title="11.简述容器、依赖注入的原理"></a>11.简述容器、依赖注入的原理</h3><ol>
+<li>任何的URL访问，最终都是定位到控制器，由控制器中的某个具体的方法去执行。</li>
+<li>一个控制器对应着一个类，如果这些类需要进行统一的管理，怎么办？ <ol>
+<li><strong>容器</strong>:容器来进行管理（但是容器并不管理控制器类，因为控制器类是用户直接访问的），还可以将类的实例作为参数，传递给类方法，自动触发依赖注入。</li>
+<li>依赖注入:将对象类型的数据，以参数的方式传到方法的参数列表中。</li>
+<li>URL访问:通过GET方式将数据传到控制器指定的方法中，但是只能传字符串，数值。</li>
+</ol>
+</li>
+<li>如果要传一个对象到当前方法中？怎么办？<ol>
+<li><strong>依赖注入</strong>:解决了向类中的方法传对象的问题</li>
+</ol>
+</li>
+</ol>
+<p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1734158">PHP进阶学习之依赖注入与Ioc容器详解</a> [腾讯云]</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/99709637">PHP依赖注入原理与用法分析</a> [知乎]</p>
+<p><a target="_blank" rel="noopener" href="https://www.kancloud.cn/cherals/tp51/1003213">容器与依赖注入的原理</a> [ThinkPHP5.1官方文档]</p>
+<h3 id="12-PHP中语句include和require的区别是什么？"><a href="#12-PHP中语句include和require的区别是什么？" class="headerlink" title="12.PHP中语句include和require的区别是什么？"></a>12.PHP中语句include和require的区别是什么？</h3><h5 id="概要"><a href="#概要" class="headerlink" title="概要"></a>概要</h5><ul>
+<li>require() 语句的性能与 include() 相类似，都是包括并运行指定文件。</li>
+<li>不同之处在于：<ul>
+<li>对 include() 语句来说，在执行文件时每次都要进行读取和评估；</li>
+<li>而对于 require() 来说，文件只处理一次（实际上，文件内容替换 require() 语句）。这就意味着如果可能执行多次的代码，则使用 require() 效率比较高。</li>
+</ul>
+</li>
+<li>另外一方面，如果每次执行代码时是读取不同的文件，或者有通过一组文件迭代的循环，就使用 include() 语句。</li>
+</ul>
+<h5 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h5><ul>
+<li><strong>incluce</strong> 在用到时加载<ul>
+<li>include 通常用在流程控制的处理部分中，php 脚本在读到 include 的文件时，才将它读进来。这种方式，可以把程序执行时的流程简单化。</li>
+</ul>
+</li>
+<li><strong>require</strong> 在一开始就加载<ul>
+<li>require通常放在php脚本程序最前面，php再执行程序前，就会先读取require语句引入的文件，使之成为php脚本文件的一部分。</li>
+</ul>
+</li>
+<li><strong>_once</strong> 后缀表示已加载的不加载</li>
+</ul>
+<hr>
+<p><strong><a target="_blank" rel="noopener" href="https://www.kancloud.cn/chunyu/php_basic_knowledge/767166">PHP知识总结 </a></strong> [看云笔记]</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/PHP/">PHP</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a>
+                    
+                      <a class="hover-with-bg" href="/tags/PHP/">PHP</a>
+                    
+                  </div>
+                
+              </div>
+<!--              -->
+<!--                <p class="note note-warning">-->
+<!--                  -->
+<!--                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！-->
+<!--                  -->
+<!--                </p>-->
+<!--              -->
+
+            <p class="note note-warning">
+              <strong>本文作者: </strong><a href="/">Linyin</a> <br>
+              <strong>本文链接: </strong><a href="https://linyin022.github.io/2022/05/18/PHP-%E7%AC%94%E8%AE%B0/">https://linyin022.github.io/2022/05/18/PHP-%E7%AC%94%E8%AE%B0/</a> <br>
+              <strong>版权声明: </strong>本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+            </p>
+            
+            
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/05/15/Mysql-%E7%AC%94%E8%AE%B0/">
+                        <span class="hidden-mobile">Mysql-笔记</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> , <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- LeanCloud 统计PV -->
+        <span id="leancloud-site-pv-container" style="display: none">
+            总访问量 
+            <span id="leancloud-site-pv"></span>
+             次
+          </span>
+      
+      
+        <!-- LeanCloud 统计UV -->
+        <span id="leancloud-site-uv-container" style="display: none">
+            总访客数 
+            <span id="leancloud-site-uv"></span>
+             人
+          </span>
+      
+
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  
+<script src="/js/FunnyTitle.js"></script>
+<script src="//cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<script src="//cdn.jsdelivr.net/gh/metowolf/Metingjs@1.2/dist/Meting.min.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/love.js"></script>
+<script src="//cdn.jsdelivr.net/gh/EmoryHuang/BlogBeautify@1.1/Cherry.min.js"></script>
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+<script type="text/javascript" src="/js/caidai.js"></script><!--动态彩带-->
+</html>
