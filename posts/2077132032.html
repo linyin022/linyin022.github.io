@@ -13,7 +13,7 @@
 
 
 
-<title>Hexo永久化链接 | Linyin&#39;s Site</title>
+<title>Chic主题配置+修改样式 | Linyin&#39;s Site</title>
 
 
 
@@ -199,7 +199,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">Hexo永久化链接</h1>
+            <h1 class="post-title">Chic主题配置+修改样式</h1>
             
                 <div class="post-meta">
                     
@@ -208,7 +208,7 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">October 19, 2022&nbsp;&nbsp;16:39:45</a>
+                        Date: <a href="#">October 19, 2022&nbsp;&nbsp;23:54:03</a>
                         </span>
                     
                     
@@ -224,28 +224,36 @@
         </header>
 
         <div class="post-content">
-            <p><img src="http://image.linyin022.top/i/2022/10/19/634fc7a9c6f0c.png" alt="Snipaste_2022-10-19_17-46-00.png"></p>
-<p>设置文章永久链接的主要目的就是因为路径中出现中文情况的话，会导致变成一串很长的16进制。影响美观性。</p>
-<h3 id="1-安装"><a href="#1-安装" class="headerlink" title="1.安装"></a>1.安装</h3><p>要用到 <a target="_blank" rel="noopener" href="https://github.com/rozbo/hexo-abbrlink">abbrlink</a> 插件来使文章永久化，以下是npm安装包，安装在hexo文件中</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-abbrlink --save</span><br></pre></td></tr></table></figure>
+            <h2 id="样式修改"><a href="#样式修改" class="headerlink" title="样式修改"></a>样式修改</h2><p><img src="http://image.linyin022.top/i/2022/10/20/63501f3d213c0.png" alt="Snipaste_2022-10-19_23-57-30.png"></p>
+<h3 id="底部copyright"><a href="#底部copyright" class="headerlink" title="底部copyright"></a>底部copyright</h3><p>修改 <code>post_copyright</code> 样式</p>
+<p>路径：<code>themes/Chic/source/css/_page/_post/post_copyright.styl</code></p>
+<p><img src="http://image.linyin022.top/i/2022/10/20/6350211e15022.png" alt="Snipaste_2022-10-20_00-08-36.png"></p>
+<p>在Chic目录下的_config.yml文件中的post_copyright_enable中只打开</p>
+<ul>
+<li>post_copyright_author_enable</li>
+<li>post_copyright_permalink_enable</li>
+<li>post_copyright_license_enable</li>
+</ul>
+<p>其余的都选择false</p>
+<h3 id="category页面修改"><a href="#category页面修改" class="headerlink" title="category页面修改"></a>category页面修改</h3><p><img src="http://image.linyin022.top/i/2022/10/20/63502a2adc05c.png" alt="Snipaste_2022-10-20_00-47-28.png"></p>
+<p>修改路径 <code>themes/Chic/layout/category.ejs</code></p>
+<p><img src="http://image.linyin022.top/i/2022/10/20/63502ae099ef4.png" alt="Snipaste_2022-10-20_00-50-27.png"></p>
+<p>然后在 <code>themes/Chic/source/css/_page/category.syl</code> 文件下</p>
+<p><img src="http://image.linyin022.top/i/2022/10/20/63502b89604c5.png" alt="Snipaste_2022-10-20_00-52-06.png"></p>
+<h3 id="永久化链接"><a href="#永久化链接" class="headerlink" title="永久化链接"></a>永久化链接</h3><p>文章跳转：<a href="./816768764.html">传送门</a></p>
+<h3 id="主题字体"><a href="#主题字体" class="headerlink" title="主题字体"></a>主题字体</h3><p>修改<code>themes\Chic\source\css\font.styl</code>文件<br>注释<code>$font-family</code>前面的内容，将需要启用的字体放在最前面即可</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$font-family = Arial, Microsoft Yahei, &#x27;Microsoft Jhenghei&#x27;,Lantinghei SC, &#x27;lanting&#x27;, PingFang SC, Seguo UI</span><br></pre></td></tr></table></figure>
 
+<h3 id="自定义首页链接图标"><a href="#自定义首页链接图标" class="headerlink" title="自定义首页链接图标"></a>自定义首页链接图标</h3><ul>
+<li>首先在<a target="_blank" rel="noopener" href="https://www.iconfont.cn/">阿里iconfont官网</a>找到想要的图标加入购物车后选择下载代码</li>
+<li>解压后将文件夹放在<code>themes\hexo-theme-Chic\source\fonts</code>下</li>
+<li>在<code>themes\hexo-theme-Chic\source\css\style.styl</code>中引入</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">// icon</span><br><span class="line">@import &quot;../fonts/iconfont/iconfont.css&quot; #再添加一行即可</span><br><span class="line">@import &quot;../fonts/font_custom/iconfont.css&quot;</span><br></pre></td></tr></table></figure>
+
+<p>接下来直接在主题_config.yml中添加内容即可</p>
 <blockquote>
-<p>可能会出现依赖，依据提示安装即可。</p>
-</blockquote>
-<h3 id="2-配置"><a href="#2-配置" class="headerlink" title="2.配置"></a>2.配置</h3><p>修改博客根目录配置文件 <code>_config.yml</code> 的 <code>permalink</code>：</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># permalink: :year/:month/:day/:title/</span></span><br><span class="line"><span class="attr">permalink:</span> <span class="string">p/:abbrlink.html</span>  <span class="comment"># p 是自定义的前缀</span></span><br><span class="line"><span class="attr">abbrlink:</span></span><br><span class="line">    <span class="attr">alg:</span> <span class="string">crc32</span>   <span class="comment">#算法： crc16(default) and crc32</span></span><br><span class="line">    <span class="attr">rep:</span> <span class="string">dec</span>     <span class="comment">#进制： dec(default) and hex</span></span><br></pre></td></tr></table></figure>
-
-<p>不同算法和进制生成不同的格式：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">crc16 &amp; hex</span><br><span class="line">https://xxx.com/posts/66c8.html</span><br><span class="line">crc16 &amp; dec</span><br><span class="line">https://xxx.com/posts/65535.html</span><br><span class="line"></span><br><span class="line">crc32 &amp; hex</span><br><span class="line">https://xxx.com/posts/8ddf18fb.html</span><br><span class="line">crc32 &amp; dec</span><br><span class="line">https://xxx.com/posts/1690090958.html</span><br></pre></td></tr></table></figure>
-
-<h4 id=""><a href="#" class="headerlink" title=""></a></h4><p>先清理下本地的文件 <code>hexo clean</code>，然后重新生成 <code>hexo g</code>，启动博客 <code>hexo s</code>。该插件会在每篇文章的开头增加内容：</p>
-<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">abbrlink: 1690090958</span></span><br></pre></td></tr></table></figure>
-
-
-
-<p>可以执行代码</p>
-<blockquote>
-<p>hexo claen &amp;&amp; hexo g &amp;&amp; hexo s</p>
+<p>注：如不知道图标名称，可在下载的文件夹中的<code>iconfont.css</code>找到名称</p>
 </blockquote>
 
         </div>
@@ -261,7 +269,7 @@
                 
                     <p class="copyright-item">
                         <span>Permalink:</span>
-                        <span><a href="http://linyin022.top/posts/816768764.html">http://linyin022.top/posts/816768764.html</a></span>
+                        <span><a href="http://linyin022.top/posts/2077132032.html">http://linyin022.top/posts/2077132032.html</a></span>
                     </p>
                 
                 
@@ -282,8 +290,6 @@
                     
                         <a href="/tags/Chic%E4%B8%BB%E9%A2%98/"># Chic主题</a>
                     
-                        <a href="/tags/%E7%AC%94%E8%AE%B0/"># 笔记</a>
-                    
                         
                 </span>
             </div>
@@ -295,10 +301,8 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/posts/2077132032.html">Chic主题配置+修改样式</a>
             
-            
-            <a class="next" rel="next" href="/posts/3070531670.html">PHP常用封装</a>
+            <a class="next" rel="next" href="/posts/816768764.html">Hexo永久化链接</a>
             
         </section>
 
