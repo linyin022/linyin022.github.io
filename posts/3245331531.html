@@ -13,7 +13,7 @@
 
 
 
-<title>Hello World | Linyin&#39;s Site</title>
+<title>利用GitHub+jsDelivr[第三方CDN加速]创建属于自己的床图 | Linyin&#39;s Site</title>
 
 
 
@@ -130,76 +130,11 @@
                 <div class="container">
     
     
-        <div class="post-toc">
-    <div class="tocbot-list">
-    </div>
-    <div class="tocbot-list-menu">
-        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
-        <a onclick="go_top()">Back to top</a>
-        <a onclick="go_bottom()">Go to bottom</a>
-    </div>
-</div>
-
-<script>
-    var tocbot_timer;
-    var DEPTH_MAX = 6; // 为 6 时展开所有
-    var tocbot_default_config = {
-        tocSelector: '.tocbot-list',
-        contentSelector: '.post-content',
-        headingSelector: 'h1, h2, h3, h4, h5',
-        orderedList: false,
-        scrollSmooth: true,
-        onClick: extend_click,
-    };
-
-    function extend_click() {
-        clearTimeout(tocbot_timer);
-        tocbot_timer = setTimeout(function() {
-            tocbot.refresh(obj_merge(tocbot_default_config, {
-                hasInnerContainers: true
-            }));
-        }, 420); // 这个值是由 tocbot 源码里定义的 scrollSmoothDuration 得来的
-    }
-
-    document.ready(function() {
-        tocbot.init(obj_merge(tocbot_default_config, {
-            collapseDepth: 1
-        }));
-    });
-
-    function expand_toc() {
-        var b = document.querySelector('.tocbot-toc-expand');
-        var expanded = b.getAttribute('data-expanded');
-        expanded ? b.removeAttribute('data-expanded') : b.setAttribute('data-expanded', true);
-        tocbot.refresh(obj_merge(tocbot_default_config, {
-            collapseDepth: expanded ? 1 : DEPTH_MAX
-        }));
-        b.innerText = expanded ? 'Expand all' : 'Collapse all';
-    }
-
-    function go_top() {
-        window.scrollTo(0, 0);
-    }
-
-    function go_bottom() {
-        window.scrollTo(0, document.body.scrollHeight);
-    }
-
-    function obj_merge(target, source) {
-        for (var item in source) {
-            if (source.hasOwnProperty(item)) {
-                target[item] = source[item];
-            }
-        }
-        return target;
-    }
-</script>
-    
 
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">Hello World</h1>
+            <h1 class="post-title">利用GitHub+jsDelivr[第三方CDN加速]创建属于自己的床图</h1>
             
                 <div class="post-meta">
                     
@@ -208,28 +143,54 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">October 19, 2022&nbsp;&nbsp;9:48:05</a>
+                        Date: <a href="#">April 22, 2022&nbsp;&nbsp;13:54:43</a>
                         </span>
                     
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/Github/">Github</a>
+                            
+                        </span>
                     
                 </div>
             
         </header>
 
         <div class="post-content">
-            <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+            <blockquote>
+<p>本文章转载自[烟雨星空]的文章并且二次简化修改<br>原文章：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/starry-skys/p/13905766.html">https://www.cnblogs.com/starry-skys/p/13905766.html</a></p>
+</blockquote>
+<p><strong>1. 创建一个GitHub仓库[任意名字]</strong><br><strong>2. 在仓库中上传你的图片</strong><br><strong>3. 使用jsDelivr加速访问GitHub的床图</strong></p>
+<p><img src="https://xiaoke022.ml/usr/uploads/2022/04/3086131500.png" alt="l1rymp2g.png"><br>创建好床图之后如果想要原生查看床图就进入任意图片，后查看url，<br>例如<br><img src="https://xiaoke022.ml/usr/uploads/2022/04/1783989775.png" alt="l1ryop33.png"><br>这是我当前的床图中的一个logo，他的url地址为：</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://github.com/linyin022/image/blob/main/logo.png">https://github.com/linyin022/image/blob/main/logo.png</a></p>
+</blockquote>
+<p>如果想要使用原生床图就将url路径中的blob修改成raw。或者是在原本的url路径末尾加上?raw&#x3D;true。以下是两种原生查看床图的方法实例</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/linyin022/image/raw/main/logo.png">https://github.com/linyin022/image/raw/main/logo.png</a><br><a target="_blank" rel="noopener" href="https://github.com/linyin022/image/blob/main/logo.png?raw=true">https://github.com/linyin022/image/blob/main/logo.png?raw=true</a></p>
+<p>如果使用GitHub的原生床图访问速度非常慢。我们就得利用cdn来加速实现快速访问。</p>
+<p><strong>使用jsDelivr实现CDN加速</strong></p>
+<p>jsDelivr是一个开源免费的CDN床图加速项目</p>
+<p>使用的方法为以下：<br>jsDelivr的路径为</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/">https://cdn.jsdelivr.net/gh/</a>&lt;你的github用户名&gt;&#x2F;&lt;你的图床仓库名&gt;@&lt;仓库版本号&gt;&#x2F;图片的路径</p>
+</blockquote>
+<p>这是我GitHub的logo床图的url路径<br><img src="https://xiaoke022.ml/usr/uploads/2022/04/4124722373.png" alt="l1rzm3zc.png"></p>
+<p>将这些url路径修改进jsDelivr中，路径就是为：</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/linyin022/image@main/logo.png">https://cdn.jsdelivr.net/gh/linyin022/image@main/logo.png</a></p>
+</blockquote>
+<p>👆可以点击查看并且cdn加速之后的链接是否有比GitHub原生查看图片有更快的访问速度</p>
+<p>总结：</p>
+<ul>
+<li>使用CDN加速可以实现某些图片、文件、资源等等使用国内网络时访问速度过慢或者无法打开时，使用CDN加速可以帮助我们有效更快的访问。</li>
+</ul>
+<blockquote>
+<p>以下介绍什么是CDN及CDN加速原理[全部转载自网络搜索]</p>
+</blockquote>
+<p>CDN的全称是(Content Delivery Network)，即内容分发网络。其目的是通过在现有的Internet中增加一层新的CACHE(缓存)层，将网站的内容发布到最接近用户的网络”边缘“的节点，使用户可以就近取得所需的内容，提高用户访问网站的响应速度。从技术上全面解决由于网络带宽小、用户访问量大、网点分布不均等原因，提高用户访问网站的响应速度。<br>简单的说，CDN的工作原理就是将您源站的资源缓存到位于全球各地的CDN节点上，用户请求资源时，就近返回节点上缓存的资源，而不需要每个用户的请求都回您的源站获取，避免网络拥塞、缓解源站压力，保证用户访问资源的速度和体验</p>
+<p><img src="https://xiaoke022.ml/usr/uploads/2022/04/2718497112.png" alt="l1s03z54.png"><br><img src="https://xiaoke022.ml/usr/uploads/2022/04/210631655.png" alt="l1s04e9j.png"><br><img src="https://xiaoke022.ml/usr/uploads/2022/04/884058262.png" alt="l1s04ze9.png"><br><img src="https://xiaoke022.ml/usr/uploads/2022/04/3127988837.png" alt="l1s057di.png"></p>
 
         </div>
 
@@ -244,7 +205,7 @@
                 
                     <p class="copyright-item">
                         <span>Permalink:</span>
-                        <span><a href="http://example.com/posts/1243066710.html">http://example.com/posts/1243066710.html</a></span>
+                        <span><a href="http://example.com/posts/3245331531.html">http://example.com/posts/3245331531.html</a></span>
                     </p>
                 
                 
@@ -263,7 +224,11 @@
                 <span class="tag">
                     
                     
-                        <a href="/tags/%E7%AC%94%E8%AE%B0/"># 笔记</a>
+                        <a href="/tags/Git/"># Git</a>
+                    
+                        <a href="/tags/GitHub/"># GitHub</a>
+                    
+                        <a href="/tags/jsDelivr/"># jsDelivr</a>
                     
                         
                 </span>
@@ -276,10 +241,8 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/posts/3488226267.html">宝塔使用git拉取远程仓库</a>
+                <a class="prev" rel="prev" href="/posts/undefined.html">Hexo搭建及部署</a>
             
-            
-            <a class="next" rel="next" href="/posts/423099740.html">Markdown-语法</a>
             
         </section>
 
