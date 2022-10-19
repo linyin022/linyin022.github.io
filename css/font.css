@@ -1,0 +1,9 @@
+@font-face {
+  font-family: 'Alibaba', 'Alibaba Sans';
+  src: url("../fonts/alibabapuhui/Alibaba-PuHuiTi-Regular.eot"); /* IE9 */
+  src: url("../fonts/alibabapuhui/Alibaba-PuHuiTi-Regular.eot"); /* IE9 */
+  src: url("../fonts/alibabapuhui/Alibaba-PuHuiTi-Regular.eot?#iefix") format('embedded-opentype'), url("../fonts/alibabapuhui/Alibaba-PuHuiTi-Regular.woff2") format('woff2'), url("../fonts/alibabapuhui/Alibaba-PuHuiTi-Regular.woff") format('woff'), url("../fonts/alibabapuhui/Alibaba-PuHuiTi-Regular.ttf") format('truetype'), font-family "JetBrains Mono";
+url
+  font-weight: 300;
+  font-display: swap;
+}

@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="zh-CH">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Linyin">
+
+
+
+
+
+<title>PHP常用封装 | Linyin&#39;s Site</title>
+
+
+
+    <link rel="icon" href="/image/cat.jpg">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+    <script src="/fonts/font_custom/iconfont.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Linyin&#39;s Site</a></div>
+            <div class="menu navbar-right" style="font-family: 'JetBrains Mono',monospace">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Linyin&#39;s Site</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    var tocbot_timer;
+    var DEPTH_MAX = 6; // 为 6 时展开所有
+    var tocbot_default_config = {
+        tocSelector: '.tocbot-list',
+        contentSelector: '.post-content',
+        headingSelector: 'h1, h2, h3, h4, h5',
+        orderedList: false,
+        scrollSmooth: true,
+        onClick: extend_click,
+    };
+
+    function extend_click() {
+        clearTimeout(tocbot_timer);
+        tocbot_timer = setTimeout(function() {
+            tocbot.refresh(obj_merge(tocbot_default_config, {
+                hasInnerContainers: true
+            }));
+        }, 420); // 这个值是由 tocbot 源码里定义的 scrollSmoothDuration 得来的
+    }
+
+    document.ready(function() {
+        tocbot.init(obj_merge(tocbot_default_config, {
+            collapseDepth: 1
+        }));
+    });
+
+    function expand_toc() {
+        var b = document.querySelector('.tocbot-toc-expand');
+        var expanded = b.getAttribute('data-expanded');
+        expanded ? b.removeAttribute('data-expanded') : b.setAttribute('data-expanded', true);
+        tocbot.refresh(obj_merge(tocbot_default_config, {
+            collapseDepth: expanded ? 1 : DEPTH_MAX
+        }));
+        b.innerText = expanded ? 'Expand all' : 'Collapse all';
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+    function obj_merge(target, source) {
+        for (var item in source) {
+            if (source.hasOwnProperty(item)) {
+                target[item] = source[item];
+            }
+        }
+        return target;
+    }
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">PHP常用封装</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Linyin</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">October 19, 2022&nbsp;&nbsp;16:14:35</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/PHP/">PHP</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h3 id="常用封装"><a href="#常用封装" class="headerlink" title="常用封装"></a>常用封装</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// config下的文件：status</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> [</span><br><span class="line">    <span class="comment">// 请求成功</span></span><br><span class="line">    <span class="string">&#x27;success&#x27;</span> =&gt; <span class="number">200</span>,</span><br><span class="line">    <span class="comment">// 未登录</span></span><br><span class="line">    <span class="string">&#x27;not_logged&#x27;</span> =&gt; <span class="number">401</span>,</span><br><span class="line">    <span class="comment">// 没有权限访问</span></span><br><span class="line">    <span class="string">&#x27;not_permission&#x27;</span> =&gt; <span class="number">403</span>,</span><br><span class="line">    <span class="comment">// 服务器内部错误</span></span><br><span class="line">    <span class="string">&#x27;error&#x27;</span> =&gt; <span class="number">500</span>,</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 打印调试函数 html</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> $content</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> bool $export</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">pre</span>(<span class="params"><span class="variable">$content</span>, <span class="keyword">bool</span> <span class="variable">$export</span> = <span class="literal">false</span></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="variable">$output</span> = <span class="variable">$export</span> ? <span class="title function_ invoke__">var_export</span>(<span class="variable">$content</span>, <span class="literal">true</span>) : <span class="title function_ invoke__">print_r</span>(<span class="variable">$content</span>, <span class="literal">true</span>);</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;&lt;pre&gt;<span class="subst">&#123;$output&#125;</span>&lt;/pre&gt;&quot;</span>;</span><br><span class="line">    <span class="title function_ invoke__">app_end</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 打印调试函数 json</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> $content</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> bool $export</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@throws</span> DebugException</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">pree</span>(<span class="params"><span class="variable">$content</span>, <span class="keyword">bool</span> <span class="variable">$export</span> = <span class="literal">false</span></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="variable">$output</span> = <span class="variable">$export</span> ? <span class="title function_ invoke__">var_export</span>(<span class="variable">$content</span>, <span class="literal">true</span>) : <span class="variable">$content</span>;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">DebugException</span>([], <span class="variable">$output</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 输出错误信息</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> string $message 报错信息</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> int|null $status 状态码,默认为配置文件status.error</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> array $data 附加数据</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@throws</span> BaseException</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">use</span> <span class="title">cores</span>\<span class="title">exception</span>\<span class="title">BaseException</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">throwError</span>(<span class="params"><span class="keyword">string</span> <span class="variable">$message</span>, ?<span class="keyword">int</span> <span class="variable">$status</span> = <span class="literal">null</span>, <span class="keyword">array</span> <span class="variable">$data</span> = []</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="title function_ invoke__">is_null</span>(<span class="variable">$status</span>) &amp;&amp; <span class="variable">$status</span> = <span class="title function_ invoke__">config</span>(<span class="string">&#x27;status.error&#x27;</span>);</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">BaseException</span>([<span class="string">&#x27;status&#x27;</span> =&gt; <span class="variable">$status</span>, <span class="string">&#x27;message&#x27;</span> =&gt; <span class="variable">$message</span>, <span class="string">&#x27;data&#x27;</span> =&gt; <span class="variable">$data</span>]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">*******************************************************************************</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 自定义异常类的基类</span></span><br><span class="line"><span class="comment"> * Class BaseException</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@package</span> cores\exception</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BaseException</span> <span class="keyword">extends</span> <span class="title">Exception</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="comment">// 状态码</span></span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$status</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 错误信息</span></span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$message</span> = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 输出的数据</span></span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$data</span> = [];</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 构造函数，接收一个关联数组</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> array $params 关联数组只应包含status、msg、data，且不应该是空值</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"><span class="variable">$params</span> = []</span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="built_in">parent</span>::<span class="title function_ invoke__">__construct</span>();</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;status = <span class="variable">$params</span>[<span class="string">&#x27;status&#x27;</span>] ?? <span class="title function_ invoke__">config</span>(<span class="string">&#x27;status.error&#x27;</span>);</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;message = <span class="variable">$params</span>[<span class="string">&#x27;message&#x27;</span>] ?? <span class="string">&#x27;很抱歉，服务器内部错误&#x27;</span>;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;data = <span class="variable">$params</span>[<span class="string">&#x27;data&#x27;</span>] ?? [];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 获取当前域名及根路径</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> string</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">base_url</span>(<span class="params"></span>): <span class="title">string</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">static</span> <span class="variable">$baseUrl</span> = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">empty</span>(<span class="variable">$baseUrl</span>)) &#123;</span><br><span class="line">        <span class="variable">$request</span> = <span class="title class_">Request</span>::<span class="title function_ invoke__">instance</span>();</span><br><span class="line">        <span class="comment">// url协议，设置强制https或自动获取</span></span><br><span class="line">        <span class="variable">$scheme</span> = <span class="title class_">Config</span>::<span class="title function_ invoke__">get</span>(<span class="string">&#x27;route&#x27;</span>)[<span class="string">&#x27;url_force_https&#x27;</span>] ? <span class="string">&#x27;https&#x27;</span> : <span class="variable">$request</span>-&gt;<span class="title function_ invoke__">scheme</span>();</span><br><span class="line">        <span class="comment">// url子目录</span></span><br><span class="line">        <span class="variable">$rootUrl</span> = <span class="title function_ invoke__">root_url</span>();</span><br><span class="line">        <span class="comment">// 拼接完整url</span></span><br><span class="line">        <span class="variable">$baseUrl</span> = <span class="string">&quot;<span class="subst">&#123;$scheme&#125;</span>://&quot;</span> . <span class="variable">$request</span>-&gt;<span class="title function_ invoke__">host</span>() . <span class="variable">$rootUrl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable">$baseUrl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 获取当前uploads目录访问地址</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> string</span></span><br><span class="line"><span class="comment"> * public底下的uploads文件夹  一般用于存储文件 照片</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">uploads_url</span>(<span class="params"></span>): <span class="title">string</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="title function_ invoke__">base_url</span>() . <span class="string">&#x27;uploads&#x27;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 时间戳转换日期</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> int|string $timeStamp 时间戳</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> bool $withTime 是否关联时间</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> false|string</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">format_time</span>(<span class="params"><span class="variable">$timeStamp</span>, <span class="keyword">bool</span> <span class="variable">$withTime</span> = <span class="literal">true</span></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="variable">$format</span> = <span class="string">&#x27;Y-m-d&#x27;</span>;</span><br><span class="line">    <span class="variable">$withTime</span> &amp;&amp; <span class="variable">$format</span> .= <span class="string">&#x27; H:i:s&#x27;</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable">$timeStamp</span> ? <span class="title function_ invoke__">date</span>(<span class="variable">$format</span>, <span class="variable">$timeStamp</span>) : <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 隐藏手机号中间四位 13012345678 -&gt; 130****5678</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> string $mobile 手机号</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> string</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hide_mobile</span>(<span class="params"><span class="keyword">string</span> <span class="variable">$mobile</span></span>): <span class="title">string</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="title function_ invoke__">substr_replace</span>(<span class="variable">$mobile</span>, <span class="string">&#x27;****&#x27;</span>, <span class="number">3</span>, <span class="number">4</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 格式化起止时间(为了兼容前端RangePicker组件)</span></span><br><span class="line"><span class="comment"> * 2020-04-01T08:15:08.891Z =&gt; 1585670400</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> array $times</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> array</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">between_time</span>(<span class="params"><span class="keyword">array</span> <span class="variable">$times</span></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">foreach</span> (<span class="variable">$times</span> <span class="keyword">as</span> &amp;<span class="variable">$time</span>) &#123;</span><br><span class="line">        <span class="variable">$time</span> = <span class="title function_ invoke__">trim</span>(<span class="variable">$time</span>, <span class="string">&#x27;&amp;quot;&#x27;</span>);</span><br><span class="line">        <span class="variable">$time</span> = <span class="title function_ invoke__">str2time_date</span>(<span class="variable">$time</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> [<span class="string">&#x27;start_time&#x27;</span> =&gt; <span class="title function_ invoke__">current</span>(<span class="variable">$times</span>), <span class="string">&#x27;end_time&#x27;</span> =&gt; <span class="title function_ invoke__">next</span>(<span class="variable">$times</span>)];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="验证器"><a href="#验证器" class="headerlink" title="验证器"></a>验证器</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 验证类：银行卡验证</span></span><br><span class="line"><span class="comment"> * Class Card</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@package</span> app\api\validate\user</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Card</span> <span class="keyword">extends</span> <span class="title">Validate</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 银行卡信息规则</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@var</span> string[][]</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="variable">$rule</span> = [</span><br><span class="line">        <span class="string">&#x27;name&#x27;</span> =&gt; [<span class="string">&#x27;require&#x27;</span>, <span class="string">&#x27;chs&#x27;</span>, <span class="string">&#x27;min:2&#x27;</span>],</span><br><span class="line">        <span class="string">&#x27;cardNo&#x27;</span> =&gt; [<span class="string">&#x27;require&#x27;</span>, <span class="string">&#x27;number&#x27;</span>, <span class="string">&#x27;length:14,19&#x27;</span>],</span><br><span class="line">    ];</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 验证提示</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@var</span> string[]</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="variable">$message</span> = [</span><br><span class="line">        <span class="string">&#x27;name.require&#x27;</span> =&gt; <span class="string">&#x27;姓名未填写&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;name.chs&#x27;</span> =&gt; <span class="string">&#x27;姓名必须是中文&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;name.min&#x27;</span> =&gt; <span class="string">&#x27;姓名最少两个汉字&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;cardNo.require&#x27;</span> =&gt; <span class="string">&#x27;银行卡号必须填写&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;cardNo.number&#x27;</span> =&gt; <span class="string">&#x27;银行卡必须是纯数字&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;cardNo.length&#x27;</span> =&gt; <span class="string">&#x27;银行卡输入长度不正确&#x27;</span></span><br><span class="line">    ];</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 验证场景</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@var</span> string[][]</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="variable">$scene</span> = [</span><br><span class="line">        <span class="string">&#x27;addCard&#x27;</span> =&gt; [<span class="string">&#x27;name&#x27;</span>, <span class="string">&#x27;cardNo&#x27;</span>]</span><br><span class="line">    ];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 调用方法</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">use</span> <span class="title">app</span>\<span class="title">api</span>\<span class="title">validate</span>\<span class="title">user</span>\<span class="title">Card</span> <span class="keyword">as</span> <span class="title">ValidateCard</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params"><span class="keyword">array</span> <span class="variable">$data</span></span>)</span>&#123;</span><br><span class="line">    <span class="variable language_">$this</span>-&gt;<span class="title function_ invoke__">validata</span>(<span class="variable">$data</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">validata</span>(<span class="params"><span class="keyword">array</span> <span class="variable">$data</span></span>)</span>&#123;</span><br><span class="line">    <span class="variable">$validate</span> = <span class="keyword">new</span> <span class="title class_">ValidateCard</span>;</span><br><span class="line">    <span class="keyword">if</span> (!<span class="variable">$validate</span>-&gt;<span class="title function_ invoke__">scene</span>(<span class="string">&#x27;addCard&#x27;</span>)-&gt;<span class="title function_ invoke__">check</span>(<span class="variable">$data</span>)) &#123;</span><br><span class="line">        <span class="comment">// throwError为自行封装函数 调用返回错误信息后结束任务</span></span><br><span class="line">        <span class="title function_ invoke__">throwError</span>(<span class="variable">$validate</span>-&gt;<span class="title function_ invoke__">getError</span>());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Linyin</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="http://example.com/posts/3070531670.html">http://example.com/posts/3070531670.html</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/%E7%AC%94%E8%AE%B0/"># 笔记</a>
+                    
+                        <a href="/tags/PHP/"># PHP</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/posts/816768764.html">Hexo永久化链接</a>
+            
+            
+            <a class="next" rel="next" href="/posts/3488226267.html">宝塔使用git拉取远程仓库</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Linyin | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>

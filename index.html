@@ -1,826 +1,199 @@
-
-
 <!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=auto>
-
-
+<html lang="zh-CH">
 
 <head>
-  <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
-  <link rel="icon" href="/img/header.jpg">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-  
-  <meta name="theme-color" content="#2f4154">
-  <meta name="author" content="Linyin">
-  <meta name="keywords" content="">
-  
-    <meta property="og:type" content="website">
-<meta property="og:title" content="Linyin Blog">
-<meta property="og:url" content="https://linyin022.github.io/index.html">
-<meta property="og:site_name" content="Linyin Blog">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:author" content="Linyin">
-<meta name="twitter:card" content="summary_large_image">
-  
-  
-  <title>Linyin Blog</title>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-  <link  rel="stylesheet" href="https://js.007.al/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+    <meta name="author" content="Linyin">
 
 
 
-<!-- 主题依赖的图标库，不要自行修改 -->
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
 
 
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
-
-
-<link  rel="stylesheet" href="/css/main.css" />
-
-<!-- 自定义样式保持在最底部 -->
-
-  
-<link rel="stylesheet" href="/css/indeximg-hover.css">
-<link rel="stylesheet" href="/css/macpanel.css">
-<link rel="stylesheet" href="//js.007.al/npm/aplayer/dist/APlayer.min.css">
-<link rel="stylesheet" href="//js.007.al/gh/bynotes/texiao/source/css/shubiao.css">
-<link rel="stylesheet" href="//js.007.al/gh/bynotes/texiao/source/css/gundongtiao.css">
+<title>Linyin&#39;s Site</title>
 
 
 
-  <script id="fluid-configs">
-    var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"linyin022.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"rSllHJKjYBogFmbybYuOOakj-gzGzoHsz","app_key":"T7SurrJ1mE0qztatMpRyvEWT","server_url":null,"path":"window.location.pathname","ignore_local":true}},"search_path":"/local-search.xml"};
-  </script>
-  <script  src="/js/utils.js" ></script>
-  <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 6.1.0"></head>
+    <link rel="icon" href="/image/cat.jpg">
 
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+    <script src="/fonts/font_custom/iconfont.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.4.2"></head>
 
 <body>
-  <header style="height: 100vh;">
-    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
-  <div class="container">
-    <a class="navbar-brand" href="/">
-      <strong>Lin Yin</strong>
-    </a>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
 
-    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <div class="animated-icon"><span></span><span></span><span></span></div>
-    </button>
-
-    <!-- Collapsible content -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto text-center">
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/">
-                <i class="iconfont icon-home-fill"></i>
-                首页
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/archives/">
-                <i class="iconfont icon-archive-fill"></i>
-                归档
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/categories/">
-                <i class="iconfont icon-category-fill"></i>
-                分类
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/tags/">
-                <i class="iconfont icon-tags-fill"></i>
-                标签
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" target="_self" href="javascript:;" role="button"
-                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="iconfont icon-books"></i>
-                文档
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Linyin&#39;s Site</a></div>
+            <div class="menu navbar-right" style="font-family: 'JetBrains Mono',monospace">
                 
-                  
-                  
-                  
-                  <a class="dropdown-item" target="_blank" rel="noopener" href="https://alist.linyin022.top/">
-                    
-                    个人网盘
-                  </a>
+                    <a class="menu-item" href="/archives">Posts</a>
                 
-                  
-                  
-                  
-                  <a class="dropdown-item" target="_blank" rel="noopener" href="https://hexo.fluid-dev.com/docs/icon/">
-                    
-                    图标用法
-                  </a>
+                    <a class="menu-item" href="/category">Categories</a>
                 
-              </div>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/about/">
-                <i class="iconfont icon-user-fill"></i>
-                关于
-              </a>
-            </li>
-          
-        
-        
-          <li class="nav-item" id="search-btn">
-            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
-              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
-            </a>
-          </li>
-        
-        
-          <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
-                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-</nav>
-
-    <div class="banner" id="banner" parallax=true
-         style="background: url('https://s2.loli.net/2022/04/22/MLhQyNEFtk5we7d.jpg') no-repeat center center;
-           background-size: cover;">
-      <div class="full-bg-img">
-        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="终是江边鸿不可及 即是心上人不可及.">
-              
-            </span>
-
-            
-          </div>
-
-          
-            <div class="scroll-down-bar">
-              <i class="iconfont icon-arrowdown"></i>
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
             </div>
-          
         </div>
-      </div>
-    </div>
-  </header>
+    </nav>
 
-  <main>
     
-      <div class="container nopadding-x-md">
-        <div class="py-5" id="board"
-          style=margin-top:0>
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2022/08/01/PHP%E9%9D%A2%E8%AF%95%E9%A2%98/" target="_self">
-          PHP面试题
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2022/08/01/PHP%E9%9D%A2%E8%AF%95%E9%A2%98/" target="_self">
-          
-          编程基础cookie和session的区别是什么 cookie不是很安全，别人可以分析你存放在本地的cookie进行欺骗，考虑到安全性最好使用session session 在一定时间内是保存在服务器上的不过当访问越来越多时会比较占用服务器端性能资源 考虑到减轻资源新能方面我们最好用cookie 当个cookie保存数据时有限的一般不超过4kb 很多浏览器都限制站点最多保存20个cookie 而s
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-08-01 11:39" pubdate>
-              2022-08-01
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a>
-            
-              <a href="/tags/PHP/">PHP</a>
-            
-              <a href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2022/05/20/NodeJS-%E7%AC%94%E8%AE%B0/" target="_self">
-          NodeJS-笔记
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2022/05/20/NodeJS-%E7%AC%94%E8%AE%B0/" target="_self">
-          
-          概述  Node.js is a platform built on Chrome’s JavaScript runtime for easily building fast, scalable network applications. Node.js uses an event-driven, non-blocking I&#x2F;O model that makes it lightwei
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-05-20 12:32" pubdate>
-              2022-05-20
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/NodeJS/">NodeJS</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a>
-            
-              <a href="/tags/NODEJS/">NODEJS</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2022/05/18/PHP-%E7%AC%94%E8%AE%B0/" target="_self">
-          PHP-笔记
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2022/05/18/PHP-%E7%AC%94%E8%AE%B0/" target="_self">
-          
-          1. PHP 中传值与传引用的区别，什么时候传值,什么时候传引用传值 将实参的值赋值给行参那么对行参的修改，不会影响实参的值。  传地址 是传值的一种特殊方式，只是他传递的是地址，不是普通的如int，那么传地址以后，实参和行参都指向同一个对象。  传引用 真正的以地址的方式传递参数传递以后，行参和实参都是同一个对象，只是他们名字不同而已对行参的修改将影响实参的值。  传值与传引用的使用场景 按值传
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-05-18 21:24" pubdate>
-              2022-05-18
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/PHP/">PHP</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a>
-            
-              <a href="/tags/PHP/">PHP</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2022/05/15/Mysql-%E7%AC%94%E8%AE%B0/" target="_self">
-          Mysql-笔记
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2022/05/15/Mysql-%E7%AC%94%E8%AE%B0/" target="_self">
-          
-          1.主键和外键的区别主键 可以是表的任何字段或列，对于每条记录或一行，主键应是唯一的非空值。  外键 是一个字段，其中包含用于在彼此之间建立连接的其他表的主键。  主键及外键的用途 主键是能确定一条记录的唯一标识，比如，一条记录包括身份正号，姓名，年龄。身份证号是唯一能确定你这个人的，其他都可能有重复，所以，身份证号是主键。 外键用于与另一张表的关联。是能确定另一张表记录的字段，用于保持数据的一致
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-05-15 19:59" pubdate>
-              2022-05-15
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/Mysql/">Mysql</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a>
-            
-              <a href="/tags/Mysql/">Mysql</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2022/05/11/Markdown-%E8%AF%AD%E6%B3%95/" target="_self">
-          Markdown-语法
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2022/05/11/Markdown-%E8%AF%AD%E6%B3%95/" target="_self">
-          
-          一、注释1、代码法123&lt;div style&#x3D;&amp;#x27;display: none&amp;#x27;&gt;哈哈我是注释，不会在浏览器中显示。&lt;&#x2F;div&gt;  2、html注释快捷键  [ctrl + &#x2F; ]   || [comment + &#x2F;] 123456&lt;!--哈哈我是注释，不会在浏览器中显示。--&gt;&lt;!--哈哈我是多段注释，不会在浏览器中显
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-05-11 22:42" pubdate>
-              2022-05-11
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/Markdown/">Markdown</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a>
-            
-              <a href="/tags/Markdown%E8%AF%AD%E6%B3%95/">Markdown语法</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2022/04/25/Hexo%E6%90%AD%E5%BB%BA%E5%8F%8A%E9%83%A8%E7%BD%B2/" target="_self">
-          Hexo搭建及部署
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2022/04/25/Hexo%E6%90%AD%E5%BB%BA%E5%8F%8A%E9%83%A8%E7%BD%B2/" target="_self">
-          
-          Hexo 搭建及部署(更新中)一、简介1、 Hexo特点Hexo 是一个简单、快速、强大的静态博客框架,出自台湾大学生 tommy351 之手。我也看过使用 Jekyll、Octopress 搭建个人博客的过程，确实要繁琐许多。相比之下 Hexo 更轻便更快捷，下面是其官网强调的四大特点：  极速生成静态页面 一键部署博客 丰富的插件支持 支持 Markdown  二.下载安装环境1、下载安装No
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-04-25 08:24" pubdate>
-              2022-04-25
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/Hexo/">Hexo</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Hexo/">Hexo</a>
-            
-              <a href="/tags/Git/">Git</a>
-            
-              <a href="/tags/GitHub/">GitHub</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2022/04/22/%E5%88%A9%E7%94%A8GItHub-jsDelivr-%E7%AC%AC%E4%B8%89%E6%96%B9CDN%E5%8A%A0%E9%80%9F-%E5%88%9B%E5%BB%BA%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E5%BA%8A%E5%9B%BE/" target="_self">
-          利用GitHub+jsDelivr[第三方CDN加速]创建属于自己的床图
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2022/04/22/%E5%88%A9%E7%94%A8GItHub-jsDelivr-%E7%AC%AC%E4%B8%89%E6%96%B9CDN%E5%8A%A0%E9%80%9F-%E5%88%9B%E5%BB%BA%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E5%BA%8A%E5%9B%BE/" target="_self">
-          
-          本文章转载自[烟雨星空]的文章并且二次简化修改原文章：https:&#x2F;&#x2F;www.cnblogs.com&#x2F;starry-skys&#x2F;p&#x2F;13905766.html  1. 创建一个GitHub仓库[任意名字]2. 在仓库中上传你的图片3. 使用jsDelivr加速访问GitHub的床图 创建好床图之后如果想要原生查看床图就进入任意图片，后查看url，例如这是我当前的床图中的一个logo，他的url地址
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-04-22 13:54" pubdate>
-              2022-04-22
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/Github/">Github</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Git/">Git</a>
-            
-              <a href="/tags/GitHub/">GitHub</a>
-            
-              <a href="/tags/jsDelivr/">jsDelivr</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2022/04/19/ThinkPHP6-Notes/" target="_self">
-          ThinkPHP6-Notes
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2022/04/19/ThinkPHP6-Notes/" target="_self">
-          
-          ThinkPHP6-NotesView-视图   运算符 示例    + {$a+$b}   - {$a-$b}   * {$a*$b}   &#x2F; {$a&#x2F;$b}   % {$a%$b}   ++ {$a++} 或 {++$a}   – {$a–} 或{–$a}   综合运算 {$a+$b*10+$c}   三元运算符 {$a&#x3D;&#x3D;$b ? ‘yes’ : ‘n
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-04-19 22:29" pubdate>
-              2022-04-19
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/ThinkPHP/">ThinkPHP</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/ThinkPHP/">ThinkPHP</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2022/04/15/hello-world/" target="_self">
-          Hello World
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2022/04/15/hello-world/" target="_self">
-          
-          Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-04-15 14:16" pubdate>
-              2022-04-15
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-
-
-
-
-              </div>
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Linyin&#39;s Site</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
             </div>
-          </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
         </div>
-      </div>
-    
+    </nav>
 
-    
-      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
-        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-      </a>
-    
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
 
-    
-      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
-     aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
-        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body mx-3">
-        <div class="md-form mb-5">
-          <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v"
-                 for="local-search-input">关键词</label>
+            <div class="main">
+                
+    <!--<script src="../../source/fonts/font_custom/iconfont.js"></script>-->
+<div class="container profile-container">
+    <div class="intro">
+        <div class="avatar">
+            <a href="/archives"><img src="/image/duck.jpg"></a>
         </div>
-        <div class="list-group" id="local-search-result"></div>
-      </div>
-    </div>
-  </div>
+        <div class="nickname">Flora</div>
+        <div class="description"><p>倘若代码和注释不一致，那么很可能两者都是错的.</p>
 </div>
-    
+        <div class="links">
+            
+                
+                    <a class="link-item" title="Blog" href="/archives">
+                        
+                        
+                            <i class="iconfont icon-blog"></i>
+<!--                                <svg class="icon" aria-hidden="true">-->
+<!--                                    <use xlink:href="#icon-blog>"></use>-->
+<!--                                </svg>-->
+                        
+                    </a>
+                
+                    <a class="link-item" title="telegram" target="_blank" rel="noopener" href="https://t.me/linyin022">
+                        
+                        
+                            <i class="iconfont icon-telegram"></i>
+<!--                                <svg class="icon" aria-hidden="true">-->
+<!--                                    <use xlink:href="#icon-telegram>"></use>-->
+<!--                                </svg>-->
+                        
+                    </a>
+                
+                    <a class="link-item" title="youxiang" href="mailto:xiaoke022@outlook.com">
+                        
+                        
+                            <i class="iconfont icon-youxiang"></i>
+<!--                                <svg class="icon" aria-hidden="true">-->
+<!--                                    <use xlink:href="#icon-youxiang>"></use>-->
+<!--                                </svg>-->
+                        
+                    </a>
+                
+                    <a class="link-item" title="Github" target="_blank" rel="noopener" href="https://github.com/linyin022">
+                        
+                        
+                            <i class="iconfont icon-github"></i>
+<!--                                <svg class="icon" aria-hidden="true">-->
+<!--                                    <use xlink:href="#icon-github>"></use>-->
+<!--                                </svg>-->
+                        
+                    </a>
+                
+            
+        </div>
+    </div>
+</div>
 
-    
-  </main>
 
-  <footer class="text-center mt-5 py-3">
-  <div class="footer-content">
-     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
-  </div>
-  
-  <div class="statistics">
-    
-    
-
-    
-      
-        <!-- LeanCloud 统计PV -->
-        <span id="leancloud-site-pv-container" style="display: none">
-            总访问量 
-            <span id="leancloud-site-pv"></span>
-             次
-          </span>
-      
-      
-        <!-- LeanCloud 统计UV -->
-        <span id="leancloud-site-uv-container" style="display: none">
-            总访客数 
-            <span id="leancloud-site-uv"></span>
-             人
-          </span>
-      
-
-    
-  </div>
-
-
-  
-
-  
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Linyin | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
 </footer>
 
-
-  <!-- SCRIPTS -->
-  
-  <script  src="https://js.007.al/npm/nprogress@0/nprogress.min.js" ></script>
-  <link  rel="stylesheet" href="https://js.007.al/npm/nprogress@0/nprogress.min.css" />
-
-  <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
-    NProgress.start()
-    window.addEventListener('load', function() {
-      NProgress.done();
-    })
-  </script>
-
-
-<script  src="https://js.007.al/npm/jquery@3/dist/jquery.min.js" ></script>
-<script  src="https://js.007.al/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
-<script  src="/js/events.js" ></script>
-<script  src="/js/plugins.js" ></script>
-
-<!-- Plugins -->
-
-
-  <script  src="/js/local-search.js" ></script>
-
-
-
-  
-    <script  src="/js/img-lazyload.js" ></script>
-  
-
-
-
-  
-
-
-
-
-
-
-  <script defer src="/js/leancloud.js" ></script>
-
-
-
-  <script  src="https://js.007.al/npm/typed.js@2/lib/typed.min.js" ></script>
-  <script>
-    (function (window, document) {
-      var typing = Fluid.plugins.typing;
-      var title = document.getElementById('subtitle').title;
-      
-        typing(title);
-      
-    })(window, document);
-  </script>
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-
-
-
-  
-<script src="/js/FunnyTitle.js"></script>
-<script src="//js.007.al/npm/aplayer/dist/APlayer.min.js"></script>
-<script src="//js.007.al/gh/metowolf/Metingjs@1.2/dist/Meting.min.js"></script>
-<script src="//js.007.al/gh/EmoryHuang/BlogBeautify@1.1/Cherry.min.js"></script>
-
-
-
-<!-- 主题的启动项 保持在最底部 -->
-<script  src="/js/boot.js" ></script>
-
-
+    </div>
 </body>
+
 </html>
