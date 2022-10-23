@@ -13,7 +13,7 @@
 
 
 
-<title>Chic主题配置+修改样式 | Linyin&#39;s Site</title>
+<title>hexo源文件多电脑提交和更新 | Linyin&#39;s Site</title>
 
 
 
@@ -199,7 +199,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">Chic主题配置+修改样式</h1>
+            <h1 class="post-title">hexo源文件多电脑提交和更新</h1>
             
                 <div class="post-meta">
                     
@@ -208,7 +208,7 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">October 19, 2022&nbsp;&nbsp;23:54:03</a>
+                        Date: <a href="#">October 23, 2022&nbsp;&nbsp;23:34:58</a>
                         </span>
                     
                     
@@ -224,37 +224,92 @@
         </header>
 
         <div class="post-content">
-            <h2 id="样式修改"><a href="#样式修改" class="headerlink" title="样式修改"></a>样式修改</h2><p><img src="http://image.linyin022.top/i/2022/10/20/63501f3d213c0.png" alt="Snipaste_2022-10-19_23-57-30.png"></p>
-<h3 id="底部copyright"><a href="#底部copyright" class="headerlink" title="底部copyright"></a>底部copyright</h3><p>修改 <code>post_copyright</code> 样式</p>
-<p>路径：<code>themes/Chic/source/css/_page/_post/post_copyright.styl</code></p>
-<p><img src="http://image.linyin022.top/i/2022/10/20/6350211e15022.png" alt="Snipaste_2022-10-20_00-08-36.png"></p>
-<p>在Chic目录下的_config.yml文件中的post_copyright_enable中只打开</p>
-<ul>
-<li>post_copyright_author_enable</li>
-<li>post_copyright_permalink_enable</li>
-<li>post_copyright_license_enable</li>
-</ul>
-<p>其余的都选择false</p>
-<h3 id="category页面修改"><a href="#category页面修改" class="headerlink" title="category页面修改"></a>category页面修改</h3><p><img src="http://image.linyin022.top/i/2022/10/20/63502a2adc05c.png" alt="Snipaste_2022-10-20_00-47-28.png"></p>
-<p>修改路径 <code>themes/Chic/layout/category.ejs</code></p>
-<p><img src="http://image.linyin022.top/i/2022/10/20/63502ae099ef4.png" alt="Snipaste_2022-10-20_00-50-27.png"></p>
-<p>然后在 <code>themes/Chic/source/css/_page/category.syl</code> 文件下</p>
-<p><img src="http://image.linyin022.top/i/2022/10/20/63502b89604c5.png" alt="Snipaste_2022-10-20_00-52-06.png"></p>
-<h3 id="永久化链接"><a href="#永久化链接" class="headerlink" title="永久化链接"></a>永久化链接</h3><p>文章跳转：<a href="./816768764.html">传送门</a></p>
-<h3 id="主题字体"><a href="#主题字体" class="headerlink" title="主题字体"></a>主题字体</h3><p>修改<code>themes\Chic\source\css\font.styl</code>文件<br>注释<code>$font-family</code>前面的内容，将需要启用的字体放在最前面即可</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$font-family = Arial, Microsoft Yahei, &#x27;Microsoft Jhenghei&#x27;,Lantinghei SC, &#x27;lanting&#x27;, PingFang SC, Seguo UI</span><br></pre></td></tr></table></figure>
-
-<h3 id="自定义首页链接图标"><a href="#自定义首页链接图标" class="headerlink" title="自定义首页链接图标"></a>自定义首页链接图标</h3><ul>
-<li>首先在<a target="_blank" rel="noopener" href="https://www.iconfont.cn/">阿里iconfont官网</a>找到想要的图标加入购物车后选择下载代码</li>
-<li>解压后将文件夹放在<code>themes\hexo-theme-Chic\source\fonts</code>下</li>
-<li>在<code>themes\hexo-theme-Chic\source\css\style.styl</code>中引入</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">// icon</span><br><span class="line">@import &quot;../fonts/iconfont/iconfont.css&quot; #再添加一行即可</span><br><span class="line">@import &quot;../fonts/font_custom/iconfont.css&quot;</span><br></pre></td></tr></table></figure>
-
-<p>接下来直接在主题_config.yml中添加内容即可</p>
-<blockquote>
-<p>注：如不知道图标名称，可在下载的文件夹中的<code>iconfont.css</code>找到名称</p>
+            <blockquote>
+<p>本文章转载并修改自：<a target="_blank" rel="noopener" href="https://blog.csdn.net/K1052176873/article/details/122879462">Hexo在多台电脑上提交和更新[作者Kakaluotuo]</a></p>
 </blockquote>
+<p>做这篇文章的主要原因是我的hexo源文件在a电脑上。可是我并没有办法随身携带a电脑。有时要在b电脑上写文章。每次写完一篇文章都要保存然后拷贝到a电脑上才可以做到部署上传自网站。这令我很头痛。于是我在网上搜索有没有好的办法。结果在CSDN上看到开头转载的文章。于是根据<a target="_blank" rel="noopener" href="https://blog.csdn.net/K1052176873?type=blog">Kakaluotuo</a>的hexo多电脑提交和更新的文章写出这篇文章。文章内容多自修改Kakaluotuo的文章，如果想看更详细的说明请移步该作者的原贴：<a target="_blank" rel="noopener" href="https://blog.csdn.net/K1052176873/article/details/122879462">传送门</a></p>
+<p>tips：由于该上文章是在GitHub上做文件上传。而我因为工作需要，电脑绑定的是Gitee的配置。无法推送到GitHub上。所以我使用的是Gitee创建仓库并且实现多电脑上hexo的提交和更新。</p>
+<hr>
+<h3 id="1-清楚那些文件是需要同步的"><a href="#1-清楚那些文件是需要同步的" class="headerlink" title="1.清楚那些文件是需要同步的"></a>1.清楚那些文件是需要同步的</h3><p>这是a电脑上的目录结构</p>
+<p><img src="http://image.linyin022.top/i/2022/10/23/6355631cd8636.png" alt="Snipaste_2022-10-23_23-51-31.png"></p>
+<table>
+<thead>
+<tr>
+<th><strong>文件夹</strong></th>
+<th><strong>说明</strong></th>
+<th><strong>是否需要上传github&#x2F;gitee</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>node_modules</td>
+<td>hexo需要的模块，就是一些基础的npm安装模块，比如一些美化插件，在执行<code>npm install</code>的时候会重新生成</td>
+<td>不需要</td>
+</tr>
+<tr>
+<td>themes</td>
+<td>主题文件</td>
+<td>需要</td>
+</tr>
+<tr>
+<td>public</td>
+<td>hexo g命令执行后生成的静态页面文件</td>
+<td>不需要</td>
+</tr>
+<tr>
+<td>packages.json</td>
+<td>记录了hexo需要的包的信息，之后换电脑了npm根据这个信息来安装hexo环境</td>
+<td>需要</td>
+</tr>
+<tr>
+<td>_config.yml</td>
+<td>全局配置文件，这个不用多说了吧</td>
+<td>需要</td>
+</tr>
+<tr>
+<td>.gitignore</td>
+<td>hexo生成的默认的.gitignore模块</td>
+<td>需要</td>
+</tr>
+<tr>
+<td>scaffolds</td>
+<td>文章的模板</td>
+<td>需要</td>
+</tr>
+<tr>
+<td>.deploy_git</td>
+<td>hexo g自动生成的</td>
+<td>不需要</td>
+</tr>
+</tbody></table>
+<p>tips：另外出现的.git和.idea是因为我已经将源文件部署到Gitee上和用的是webstorm来编写文章。所以会出现这两个文件夹</p>
+<h3 id="2-上传到Gitee"><a href="#2-上传到Gitee" class="headerlink" title="2.上传到Gitee"></a>2.上传到Gitee</h3><ol>
+<li><p>在Gitee上创建一个仓库</p>
+</li>
+<li><p>创建好之后在本地使用命令行将你创建的仓库clone到本地电脑上</p>
+</li>
+<li><p>clone到本地之后会在文件夹里面看到一个.git的文件。将这个文件移动到你的hexo源文件目录下</p>
+</li>
+<li><p>在hexo源文件夹内创建一个<code>.gitignore文件</code>，这个文件是提交的时候自动屏蔽哪些文件&amp;&amp;文件夹不提交推送的</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.DS_Store</span><br><span class="line"> Thumbs.db</span><br><span class="line"> db.json</span><br><span class="line"> *.log</span><br><span class="line"> node_modules/</span><br><span class="line"> public/</span><br><span class="line"> .deploy*/</span><br><span class="line"> .idea/</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>我在后面加上了<code>.idea/</code>是因为用jetbrains家的开发工具默认会生成这个文件夹。我并不需要将这个文件夹提交上传。所以我也加上去了</li>
+<li>如果已经clone过主题文件，那么需要把theme主题文件夹里的 .git 也删除。因为git不能嵌套上传，最好是显示隐藏文件，检查一下有没有，否则上传的时候会出错，导致你的主题文件无法上传，这样你的配置在别的电脑上就用不了了。</li>
+</ul>
+</li>
+<li><p>在hexo源文件夹内创建一个<code>.gitignore文件</code>，这个文件是提交的时候自动屏蔽哪些文件&amp;&amp;文件夹不提交推送的</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit</span><br><span class="line">git push</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>此时已经成功将整个网站推送到了远程库</p>
+<h3 id="3-后续补充"><a href="#3-后续补充" class="headerlink" title="3.后续补充"></a>3.后续补充</h3><p>至此，整个网站备份至远程仓库，当网站的配置或文章修改后都要将远程仓库更新。先拉取<code>git pull</code>仓库内的文件保证最新的源文件。修改配置或更新文章之后先<code>hexo s</code>确定没有问题之后，<strong>提交推送到远程仓库之后，在执行hexo的部署</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo d -g</span><br></pre></td></tr></table></figure>
+
+
+
+
+
 
         </div>
 
@@ -269,7 +324,7 @@
                 
                     <p class="copyright-item">
                         <span>Permalink:</span>
-                        <span><a href="http://linyin022.top/posts/2077132032.html">http://linyin022.top/posts/2077132032.html</a></span>
+                        <span><a href="http://linyin022.top/posts/2490437164.html">http://linyin022.top/posts/2490437164.html</a></span>
                     </p>
                 
                 
@@ -290,6 +345,8 @@
                     
                         <a href="/tags/Chic%E4%B8%BB%E9%A2%98/"># Chic主题</a>
                     
+                        <a href="/tags/%E7%AC%94%E8%AE%B0/"># 笔记</a>
+                    
                         
                 </span>
             </div>
@@ -301,10 +358,8 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/posts/2490437164.html">hexo源文件多电脑提交和更新</a>
             
-            
-            <a class="next" rel="next" href="/posts/816768764.html">Hexo永久化链接</a>
+            <a class="next" rel="next" href="/posts/2077132032.html">Chic主题配置+修改样式</a>
             
         </section>
 
