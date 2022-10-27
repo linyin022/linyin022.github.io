@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Linyin">
+
+
+
+
+
+<title>THINKPHP6 php-jwt | Linyin&#39;s Site</title>
+
+
+
+    <link rel="icon" href="/image/duck.jpg">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+    <script src="/fonts/font_custom/iconfont.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Linyin&#39;s Site</a></div>
+            <div class="menu navbar-right" style="font-family: 'Alibaba Sans',monospace">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Linyin&#39;s Site</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    var tocbot_timer;
+    var DEPTH_MAX = 6; // 为 6 时展开所有
+    var tocbot_default_config = {
+        tocSelector: '.tocbot-list',
+        contentSelector: '.post-content',
+        headingSelector: 'h1, h2, h3, h4, h5',
+        orderedList: false,
+        scrollSmooth: true,
+        onClick: extend_click,
+    };
+
+    function extend_click() {
+        clearTimeout(tocbot_timer);
+        tocbot_timer = setTimeout(function() {
+            tocbot.refresh(obj_merge(tocbot_default_config, {
+                hasInnerContainers: true
+            }));
+        }, 420); // 这个值是由 tocbot 源码里定义的 scrollSmoothDuration 得来的
+    }
+
+    document.ready(function() {
+        tocbot.init(obj_merge(tocbot_default_config, {
+            collapseDepth: 1
+        }));
+    });
+
+    function expand_toc() {
+        var b = document.querySelector('.tocbot-toc-expand');
+        var expanded = b.getAttribute('data-expanded');
+        expanded ? b.removeAttribute('data-expanded') : b.setAttribute('data-expanded', true);
+        tocbot.refresh(obj_merge(tocbot_default_config, {
+            collapseDepth: expanded ? 1 : DEPTH_MAX
+        }));
+        b.innerText = expanded ? 'Expand all' : 'Collapse all';
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+    function obj_merge(target, source) {
+        for (var item in source) {
+            if (source.hasOwnProperty(item)) {
+                target[item] = source[item];
+            }
+        }
+        return target;
+    }
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">THINKPHP6 php-jwt</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Linyin</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">七月 13, 2022&nbsp;&nbsp;1:14:09</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/PHP/">PHP</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h3 id="PHP-JWT使用教程"><a href="#PHP-JWT使用教程" class="headerlink" title="PHP-JWT使用教程"></a>PHP-JWT使用教程</h3><p><a target="_blank" rel="noopener" href="https://packagist.org/packages/firebase/php-jwt">官方使用教程firebase&#x2F;php-jwt - Packagist</a></p>
+<h3 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h3><p>Use composer to manage your dependencies and download PHP-JWT:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">composer require firebase/php-jwt</span><br></pre></td></tr></table></figure>
+
+<p>Optionally, install the <code>paragonie/sodium_compat</code> package from composer if your php is &lt; 7.2 or does not have libsodium installed:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">composer require paragonie/sodium_compat</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//生成验签token</span></span><br><span class="line"><span class="keyword">use</span> <span class="title">Firebase</span>\<span class="title">JWT</span>\<span class="title">JWT</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">compareToken</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">signToken</span> (<span class="params"><span class="variable">$uid</span></span>) </span>&#123;</span><br><span class="line">        <span class="comment">//这里是自定义的一个随机字串，应该写在config文件中的，解密时也会用，相当    于加密中常用的 盐  salt</span></span><br><span class="line">        <span class="variable">$key</span> = <span class="string">&#x27;example_key&#x27;</span>;</span><br><span class="line">        <span class="variable">$payload</span> = [</span><br><span class="line">            <span class="string">&#x27;iss&#x27;</span> =&gt; <span class="string">&#x27;http://example.org&#x27;</span>,	<span class="comment">//签发者 可以为空</span></span><br><span class="line">            <span class="string">&#x27;aud&#x27;</span> =&gt; <span class="string">&#x27;http://example.com&#x27;</span>, 	<span class="comment">//面象的用户，可以为空</span></span><br><span class="line">            <span class="string">&#x27;iat&#x27;</span> =&gt; <span class="title function_ invoke__">time</span>(), 				<span class="comment">//签发时间</span></span><br><span class="line">            <span class="string">&#x27;nbf&#x27;</span> =&gt; <span class="title function_ invoke__">time</span>(),  				<span class="comment">//在什么时候jwt开始生效</span></span><br><span class="line">            <span class="string">&quot;exp&quot;</span> =&gt; <span class="title function_ invoke__">time</span>() + <span class="number">200</span>, 			<span class="comment">//token 过期时间 200秒</span></span><br><span class="line">            <span class="comment">//记录的userid的信息，这里是自已添加上去的，如果有其它信息，可以再添加数组的键值对</span></span><br><span class="line">            <span class="string">&quot;data&quot;</span>=&gt; [</span><br><span class="line">                <span class="string">&#x27;uid&#x27;</span>=&gt;<span class="variable">$uid</span></span><br><span class="line">            ]</span><br><span class="line">        ];</span><br><span class="line">        <span class="comment">//  print_r($token);</span></span><br><span class="line">        <span class="variable">$jwt</span> = JWT::<span class="title function_ invoke__">encode</span>(<span class="variable">$payload</span>, <span class="variable">$key</span>, <span class="string">&quot;HS256&quot;</span>);  <span class="comment">//根据参数生成了 token</span></span><br><span class="line">        <span class="keyword">return</span> <span class="variable">$jwt</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//验证token</span></span><br><span class="line"><span class="keyword">use</span> <span class="title">Firebase</span>\<span class="title">JWT</span>\<span class="title">JWT</span>;</span><br><span class="line"><span class="keyword">use</span> <span class="title">Firebase</span>\<span class="title">JWT</span>\<span class="title">Key</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">compareToken</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span>  <span class="function"><span class="keyword">function</span> <span class="title">handle</span> (<span class="params"><span class="variable">$request</span>, \<span class="built_in">Closure</span> <span class="variable">$next</span></span>) </span>&#123;</span><br><span class="line">        <span class="comment">// 从头部获取token的值</span></span><br><span class="line">        <span class="variable">$token</span> = <span class="title function_ invoke__">request</span>()-&gt;<span class="title function_ invoke__">header</span>(<span class="string">&#x27;token&#x27;</span>);</span><br><span class="line">		<span class="comment">// dump($header);</span></span><br><span class="line">        <span class="comment">// 判断token是否存在</span></span><br><span class="line">        <span class="keyword">if</span> (!<span class="keyword">isset</span>(<span class="variable">$token</span>) || <span class="keyword">empty</span>(<span class="variable">$token</span>)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="title function_ invoke__">json</span>([<span class="string">&#x27;code&#x27;</span>=&gt;<span class="number">400</span>,<span class="string">&#x27;message&#x27;</span>=&gt;<span class="string">&#x27;token不存在&#x27;</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// token解码</span></span><br><span class="line">        <span class="variable">$jwt</span> = JWT::<span class="title function_ invoke__">decode</span>(<span class="variable">$token</span>,<span class="keyword">new</span> <span class="title class_">Key</span>(<span class="string">&#x27;example_key&#x27;</span>,<span class="string">&#x27;HS256&#x27;</span>));</span><br><span class="line">        <span class="comment">// 存在的话就返回</span></span><br><span class="line">        <span class="keyword">if</span>(<span class="variable">$jwt</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="variable">$next</span>(<span class="variable">$request</span>);</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<hr>
+<center>分隔符</center>
+
+<hr>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//token中保存的数据</span></span><br><span class="line"><span class="keyword">namespace</span> <span class="title class_">app</span>\<span class="title class_">admin</span>\<span class="title class_">controller</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">use</span> <span class="title">app</span>\<span class="title">BaseController</span>;</span><br><span class="line"><span class="keyword">use</span> <span class="title">Firebase</span>\<span class="title">JWT</span>\<span class="title">JWT</span>;</span><br><span class="line"><span class="keyword">use</span> <span class="title">Firebase</span>\<span class="title">JWT</span>\<span class="title">Key</span>;</span><br><span class="line"><span class="keyword">use</span> <span class="title">think</span>\<span class="title">App</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Base</span> <span class="keyword">extends</span> <span class="title">BaseController</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params">App <span class="variable">$app</span></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="built_in">parent</span>::<span class="title function_ invoke__">__construct</span>(<span class="variable">$app</span>);</span><br><span class="line">        <span class="variable">$token</span> = <span class="title function_ invoke__">request</span>()-&gt;<span class="title function_ invoke__">header</span>(<span class="string">&#x27;Authorization&#x27;</span>);</span><br><span class="line">        <span class="variable">$jwt</span> = JWT::<span class="title function_ invoke__">decode</span>(<span class="variable">$token</span>,<span class="keyword">new</span> <span class="title class_">Key</span>(<span class="string">&#x27;admin_key&#x27;</span>,<span class="string">&#x27;HS256&#x27;</span>));</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(<span class="variable">$jwt</span>)&#123;</span><br><span class="line">			<span class="comment">//dump($jwt);</span></span><br><span class="line">            <span class="comment">//如果token中有自定义保存数据的话，以下方式可以获取。</span></span><br><span class="line">            <span class="variable language_">$this</span>-&gt;id = <span class="variable">$jwt</span>-&gt;data-&gt;id;</span><br><span class="line">            <span class="variable language_">$this</span>-&gt;username = <span class="variable">$jwt</span>-&gt;data-&gt;username;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//获取值</span></span><br><span class="line"><span class="keyword">namespace</span> <span class="title class_">app</span>\<span class="title class_">admin</span>\<span class="title class_">controller</span>;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Index</span> <span class="keyword">extends</span> <span class="title">Base</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="comment">//继承Base后可以获取得到里面的值</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">demo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="variable">$id</span> = <span class="variable language_">$this</span>-&gt;id;</span><br><span class="line">        <span class="variable">$username</span> = <span class="variable language_">$this</span>-&gt;usernmae;</span><br><span class="line">        <span class="keyword">echo</span> <span class="variable">$id</span>;</span><br><span class="line">        <span class="keyword">echo</span> <span class="variable">$username</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Linyin</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://linyin022.top/posts/552050446.html">https://linyin022.top/posts/552050446.html</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/%E7%AC%94%E8%AE%B0/"># 笔记</a>
+                    
+                        <a href="/tags/PHP/"># PHP</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/posts/2712931618.html">微信小程序登录获取openid</a>
+            
+            
+            <a class="next" rel="next" href="/posts/104800998.html">THINKPHP6 常用命令行</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Linyin | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>

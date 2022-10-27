@@ -13,7 +13,7 @@
 
 
 
-<title>Hexo永久化链接 | Linyin&#39;s Site</title>
+<title>THINKPHP6 常用命令行 | Linyin&#39;s Site</title>
 
 
 
@@ -199,7 +199,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">Hexo永久化链接</h1>
+            <h1 class="post-title">THINKPHP6 常用命令行</h1>
             
                 <div class="post-meta">
                     
@@ -208,14 +208,14 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">十月 19, 2022&nbsp;&nbsp;16:39:45</a>
+                        Date: <a href="#">七月 13, 2022&nbsp;&nbsp;1:10:49</a>
                         </span>
                     
                     
                         <span class="post-category">
                     Category:
                             
-                                <a href="/categories/Hexo/">Hexo</a>
+                                <a href="/categories/PHP/">PHP</a>
                             
                         </span>
                     
@@ -224,29 +224,23 @@
         </header>
 
         <div class="post-content">
-            <p><img src="http://image.linyin022.top/i/2022/10/19/634fc7a9c6f0c.png" alt="Snipaste_2022-10-19_17-46-00.png"></p>
-<p>设置文章永久链接的主要目的就是因为路径中出现中文情况的话，会导致变成一串很长的16进制。影响美观性。</p>
-<h3 id="1-安装"><a href="#1-安装" class="headerlink" title="1.安装"></a>1.安装</h3><p>要用到 <a target="_blank" rel="noopener" href="https://github.com/rozbo/hexo-abbrlink">abbrlink</a> 插件来使文章永久化，以下是npm安装包，安装在hexo文件中</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-abbrlink --save</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>可能会出现依赖，依据提示安装即可。</p>
-</blockquote>
-<h3 id="2-配置"><a href="#2-配置" class="headerlink" title="2.配置"></a>2.配置</h3><p>修改博客根目录配置文件 <code>_config.yml</code> 的 <code>permalink</code>：</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># permalink: :year/:month/:day/:title/</span></span><br><span class="line"><span class="attr">permalink:</span> <span class="string">p/:abbrlink.html</span>  <span class="comment"># p 是自定义的前缀</span></span><br><span class="line"><span class="attr">abbrlink:</span></span><br><span class="line">    <span class="attr">alg:</span> <span class="string">crc32</span>   <span class="comment">#算法： crc16(default) and crc32</span></span><br><span class="line">    <span class="attr">rep:</span> <span class="string">dec</span>     <span class="comment">#进制： dec(default) and hex</span></span><br></pre></td></tr></table></figure>
-
-<p>不同算法和进制生成不同的格式：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">crc16 &amp; hex</span><br><span class="line">https://xxx.com/posts/66c8.html</span><br><span class="line">crc16 &amp; dec</span><br><span class="line">https://xxx.com/posts/65535.html</span><br><span class="line"></span><br><span class="line">crc32 &amp; hex</span><br><span class="line">https://xxx.com/posts/8ddf18fb.html</span><br><span class="line">crc32 &amp; dec</span><br><span class="line">https://xxx.com/posts/1690090958.html</span><br></pre></td></tr></table></figure>
-
-<h4 id=""><a href="#" class="headerlink" title=""></a></h4><p>先清理下本地的文件 <code>hexo clean</code>，然后重新生成 <code>hexo g</code>，启动博客 <code>hexo s</code>。该插件会在每篇文章的开头增加内容：</p>
-<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">abbrlink: 1690090958</span></span><br></pre></td></tr></table></figure>
-
-
-
-<p>可以执行代码</p>
-<blockquote>
-<p>hexo claen &amp;&amp; hexo g &amp;&amp; hexo s</p>
-</blockquote>
+            <h3 id="tp6框架下常用的终端命令"><a href="#tp6框架下常用的终端命令" class="headerlink" title="tp6框架下常用的终端命令"></a>tp6框架下常用的终端命令</h3><h5 id="安装项"><a href="#安装项" class="headerlink" title="安装项"></a>安装项</h5><p>安装稳定版框架：<code>composer create-project topthink/think tp</code></p>
+<p>安装视图渲染模板引擎：<code>composer require topthink/think-view</code></p>
+<p>安装多应用模式拓展：<code>composer require topthink/think-multi-app</code></p>
+<p>安装php-jwt拓展：<code>composer require firebase/php-jwt</code></p>
+<h5 id="运行项"><a href="#运行项" class="headerlink" title="运行项"></a>运行项</h5><p>启动内置服务：<code>php think run</code></p>
+<p>启动内置服务并且定制端口：<code>php think run -p 端口号</code></p>
+<h5 id="生成项"><a href="#生成项" class="headerlink" title="生成项"></a>生成项</h5><h6 id="单应用"><a href="#单应用" class="headerlink" title="单应用"></a>单应用</h6><p>创建类库文件（单应用）：<code>php think make:controller Demo</code></p>
+<p>创建数据模型：<code>php think make:model Demo</code></p>
+<h6 id="多应用"><a href="#多应用" class="headerlink" title="多应用"></a>多应用</h6><p>自动生成应用（需启用多应用模式）：<code>php think build demo</code></p>
+<p>在index应用中创建一个demo类：<code>php think make:controller index@Demo</code>	</p>
+<p>在index应用中创建一个student数据模型：<code>php think make:model index@student</code></p>
+<p>在admin应用创建一个Check中间件：<code>php think make:controller admin@Login</code></p>
+<hr>
+<p>tp6常用命令行： <a target="_blank" rel="noopener" href="https://www.kancloud.cn/manual/thinkphp6_0/1037641">https://www.kancloud.cn/manual/thinkphp6_0/1037641</a></p>
+<p>tp6开发手册：<a target="_blank" rel="noopener" href="https://www.kancloud.cn/manual/thinkphp6_0/1037479">https://www.kancloud.cn/manual/thinkphp6_0/1037479</a></p>
+<p>tp6助手函数：<a target="_blank" rel="noopener" href="https://www.kancloud.cn/manual/thinkphp6_0/1037653">https://www.kancloud.cn/manual/thinkphp6_0/1037653</a></p>
+<p>tp6模板标签：<a target="_blank" rel="noopener" href="https://www.kancloud.cn/manual/think-template/1286403">https://www.kancloud.cn/manual/think-template/1286403</a></p>
 
         </div>
 
@@ -261,7 +255,7 @@
                 
                     <p class="copyright-item">
                         <span>Permalink:</span>
-                        <span><a href="https://linyin022.top/posts/816768764.html">https://linyin022.top/posts/816768764.html</a></span>
+                        <span><a href="https://linyin022.top/posts/104800998.html">https://linyin022.top/posts/104800998.html</a></span>
                     </p>
                 
                 
@@ -280,9 +274,9 @@
                 <span class="tag">
                     
                     
-                        <a href="/tags/Chic%E4%B8%BB%E9%A2%98/"># Chic主题</a>
-                    
                         <a href="/tags/%E7%AC%94%E8%AE%B0/"># 笔记</a>
+                    
+                        <a href="/tags/PHP/"># PHP</a>
                     
                         
                 </span>
@@ -295,10 +289,10 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/posts/2077132032.html">Chic主题配置+修改样式</a>
+                <a class="prev" rel="prev" href="/posts/552050446.html">THINKPHP6 php-jwt</a>
             
             
-            <a class="next" rel="next" href="/posts/3070531670.html">PHP常用封装</a>
+            <a class="next" rel="next" href="/posts/3332806845.html">THINKPHP6 跨域</a>
             
         </section>
 

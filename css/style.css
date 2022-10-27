@@ -143,16 +143,17 @@ template {
   display: none;
 }
 @font-face {
-  font-family: 'Alibaba', 'Alibaba Sans';
+  font-family: 'Alibaba';
   src: url("../fonts/alibabapuhui/Alibaba-PuHuiTi-Regular.eot"); /* IE9 */
   src: url("../fonts/alibabapuhui/Alibaba-PuHuiTi-Regular.eot"); /* IE9 */
-  src: url("../fonts/alibabapuhui/Alibaba-PuHuiTi-Regular.eot?#iefix") format('embedded-opentype'), url("../fonts/alibabapuhui/Alibaba-PuHuiTi-Regular.woff2") format('woff2'), url("../fonts/alibabapuhui/Alibaba-PuHuiTi-Regular.woff") format('woff'), url("../fonts/alibabapuhui/Alibaba-PuHuiTi-Regular.ttf") format('truetype'), font-family "JetBrains Mono";
-url
-  font-weight: 300;
+  src: url("../fonts/alibabapuhui/Alibaba-PuHuiTi-Regular.eot?#iefix") format('embedded-opentype'), url("../fonts/alibabapuhui/Alibaba-PuHuiTi-Regular.woff2") format('woff2'), url("../fonts/alibabapuhui/Alibaba-PuHuiTi-Regular.woff") format('woff'), url("../fonts/alibabapuhui/Alibaba-PuHuiTi-Regular.ttf") format('truetype'), font-family "JetBrains Mono", url("../fonts/jetbrains/JetBrainsMono-Regular.ttf"), font-family 'Alibaba Sans';
+  src: url("../fonts/AlibabaSans/AlibabaSans-Regular.eot"); /* IE9 */
+  src: url("../fonts/AlibabaSans/AlibabaSans-Regular.eot"); /* IE9 */
+  src: url("../fonts/AlibabaSans/AlibabaSans-Regular.eot?#iefix") format('embedded-opentype'), url("../fonts/AlibabaSans/AlibabaSans-Regular.woff2") format('woff2'), url("../fonts/AlibabaSans/AlibabaSans-Regular.woff") format('woff'), url("../fonts/AlibabaSans/AlibabaSans-Regular.ttf") format('truetype'), font-weight 300;
   font-display: swap;
 }
 html {
-  font-family: 'Alibaba';
+  font-family: Alibaba Sans, Alibaba;
 }
 html::-webkit-scrollbar {
   width: 8px;
@@ -778,6 +779,9 @@ header label {
 .page .post-content {
   margin: 0;
   padding-top: 0;
+}
+.post-wrap ::selection {
+  background-color: #d1ff79;
 }
 .post-wrap p {
   font-size: 1em;

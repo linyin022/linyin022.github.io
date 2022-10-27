@@ -13,7 +13,7 @@
 
 
 
-<title>Hello World | Linyin&#39;s Site</title>
+<title>实习工作笔记：No.2 | Linyin&#39;s Site</title>
 
 
 
@@ -130,76 +130,11 @@
                 <div class="container">
     
     
-        <div class="post-toc">
-    <div class="tocbot-list">
-    </div>
-    <div class="tocbot-list-menu">
-        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
-        <a onclick="go_top()">Back to top</a>
-        <a onclick="go_bottom()">Go to bottom</a>
-    </div>
-</div>
-
-<script>
-    var tocbot_timer;
-    var DEPTH_MAX = 6; // 为 6 时展开所有
-    var tocbot_default_config = {
-        tocSelector: '.tocbot-list',
-        contentSelector: '.post-content',
-        headingSelector: 'h1, h2, h3, h4, h5',
-        orderedList: false,
-        scrollSmooth: true,
-        onClick: extend_click,
-    };
-
-    function extend_click() {
-        clearTimeout(tocbot_timer);
-        tocbot_timer = setTimeout(function() {
-            tocbot.refresh(obj_merge(tocbot_default_config, {
-                hasInnerContainers: true
-            }));
-        }, 420); // 这个值是由 tocbot 源码里定义的 scrollSmoothDuration 得来的
-    }
-
-    document.ready(function() {
-        tocbot.init(obj_merge(tocbot_default_config, {
-            collapseDepth: 1
-        }));
-    });
-
-    function expand_toc() {
-        var b = document.querySelector('.tocbot-toc-expand');
-        var expanded = b.getAttribute('data-expanded');
-        expanded ? b.removeAttribute('data-expanded') : b.setAttribute('data-expanded', true);
-        tocbot.refresh(obj_merge(tocbot_default_config, {
-            collapseDepth: expanded ? 1 : DEPTH_MAX
-        }));
-        b.innerText = expanded ? 'Expand all' : 'Collapse all';
-    }
-
-    function go_top() {
-        window.scrollTo(0, 0);
-    }
-
-    function go_bottom() {
-        window.scrollTo(0, document.body.scrollHeight);
-    }
-
-    function obj_merge(target, source) {
-        for (var item in source) {
-            if (source.hasOwnProperty(item)) {
-                target[item] = source[item];
-            }
-        }
-        return target;
-    }
-</script>
-    
 
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">Hello World</h1>
+            <h1 class="post-title">实习工作笔记：No.2</h1>
             
                 <div class="post-meta">
                     
@@ -208,7 +143,7 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">四月 21, 2022&nbsp;&nbsp;13:54:43</a>
+                        Date: <a href="#">十月 27, 2022&nbsp;&nbsp;16:25:21</a>
                         </span>
                     
                     
@@ -217,20 +152,25 @@
         </header>
 
         <div class="post-content">
-            <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-<h3 id="清除-amp-amp-创建文件-amp-amp-部署上传"><a href="#清除-amp-amp-创建文件-amp-amp-部署上传" class="headerlink" title="清除 &amp;&amp; 创建文件 &amp;&amp; 部署上传"></a>清除 &amp;&amp; 创建文件 &amp;&amp; 部署上传</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean &amp;&amp; hexo d -g</span><br></pre></td></tr></table></figure>
+            <p>今天重改了几个需求</p>
+<ul>
+<li><input checked="" disabled="" type="checkbox"> 在用户登录后加上用户的实名认证数据</li>
+<li><input checked="" disabled="" type="checkbox"> 在实名认证的表中添加手机号码字段</li>
+<li><input checked="" disabled="" type="checkbox"> 在查看实名认证的数据是给一些重要数据打*号</li>
+<li><input disabled="" type="checkbox"> 提交等待前端修改做完页面然后部署到正式线上</li>
+</ul>
+<hr>
+<p>在做表中添加字段的时候发现了bug。</p>
+<p>即：a用户绑定了x身份证信息之后。b用户居然也能绑定x身份证信息。发现之后这是一个很致命的问题。按照业务逻辑来说，只能是一对一绑定。而不能一对多绑定。立马找了我写的代码看看是哪里出问题。最后发现了问题所在。</p>
+<p><img src="http://image.linyin022.top/i/2022/10/27/635a44b5cd29c.png" alt="Snipaste_2022-10-27_16-43-15.png"></p>
+<p>这是我写的出现bug的代码</p>
+<p>原因是接收到前端传来的姓名和身份证之后。我将数据加上当前用户登录的user_id传入了库中查询。如果当前用户没有实名认证的话。那么返回的数据永远是为空的。而后修改完成之后：</p>
+<p><img src="http://image.linyin022.top/i/2022/10/27/635a459b4208d.png" alt="Snipaste_2022-10-27_16-47-17.png"></p>
+<p>只传入姓名和身份证号带入去查询数据库即可。这样子能保证该数据是否有绑定其他账号。没有的话在去调用第三方接口核实身份信息。正确的话即可存入数据库。</p>
+<hr>
+<p>再来就是给重要信息打上*号。这种助手项的函数自从使用了Copilot之后，就很少很少自己动脑子去写这类函数。简简单单的写个注释就能够自动生成我想要的函数。事实证明Copilot真的能让人解放双手，只要注释写得好，没有他生成不了的代码。这也会让我变相的更加懒惰。不过实在是太爱了！OvO</p>
+<p><img src="http://image.linyin022.top/i/2022/10/27/635a473e75177.png" alt="Snipaste_2022-10-27_16-54-13.png"></p>
+<p><img src="http://image.linyin022.top/i/2022/10/27/635a475a9c403.png" alt="Snipaste_2022-10-27_16-54-45.png"><br><img src="http://image.linyin022.top/i/2022/10/27/635a476d2519f.png" alt="Snipaste_2022-10-27_16-55-06.png"></p>
 
         </div>
 
@@ -245,7 +185,7 @@
                 
                     <p class="copyright-item">
                         <span>Permalink:</span>
-                        <span><a href="https://linyin022.top/posts/1243066710.html">https://linyin022.top/posts/1243066710.html</a></span>
+                        <span><a href="https://linyin022.top/posts/556244409.html">https://linyin022.top/posts/556244409.html</a></span>
                     </p>
                 
                 
@@ -264,7 +204,7 @@
                 <span class="tag">
                     
                     
-                        <a href="/tags/%E7%AC%94%E8%AE%B0/"># 笔记</a>
+                        <a href="/tags/%E5%AE%9E%E4%B9%A0%E7%AC%94%E8%AE%B0/"># 实习笔记</a>
                     
                         
                 </span>
@@ -277,8 +217,8 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/posts/3245331531.html">利用GitHub+jsDelivr[第三方CDN加速]创建属于自己的床图</a>
             
+            <a class="next" rel="next" href="/posts/2904953832.html">实习工作笔记：No.1</a>
             
         </section>
 

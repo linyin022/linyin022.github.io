@@ -13,7 +13,7 @@
 
 
 
-<title>Hexo永久化链接 | Linyin&#39;s Site</title>
+<title>微信小程序登录获取openid | Linyin&#39;s Site</title>
 
 
 
@@ -199,7 +199,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">Hexo永久化链接</h1>
+            <h1 class="post-title">微信小程序登录获取openid</h1>
             
                 <div class="post-meta">
                     
@@ -208,14 +208,14 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">十月 19, 2022&nbsp;&nbsp;16:39:45</a>
+                        Date: <a href="#">七月 22, 2022&nbsp;&nbsp;2:35:02</a>
                         </span>
                     
                     
                         <span class="post-category">
                     Category:
                             
-                                <a href="/categories/Hexo/">Hexo</a>
+                                <a href="/categories/PHP/">PHP</a>
                             
                         </span>
                     
@@ -224,29 +224,10 @@
         </header>
 
         <div class="post-content">
-            <p><img src="http://image.linyin022.top/i/2022/10/19/634fc7a9c6f0c.png" alt="Snipaste_2022-10-19_17-46-00.png"></p>
-<p>设置文章永久链接的主要目的就是因为路径中出现中文情况的话，会导致变成一串很长的16进制。影响美观性。</p>
-<h3 id="1-安装"><a href="#1-安装" class="headerlink" title="1.安装"></a>1.安装</h3><p>要用到 <a target="_blank" rel="noopener" href="https://github.com/rozbo/hexo-abbrlink">abbrlink</a> 插件来使文章永久化，以下是npm安装包，安装在hexo文件中</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-abbrlink --save</span><br></pre></td></tr></table></figure>
+            <h3 id="微信自动登录获取openid"><a href="#微信自动登录获取openid" class="headerlink" title="微信自动登录获取openid"></a>微信自动登录获取openid</h3><p>微信小程序自动登录之后会获取到一个code。</p>
+<p>把code传入以下php代码。可以直接获取openid</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Demo</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">protected</span> <span class="variable">$appid</span> = <span class="string">&#x27;your_appid&#x27;</span>;</span><br><span class="line">    <span class="keyword">protected</span> <span class="variable">$appsecret</span> = <span class="string">&#x27;your_appsecret&#x27;</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getOpenidByCode</span>(<span class="params"><span class="variable">$code</span></span>)</span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            <span class="comment">//缓存access_token  open_id</span></span><br><span class="line">            <span class="variable">$url</span> = <span class="string">&quot;https://api.weixin.qq.com/sns/jscode2session?appid=&quot;</span> . <span class="variable language_">$this</span>-&gt;appid . <span class="string">&quot;&amp;secret=&quot;</span> . <span class="variable language_">$this</span>-&gt;appsecret . <span class="string">&quot;&amp;js_code=&quot;</span> . <span class="variable">$code</span> . <span class="string">&quot;&amp;grant_type=authorization_code&quot;</span>;</span><br><span class="line">            <span class="variable">$weixin</span> = <span class="title function_ invoke__">file_get_contents</span>(<span class="variable">$url</span>);<span class="comment">//通过code换取网页授权access_token</span></span><br><span class="line">            <span class="variable">$jsondecode</span> = <span class="title function_ invoke__">json_decode</span>(<span class="variable">$weixin</span>, <span class="literal">true</span>); <span class="comment">//对JSON格式的字符串进行编码</span></span><br><span class="line">            <span class="variable">$openid</span> = <span class="variable">$jsondecode</span>[<span class="string">&#x27;openid&#x27;</span>];<span class="comment">//输出openid</span></span><br><span class="line">            <span class="keyword">return</span> <span class="variable">$openid</span>;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<blockquote>
-<p>可能会出现依赖，依据提示安装即可。</p>
-</blockquote>
-<h3 id="2-配置"><a href="#2-配置" class="headerlink" title="2.配置"></a>2.配置</h3><p>修改博客根目录配置文件 <code>_config.yml</code> 的 <code>permalink</code>：</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># permalink: :year/:month/:day/:title/</span></span><br><span class="line"><span class="attr">permalink:</span> <span class="string">p/:abbrlink.html</span>  <span class="comment"># p 是自定义的前缀</span></span><br><span class="line"><span class="attr">abbrlink:</span></span><br><span class="line">    <span class="attr">alg:</span> <span class="string">crc32</span>   <span class="comment">#算法： crc16(default) and crc32</span></span><br><span class="line">    <span class="attr">rep:</span> <span class="string">dec</span>     <span class="comment">#进制： dec(default) and hex</span></span><br></pre></td></tr></table></figure>
-
-<p>不同算法和进制生成不同的格式：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">crc16 &amp; hex</span><br><span class="line">https://xxx.com/posts/66c8.html</span><br><span class="line">crc16 &amp; dec</span><br><span class="line">https://xxx.com/posts/65535.html</span><br><span class="line"></span><br><span class="line">crc32 &amp; hex</span><br><span class="line">https://xxx.com/posts/8ddf18fb.html</span><br><span class="line">crc32 &amp; dec</span><br><span class="line">https://xxx.com/posts/1690090958.html</span><br></pre></td></tr></table></figure>
-
-<h4 id=""><a href="#" class="headerlink" title=""></a></h4><p>先清理下本地的文件 <code>hexo clean</code>，然后重新生成 <code>hexo g</code>，启动博客 <code>hexo s</code>。该插件会在每篇文章的开头增加内容：</p>
-<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">abbrlink: 1690090958</span></span><br></pre></td></tr></table></figure>
-
-
-
-<p>可以执行代码</p>
-<blockquote>
-<p>hexo claen &amp;&amp; hexo g &amp;&amp; hexo s</p>
-</blockquote>
 
         </div>
 
@@ -261,7 +242,7 @@
                 
                     <p class="copyright-item">
                         <span>Permalink:</span>
-                        <span><a href="https://linyin022.top/posts/816768764.html">https://linyin022.top/posts/816768764.html</a></span>
+                        <span><a href="https://linyin022.top/posts/2712931618.html">https://linyin022.top/posts/2712931618.html</a></span>
                     </p>
                 
                 
@@ -280,9 +261,9 @@
                 <span class="tag">
                     
                     
-                        <a href="/tags/Chic%E4%B8%BB%E9%A2%98/"># Chic主题</a>
-                    
                         <a href="/tags/%E7%AC%94%E8%AE%B0/"># 笔记</a>
+                    
+                        <a href="/tags/PHP/"># PHP</a>
                     
                         
                 </span>
@@ -295,10 +276,10 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/posts/2077132032.html">Chic主题配置+修改样式</a>
+                <a class="prev" rel="prev" href="/posts/3488226267.html">宝塔使用git拉取远程仓库</a>
             
             
-            <a class="next" rel="next" href="/posts/3070531670.html">PHP常用封装</a>
+            <a class="next" rel="next" href="/posts/552050446.html">THINKPHP6 php-jwt</a>
             
         </section>
 
