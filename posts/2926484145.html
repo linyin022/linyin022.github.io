@@ -13,7 +13,7 @@
 
 
 
-<title>实习工作笔记：No.2 | Linyin&#39;s Site</title>
+<title>JetBrains编辑器优化 | Linyin&#39;s Site</title>
 
 
 
@@ -134,7 +134,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">实习工作笔记：No.2</h1>
+            <h1 class="post-title">JetBrains编辑器优化</h1>
             
                 <div class="post-meta">
                     
@@ -143,34 +143,38 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">十月 27, 2022&nbsp;&nbsp;16:25:21</a>
+                        Date: <a href="#">十一月 9, 2022&nbsp;&nbsp;21:29:40</a>
                         </span>
                     
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/Tools/">Tools</a>
+                            
+                        </span>
                     
                 </div>
             
         </header>
 
         <div class="post-content">
-            <p>今天重改了几个需求</p>
-<ul>
-<li><input checked="" disabled="" type="checkbox"> 在用户登录后加上用户的实名认证数据</li>
-<li><input checked="" disabled="" type="checkbox"> 在实名认证的表中添加手机号码字段</li>
-<li><input checked="" disabled="" type="checkbox"> 在查看实名认证的数据是给一些重要数据打*号</li>
-<li><input disabled="" type="checkbox"> 提交等待前端修改做完页面然后部署到正式线上</li>
-</ul>
-<hr>
-<p>在做表中添加字段的时候发现了bug。</p>
-<p>即：a用户绑定了x身份证信息之后。b用户居然也能绑定x身份证信息。发现之后这是一个很致命的问题。按照业务逻辑来说，只能是一对一绑定。而不能一对多绑定。立马找了我写的代码看看是哪里出问题。最后发现了问题所在。</p>
-<p><img src="http://image.linyin022.top/i/2022/10/27/635a44b5cd29c.png" alt="Snipaste_2022-10-27_16-43-15.png"></p>
-<p>这是我写的出现bug的代码</p>
-<p>原因是接收到前端传来的姓名和身份证之后。我将数据加上当前用户登录的user_id传入了库中查询。如果当前用户没有实名认证的话。那么返回的数据永远是为空的。而后修改完成之后：</p>
-<p><img src="http://image.linyin022.top/i/2022/10/27/635a459b4208d.png" alt="Snipaste_2022-10-27_16-47-17.png"></p>
-<p>只传入姓名和身份证号带入去查询数据库即可。这样子能保证该数据是否有绑定其他账号。没有的话在去调用第三方接口核实身份信息。正确的话即可存入数据库。</p>
-<hr>
-<p>再来就是给重要信息打上*号。这种助手项的函数自从使用了Copilot之后，就很少很少自己动脑子去写这类函数。简简单单的写个注释就能够自动生成我想要的函数。事实证明Copilot真的能让人解放双手，只要注释写得好，没有他生成不了的代码。这也会让我变相的更加懒惰。不过实在是太爱了！OvO</p>
-<p><img src="http://image.linyin022.top/i/2022/10/27/635a473e75177.png" alt="Snipaste_2022-10-27_16-54-13.png"></p>
-<p><img src="http://image.linyin022.top/i/2022/10/27/635a475a9c403.png" alt="Snipaste_2022-10-27_16-54-45.png"><br><img src="http://image.linyin022.top/i/2022/10/27/635a476d2519f.png" alt="Snipaste_2022-10-27_16-55-06.png"></p>
+            <p>本篇文章适用于jetbrains家的各类编辑器</p>
+<p>例如 PhpStorm || WebStorm || IntelliJ IDEA || PyCharm 等等</p>
+<p>Jetbrains家的编辑器依赖java运行环境 也就是java虚拟机<br>我在网上看到的教程都是在软件根路径bin下<code>xxx32.exe.vmoptions</code>或者<code>xxx64.exe.vmoptions</code>中修改运行内存<br>但是修改过后好像并没有什么用</p>
+<p>直到找到了一篇文章说在软件中的帮助选项中修改。按着修改之后才有效果。</p>
+<p><strong>在PhpStorm2017之后的版本中，修改bin目录下的vmoptions文件可能是无效的这时需要打开PhpStorm，<br>在顶部菜单中选择Help – Edit Custom VM Options然后修改其中的内容才行</strong></p>
+<p>以下就是操作过程</p>
+<p>在打开的编辑器中找到<code>help &gt; Edit Custom VM Options</code> 在里面修改配置选项</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">-Xms1024m</span><br><span class="line">-Xmx2048m</span><br><span class="line"><span class="comment">#最上面是运行最小内存 下面的是最大运行内存 根据自己电脑配置按需修改 我是16G内存</span></span><br><span class="line"></span><br><span class="line">-Dawt.useSystemAAFontSettings=lcd</span><br><span class="line">-Dawt.java2d.opengl=<span class="literal">true</span></span><br><span class="line"><span class="comment">#这两条是修改java虚拟机参数 添加这两行启用硬件加速的代码</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 这一条只适合于Mac, 可以使java调用优化过的图形引擎</span></span><br><span class="line">-Dapple.awt.graphics.UseQuartz=<span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<p>再来就是自定义properties</p>
+<p>进入<code>help &gt; Edit Custom Properties</code>来设置PHPStorm的自定义属性.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">editor.zero.latency.typing=<span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<p>上面这条，改变的是PHPstorm如何渲染字体：立即渲染文字，而不是先进行内容分析。可能会因此导致偶尔有那么一瞬间文字都是不带样式的，但是整体上会顺畅很多。</p>
+<p>我修改了这两个配置之后在台式电脑上有明显的感知打开更快了，运行起来速度也比较跟手.</p>
+<p>如果修改了还是一样的卡顿的话，那就得考虑通过更换电脑硬件来让编辑器重焕新生了.</p>
 
         </div>
 
@@ -185,7 +189,7 @@
                 
                     <p class="copyright-item">
                         <span>Permalink:</span>
-                        <span><a href="https://linyin022.top/posts/556244409.html">https://linyin022.top/posts/556244409.html</a></span>
+                        <span><a href="https://linyin022.top/posts/2926484145.html">https://linyin022.top/posts/2926484145.html</a></span>
                     </p>
                 
                 
@@ -204,7 +208,7 @@
                 <span class="tag">
                     
                     
-                        <a href="/tags/%E5%AE%9E%E4%B9%A0%E7%AC%94%E8%AE%B0/"># 实习笔记</a>
+                        <a href="/tags/Editors/"># Editors</a>
                     
                         
                 </span>
@@ -217,10 +221,8 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/posts/2926484145.html">JetBrains编辑器优化</a>
             
-            
-            <a class="next" rel="next" href="/posts/2904953832.html">实习工作笔记：No.1</a>
+            <a class="next" rel="next" href="/posts/556244409.html">实习工作笔记：No.2</a>
             
         </section>
 
