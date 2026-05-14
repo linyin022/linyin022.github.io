@@ -1,0 +1,186 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Hexo永久化链接 | Linyin</title><meta name="author" content="Linyin"><meta name="copyright" content="Linyin"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="设置文章永久链接的主要目的就是因为路径中出现中文情况的话，会导致变成一串很长的16进制。影响美观性。 1.安装要用到 abbrlink 插件来使文章永久化，以下是npm安装包，安装在hexo文件中 1npm install hexo-abbrlink --save   可能会出现依赖，依据提示安装即可。  2.配置修改博客根目录配置文件 _config.yml 的 permalink： 1234">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo永久化链接">
+<meta property="og:url" content="https://linyin022.github.io/posts/816768764.html">
+<meta property="og:site_name" content="Linyin">
+<meta property="og:description" content="设置文章永久链接的主要目的就是因为路径中出现中文情况的话，会导致变成一串很长的16进制。影响美观性。 1.安装要用到 abbrlink 插件来使文章永久化，以下是npm安装包，安装在hexo文件中 1npm install hexo-abbrlink --save   可能会出现依赖，依据提示安装即可。  2.配置修改博客根目录配置文件 _config.yml 的 permalink： 1234">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.yome.cc/avatar.jpg">
+<meta property="article:published_time" content="2022-10-19T08:39:45.000Z">
+<meta property="article:modified_time" content="2025-04-17T07:29:16.000Z">
+<meta property="article:author" content="Linyin">
+<meta property="article:tag" content="Chic主题">
+<meta property="article:tag" content="笔记">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.yome.cc/avatar.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Hexo永久化链接",
+  "url": "https://linyin022.github.io/posts/816768764.html",
+  "image": "https://cdn.yome.cc/avatar.jpg",
+  "datePublished": "2022-10-19T08:39:45.000Z",
+  "dateModified": "2025-04-17T07:29:16.000Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Linyin",
+      "url": "https://linyin022.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="https://cdn.yome.cc/avatar.jpg"><link rel="canonical" href="https://linyin022.github.io/posts/816768764.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.4"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":true},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'medium_zoom',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Hexo永久化链接',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 8.1.2"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://cdn.yome.cc/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">28</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">11</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Linyin</span></a><a class="nav-page-title" href="/"><span class="site-name">Hexo永久化链接</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">Hexo永久化链接</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-10-19T08:39:45.000Z" title="发表于 2022-10-19 16:39:45">2022-10-19</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-04-17T07:29:16.000Z" title="更新于 2025-04-17 15:29:16">2025-04-17</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Hexo/">Hexo</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">251</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>1分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="container post-content" id="article-container"><p><img src="https://file.xiaoke022.top/2023/07/9e345532763c980f84f3f21201c06728.png"></p>
+<p>设置文章永久链接的主要目的就是因为路径中出现中文情况的话，会导致变成一串很长的16进制。影响美观性。</p>
+<h3 id="1-安装"><a href="#1-安装" class="headerlink" title="1.安装"></a>1.安装</h3><p>要用到 <a target="_blank" rel="noopener" href="https://github.com/rozbo/hexo-abbrlink">abbrlink</a> 插件来使文章永久化，以下是npm安装包，安装在hexo文件中</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-abbrlink --save</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>可能会出现依赖，依据提示安装即可。</p>
+</blockquote>
+<h3 id="2-配置"><a href="#2-配置" class="headerlink" title="2.配置"></a>2.配置</h3><p>修改博客根目录配置文件 <code>_config.yml</code> 的 <code>permalink</code>：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># permalink: :year/:month/:day/:title/</span></span><br><span class="line"><span class="attr">permalink:</span> <span class="string">p/:abbrlink.html</span>  <span class="comment"># p 是自定义的前缀</span></span><br><span class="line"><span class="attr">abbrlink:</span></span><br><span class="line">    <span class="attr">alg:</span> <span class="string">crc32</span>   <span class="comment">#算法： crc16(default) and crc32</span></span><br><span class="line">    <span class="attr">rep:</span> <span class="string">dec</span>     <span class="comment">#进制： dec(default) and hex</span></span><br></pre></td></tr></table></figure>
+
+<p>不同算法和进制生成不同的格式：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">crc16 &amp; hex</span><br><span class="line">https://xxx.com/posts/66c8.html</span><br><span class="line">crc16 &amp; dec</span><br><span class="line">https://xxx.com/posts/65535.html</span><br><span class="line"></span><br><span class="line">crc32 &amp; hex</span><br><span class="line">https://xxx.com/posts/8ddf18fb.html</span><br><span class="line">crc32 &amp; dec</span><br><span class="line">https://xxx.com/posts/1690090958.html</span><br></pre></td></tr></table></figure>
+
+<h4 id=""><a href="#" class="headerlink" title=""></a></h4><p>先清理下本地的文件 <code>hexo clean</code>，然后重新生成 <code>hexo g</code>，启动博客 <code>hexo s</code>。该插件会在每篇文章的开头增加内容：</p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">abbrlink: 1690090958</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>可以执行代码</p>
+<blockquote>
+<p>hexo claen &amp;&amp; hexo g &amp;&amp; hexo s</p>
+</blockquote>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://linyin022.github.io">Linyin</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://linyin022.github.io/posts/816768764.html">https://linyin022.github.io/posts/816768764.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://linyin022.github.io" target="_blank">Linyin</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Chic%E4%B8%BB%E9%A2%98/">Chic主题</a><a class="post-meta__tags" href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a></div><div class="post-share"><div class="social-share" data-image="https://cdn.yome.cc/avatar.jpg" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/posts/2077132032.html" title="Chic主题配置+修改样式"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">Chic主题配置+修改样式</div></div><div class="info-2"><div class="info-item-1">样式修改 底部copyright修改 post_copyright 样式 路径：themes/Chic/source/css/_page/_post/post_copyright.styl  在Chic目录下的_config.yml文件中的post_copyright_enable中只打开  post_copyright_author_enable post_copyright_permalink_enable post_copyright_license_enable  其余的都选择false category页面修改 修改路径 themes/Chic/layout/category.ejs  然后在 themes/Chic/source/css/_page/category.syl 文件下  永久化链接文章跳转：传送门 主题字体修改themes\Chic\source\css\font.styl文件注释$font-family前面的内容，将需要启用的字体放在最前面即可 1$font-family = Arial, Microsoft Yahei, &#x27;Microsof...</div></div></div></a><a class="pagination-related" href="/posts/3070531670.html" title="PHP常用封装"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">PHP常用封装</div></div><div class="info-2"><div class="info-item-1">常用封装1234567891011121314// config下的文件：statusreturn [    // 请求成功    &#x27;success&#x27; =&gt; 200,    // 未登录    &#x27;not_logged&#x27; =&gt; 401,    // 没有权限访问    &#x27;not_permission&#x27; =&gt; 403,    // 服务器内部错误    &#x27;error&#x27; =&gt; 500,];    1234567891011/** * 打印调试函数 html * @param $content * @param bool $export */function pre($content, bool $export = false)&#123;    $output = $export ? var_export($content, true) : print_r($content, true);    echo &quot;&lt;pre&gt;&#123;$output&#125;&lt...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/posts/2490437164.html" title="hexo源文件多电脑提交和更新"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-23</div><div class="info-item-2">hexo源文件多电脑提交和更新</div></div><div class="info-2"><div class="info-item-1"> 本文章转载并修改自：Hexo在多台电脑上提交和更新[作者Kakaluotuo]  做这篇文章的主要原因是我的hexo源文件在a电脑上。可是我并没有办法随身携带a电脑。有时要在b电脑上写文章。每次写完一篇文章都要保存然后拷贝到a电脑上才可以做到部署上传自网站。这令我很头痛。于是我在网上搜索有没有好的办法。结果在CSDN上看到开头转载的文章。于是根据Kakaluotuo的hexo多电脑提交和更新的文章写出这篇文章。文章内容多自修改Kakaluotuo的文章，如果想看更详细的说明请移步该作者的原贴：传送门 tips：由于该上文章是在GitHub上做文件上传。而我因为工作需要，电脑绑定的是Gitee的配置。无法推送到GitHub上。所以我使用的是Gitee创建仓库并且实现多电脑上hexo的提交和更新。  1.清楚那些文件是需要同步的这是a电脑上的目录结构     文件夹 说明 是否需要上传github&#x2F;gitee    node_modules hexo需要的模块，就是一些基础的npm安装模块，比如一些美化插件，在执行npm install的时候会重新生成 不需要   the...</div></div></div></a><a class="pagination-related" href="/posts/552050446.html" title="THINKPHP6 php-jwt"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-13</div><div class="info-item-2">THINKPHP6 php-jwt</div></div><div class="info-2"><div class="info-item-1">PHP-JWT使用教程官方使用教程firebase&#x2F;php-jwt - Packagist InstallationUse composer to manage your dependencies and download PHP-JWT: 1composer require firebase/php-jwt  Optionally, install the paragonie/sodium_compat package from composer if your php is &lt; 7.2 or does not have libsodium installed: 1composer require paragonie/sodium_compat  123456789101112131415161718192021222324//生成验签tokenuse Firebase\JWT\JWT;class compareToken&#123;    public function signToken ($uid) &#123;        //这里是自定义的一个随机字...</div></div></div></a><a class="pagination-related" href="/posts/3070531670.html" title="PHP常用封装"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-19</div><div class="info-item-2">PHP常用封装</div></div><div class="info-2"><div class="info-item-1">常用封装1234567891011121314// config下的文件：statusreturn [    // 请求成功    &#x27;success&#x27; =&gt; 200,    // 未登录    &#x27;not_logged&#x27; =&gt; 401,    // 没有权限访问    &#x27;not_permission&#x27; =&gt; 403,    // 服务器内部错误    &#x27;error&#x27; =&gt; 500,];    1234567891011/** * 打印调试函数 html * @param $content * @param bool $export */function pre($content, bool $export = false)&#123;    $output = $export ? var_export($content, true) : print_r($content, true);    echo &quot;&lt;pre&gt;&#123;$output&#125;&lt...</div></div></div></a><a class="pagination-related" href="/posts/104800998.html" title="THINKPHP6 常用命令行"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-13</div><div class="info-item-2">THINKPHP6 常用命令行</div></div><div class="info-2"><div class="info-item-1">tp6框架下常用的终端命令安装项安装稳定版框架：composer create-project topthink/think tp 安装视图渲染模板引擎：composer require topthink/think-view 安装多应用模式拓展：composer require topthink/think-multi-app 安装php-jwt拓展：composer require firebase/php-jwt 运行项启动内置服务：php think run 启动内置服务并且定制端口：php think run -p 端口号 生成项单应用创建类库文件（单应用）：php think make:controller Demo 创建数据模型：php think make:model Demo 多应用自动生成应用（需启用多应用模式）：php think build demo 在index应用中创建一个demo类：php think make:controller index@Demo	 在index应用中创建一个student数据模型：php think make:model i...</div></div></div></a><a class="pagination-related" href="/posts/3245331531.html" title="利用GitHub+jsDelivr[第三方CDN加速]创建属于自己的床图"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2022-04-22</div><div class="info-item-2">利用GitHub+jsDelivr[第三方CDN加速]创建属于自己的床图</div></div><div class="info-2"><div class="info-item-1"> 本文章转载自[烟雨星空]的文章并且二次简化修改原文章：https://www.cnblogs.com/starry-skys/p/13905766.html  1. 创建一个GitHub仓库[任意名字]2. 在仓库中上传你的图片3. 使用jsDelivr加速访问GitHub的床图 创建好床图之后如果想要原生查看床图就进入任意图片，后查看url，例如这是我当前的床图中的一个logo，他的url地址为：  https://github.com/linyin022/image/blob/main/logo.png  如果想要使用原生床图就将url路径中的blob修改成raw。或者是在原本的url路径末尾加上?raw&#x3D;true。以下是两种原生查看床图的方法实例 https://github.com/linyin022/image/raw/main/logo.pnghttps://github.com/linyin022/image/blob/main/logo.png?raw=true 如果使用GitHub的原生床图访问速度非常慢。我们就得利用cdn来加速实现快速访问。 使用...</div></div></div></a><a class="pagination-related" href="/posts/1243066710.html" title="Hello World"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2022-04-21</div><div class="info-item-2">Hello World</div></div><div class="info-2"><div class="info-item-1">Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new &quot;My New Post&quot;  More info: Writing Run server1$ hexo server  More info: Server Generate static files1$ hexo generate  More info: Generating Deploy to remote sites1$ hexo deploy  More info: Deployment 清除 &amp;&amp; 创建文件 &amp;&amp; 部署上传1$ hexo clean &amp;...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://cdn.yome.cc/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Linyin</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">28</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">11</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%AE%89%E8%A3%85"><span class="toc-number">1.</span> <span class="toc-text">1.安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E9%85%8D%E7%BD%AE"><span class="toc-number">2.</span> <span class="toc-text">2.配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">2.1.</span> <span class="toc-text"></span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/3024701503.html" title="运维日记-更新redis版本">运维日记-更新redis版本</a><time datetime="2025-08-18T02:25:32.000Z" title="发表于 2025-08-18 10:25:32">2025-08-18</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/2302022538.html" title="Debian快速开启bbr+fq">Debian快速开启bbr+fq</a><time datetime="2024-09-29T08:45:03.000Z" title="发表于 2024-09-29 16:45:03">2024-09-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/3258015936.html" title="Liunx系统禁用ipv6的方法">Liunx系统禁用ipv6的方法</a><time datetime="2024-09-24T02:18:38.000Z" title="发表于 2024-09-24 10:18:38">2024-09-24</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/2785130421.html" title="kingbase连接池爆满">kingbase连接池爆满</a><time datetime="2024-08-19T11:13:51.000Z" title="发表于 2024-08-19 19:13:51">2024-08-19</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/1362166353.html" title="解析电影种子文件命名">解析电影种子文件命名</a><time datetime="2024-07-15T10:05:14.000Z" title="发表于 2024-07-15 18:05:14">2024-07-15</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2020 - 2026 By Linyin</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.2</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.4</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.4"></script><script src="/js/main.js?v=5.5.4"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js"></script><div class="js-pjax"></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

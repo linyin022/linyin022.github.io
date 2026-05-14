@@ -1,0 +1,274 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>解析电影种子文件命名 | Linyin</title><meta name="author" content="Linyin"><meta name="copyright" content="Linyin"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="例子找电影（种子）资源时，它们的文件名往往都是一大大大大坨。之前都是看哪个顺眼随便选，今天决定搞清楚记录一下。先看一个例子：  Moonfall.2022.2160p.WEB-DL.x265.10bit.HDR.DDP5.1.Atmos-NOGRP.torrent 它包含这几个部分：   电影信息：Moonfall.2022 也就是名称（月球陨落）和上映日期。这部分数据通常被 Plex&#x2F;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="解析电影种子文件命名">
+<meta property="og:url" content="https://linyin022.github.io/posts/1362166353.html">
+<meta property="og:site_name" content="Linyin">
+<meta property="og:description" content="例子找电影（种子）资源时，它们的文件名往往都是一大大大大坨。之前都是看哪个顺眼随便选，今天决定搞清楚记录一下。先看一个例子：  Moonfall.2022.2160p.WEB-DL.x265.10bit.HDR.DDP5.1.Atmos-NOGRP.torrent 它包含这几个部分：   电影信息：Moonfall.2022 也就是名称（月球陨落）和上映日期。这部分数据通常被 Plex&#x2F;">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.yome.cc/avatar.jpg">
+<meta property="article:published_time" content="2024-07-15T10:05:14.000Z">
+<meta property="article:modified_time" content="2026-05-14T02:16:35.130Z">
+<meta property="article:author" content="Linyin">
+<meta property="article:tag" content="笔记">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.yome.cc/avatar.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "解析电影种子文件命名",
+  "url": "https://linyin022.github.io/posts/1362166353.html",
+  "image": "https://cdn.yome.cc/avatar.jpg",
+  "datePublished": "2024-07-15T10:05:14.000Z",
+  "dateModified": "2026-05-14T02:16:35.130Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Linyin",
+      "url": "https://linyin022.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="https://cdn.yome.cc/avatar.jpg"><link rel="canonical" href="https://linyin022.github.io/posts/1362166353.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.4"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":true},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'medium_zoom',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '解析电影种子文件命名',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 8.1.2"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://cdn.yome.cc/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">28</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">11</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Linyin</span></a><a class="nav-page-title" href="/"><span class="site-name">解析电影种子文件命名</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">解析电影种子文件命名</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-07-15T10:05:14.000Z" title="发表于 2024-07-15 18:05:14">2024-07-15</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-05-14T02:16:35.130Z" title="更新于 2026-05-14 10:16:35">2026-05-14</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">3k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>9分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="container post-content" id="article-container"><h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><p>找电影（种子）资源时，它们的文件名往往都是一大大大大坨。之前都是看哪个顺眼随便选，今天决定搞清楚记录一下。先看一个例子：</p>
+<blockquote>
+<p>Moonfall.2022.2160p.WEB-DL.x265.10bit.HDR.DDP5.1.Atmos-NOGRP.torrent</p>
+<p>它包含这几个部分：</p>
+</blockquote>
+<ul>
+<li><p>电影信息：Moonfall.2022 也就是名称（月球陨落）和上映日期。这部分数据通常被 Plex&#x2F;Emby&#x2F;Jellyfin 等媒体服务器软件用来识别匹配元数据，所以尽量别修改。</p>
+<p>PS: 有部分网站会在一开始加上自己的广告，例如 [xxx资源网]，这种信息建议删掉。</p>
+</li>
+<li><p>分辨率：2160p 也就是 4k。</p>
+</li>
+<li><p>片源：WEB-DL 是 web-download 的缩写，意为是从官方发布的网络版本直接搞来 （而不是录屏）。</p>
+</li>
+<li><p>编码：x265 也就是 HEVC，也写作 H.265，是一种较新的编码格式。</p>
+</li>
+<li><p>色深：10bit，常见的还有 8bit.</p>
+</li>
+<li><p>色彩动态范围: HDR 顾名思义的东西。</p>
+</li>
+<li><p>声音：DDP5.1.Atmos，前者是编码格式，后面的表示支持杜比全景声。</p>
+</li>
+<li><p>压制组: NOGRP 表示来源不明。</p>
+</li>
+</ul>
+<p>注意文件格式（mp4 &#x2F; mkv）不能代表影片质量，也不代表编码类型，具体看下面详解。</p>
+<h2 id="剪辑版本"><a href="#剪辑版本" class="headerlink" title="剪辑版本"></a>剪辑版本</h2><p>如果有的资源是特别的剪辑版，如导演剪辑版，会标识有DC&#x2F;Director’s Cut；其他的还有UNRATED（未分级版）、LIMITED等</p>
+<h2 id="分辨率"><a href="#分辨率" class="headerlink" title="分辨率"></a>分辨率</h2><p>注意，分辨率不是影响电影清晰度最关键的因素！最重要的是片源。如果片源垃圾，分辨率再高也没用。比如你用一个 4K 摄像机对着电影院荧幕拍，分辨率是高了，有用吗？</p>
+<p>除此之外分辨率没什么好说的。常见的有：</p>
+<ul>
+<li><p>8K &#x2F; 7680x4320</p>
+</li>
+<li><p><strong>4K &#x2F; 2160p &#x2F; UHD &#x2F; Ultra HD</strong></p>
+<p>通常是 4096x2160 或 3840x2160</p>
+</li>
+<li><p>2K &#x2F; 1440p &#x2F; QHD &#x2F; Quad HD</p>
+<p>通常是 2560x1440，但底线要求是 2048x1080</p>
+</li>
+<li><p><strong>1080p &#x2F; FHD &#x2F; Full HD &#x2F; 全高清</strong></p>
+</li>
+<li><p>1920x1080</p>
+</li>
+<li><p>720p &#x2F; HD &#x2F; 高清</p>
+</li>
+<li><p>1280x720</p>
+</li>
+</ul>
+<p>关于分辨率还要多说一下，大家可能知道如 4K 3840x2160 的2160 指的是短边的像素。而有的电影（如八恶人）有效画面很窄，算上上下黑边后才有2160px，为了提高压制效率，发布组会裁掉上下黑边，最终只剩800 多px，但这样的资源也算是4K UHD</p>
+<p>再低的在 2022 年不推荐看了，伤眼睛 👀</p>
+<h2 id="片源"><a href="#片源" class="headerlink" title="片源"></a>片源</h2><p>顾名思义，就是这个资源是从哪来的。片源的质量直接关系到影片的清晰度，通常有这几个来源（按照质量高-&gt;低排列）：</p>
+<ul>
+<li><strong>REMUX &#x2F; Blu-ray &#x2F; BD</strong>: 也就是所谓的「蓝光原盘」，通常是质量最好的一种。直接从蓝光光碟转录而来，适合收藏。普通观影个人感觉没必要。蓝光原碟、蓝光Remux以及各种来源于<strong>蓝光原碟</strong>的<strong>重编码</strong>（BDRip）的来源都应选择“Blu-ray”。还有衍生的“Criterion Collection BluRay”（一种收藏级的蓝光碟）。算是目前最常见的电影资源来源。但注意，若后边有 X.264 之类的编码类型，则实际上已经不是「原盘」了。</li>
+<li><strong>BD-Rip</strong>: Blu-ray Disc Rip，BD 转制。同样来源于蓝光光盘，只不过进行了重新编码，采用 H.264 甚至 H.265 编码获得优秀的压缩比。质量略低于 BD 但文件较小，性价比很高。</li>
+<li><strong>WEB-DL</strong>: 越来越流行的片源，质量第三，但是体积小了很多。全称为 web-download，是从官方发行的网络版直接搞下来的 （而不是屏幕录像） 。有些时候会加上具体的来源，例如 NF-WEB-DL 就是来自于 Netflix。</li>
+<li><strong>HDTV</strong>: 常见于老电影。当时还没有 BD，流媒体也不流行。是数字采集 HD 电视得来的。在那个年代已经是最好的了。因为是电视，有可能会有台标。</li>
+<li><strong>HDTVrip</strong>: 类似 BDrip，来源还是 HD 电视的采集，但是重新编码了。</li>
+<li><strong>DVD(SRC)</strong>: 顾名思义，来自 DVD 转录。带 SRC 的是预售版，可能有滚动字幕之类的讨厌东西。效果不如 HDTV。</li>
+<li><strong>TC</strong>: 胶片版。从胶片数字录像，质量海星，但显得暗。声音通常来自 TS。</li>
+<li><strong>TS</strong>: 枪版。用摄像机对着电影院荧幕拍的，但一般是在空场的时候用三角架「认真地」拍。声音一般来自于电影院给残障人士准备的耳机孔。</li>
+<li><strong>CAM</strong>: 真 枪版。在电影院偷偷录，一般是最早流出的版本，质量令人难以忍受。个人感觉这是对看电影的侮辱。</li>
+<li><strong>Other</strong>：其它</li>
+</ul>
+<h2 id="视频编码"><a href="#视频编码" class="headerlink" title="视频编码"></a>视频编码</h2><p>编码直接影响到最终文件的大小。并不是越大文件质量越好，如果采用更先进的编码方式，其质量更高的同时往往文件反而更小。但是这种资源通常对播放设备的硬件要求较高，因为播放时要实时解码。可以理解为编码就是压缩，压缩技术越先进，最终的文件越小，但还原的时候越复杂(慢)。</p>
+<p>常见的视频编码有：</p>
+<ul>
+<li><strong>H.265&#x2F;HEVC</strong>: 未来的趋势，264 的升级版。压缩效率大幅提高，相同质量前提下文件大大减小。已经逐渐普及了，建议下载这种格式，省地方。x265 则是 H.265 标准的一个软件编码器实现器。采用不同的编码器、不同的参数，最终视频质量会有差距。libx265 是目前最成熟稳定的编码器之一。</li>
+<li><strong>H.264&#x2F;MPEG-4 AVC</strong>: 最流行的一个编码。</li>
+</ul>
+<h2 id="色深"><a href="#色深" class="headerlink" title="色深"></a>色深</h2><p>我们知道计算机中所有颜色都是由红绿蓝（RGB）混合而成。每一种颜色称为一个通道。色深就是每个通道用多少空间去表示。所以，色深越大颜色表达的越精细，渐变也就越平滑。</p>
+<p><img src="https://cdn.yome.cc/image/0c1db798.jpg" alt="0c1db798.jpg"></p>
+<p>8bit 是最常见的。三个通道就是 24bit，即所谓的「24 位真彩色」，一共约能表示出 1670 万种颜色。如果是 10bit，就能组合出 10.7 亿色。</p>
+<p>不过不是所有显示器都支持 10bit 显示的，如果不支持，即使是 10bit 的视频，观感也和 8bit 一样。</p>
+<p>另外，虽然直观上 10bit 版本的视频文件会更大。但实际上它们往往有更好的压缩率，所以有可能 10bit 的电影反而比 8bit 的要小。</p>
+<h2 id="色彩动态范围"><a href="#色彩动态范围" class="headerlink" title="色彩动态范围"></a>色彩动态范围</h2><p>这东西可以简要理解为，画面最暗和最亮之间的差距，自然是越大越好。</p>
+<ul>
+<li><strong>SDR</strong>：就是标准（正常）动态范围的版本。SDR是相对HDR而言的，一般都是8BIT位宽的片源。</li>
+</ul>
+<p>HDR 需要播放器和显示器的支持，否则看不出效果。具体来讲又有许多标准：</p>
+<ul>
+<li><strong>HDR10</strong>: 一切的基础。开放标准无版权费用。至少是 10bit 色深的。是静态 HDR。</li>
+<li><strong>Dolby Vision &#x2F; 杜比视界</strong>: 一般缩写为DV，高昂的版权费用。12bit 色深。动态 HDR。</li>
+<li><strong>HDR10+</strong>: 为对抗杜比，亚马逊松下等搞出的新联盟。动态 HDR。</li>
+<li><strong>AV1</strong>：是谷歌牵头搞的4K&#x2F;8K视频编码，苹果，奈飞，微软等一众大厂搞的开源格式，不用授权，完全免费。</li>
+<li>其他乱七八糟的一大堆：HLG &#x2F; DisplayHDR …</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://www.hao4k.cn/thread-30610-1-1.html">参考来源</a></p>
+<h2 id="声音"><a href="#声音" class="headerlink" title="声音"></a>声音</h2><p>和视频一样，声音也有好几种编码：</p>
+<ul>
+<li><strong>TrueHD</strong>: 杜比搞的无损压缩格式。杜比TrueHD是无损次世代音轨，码率较高，所以只会出现在蓝光资源中。因为无损格式的杜比全景声使用TrueHD内核，所以当文件名中只有TrueHD时，可能可以点亮全景声，也可能只是传统的无损环绕声</li>
+<li><strong>PCM &#x2F; LPCM &#x2F; FLAC</strong>：前两个是编码（模拟信号转为数字信号）方案，没有压缩。FLAC 是无损压缩算格式。简单说，FLAC 可以用最小的体积获得无损的音质。FLAC格式在音乐中使用比较多，码率在800Kb左右，播放器解码后其实就是PCM格式；另外，还会见到LPCM格式，无损的多声道PCM格式，基本上是原汁原味的。</li>
+<li><strong>DDP &#x2F; DD5.1 &#x2F; AC3</strong>: 全称为Dolby Digital Plus，杜比搞的有损压缩格式。常见于流媒体网站的片源（WEB-DL)。因为海外流媒体平台的杜比全景声都采用 DDP5.1内核，码率一般为640Kb或者是768Kb，如果你有全景声功放或者回音壁的话，已经可以体验全景声效果了。支持 7.1 声道。这里需要注意下，如果电影文件名里DDP 5.1后还跟着Atmos，那么肯定支持杜比全景声；如果仅有DDP 5.1，那么可能支持全景声，也可能不支持</li>
+<li><strong>DTS(-HD)</strong>: 比较古老的格式，效率较低，不建议下载了。用于 DVD，支持 5.1 声道，HD 版本支持最多 8 个声道。</li>
+<li><strong>AAC</strong>: 一种支持多声道的有损压缩，非常常见，因为“糟糕”的音质而遭到 Android 蓝牙党唾弃转投 aptX。取代了 MP3。一般都为立体声（也有部分含多声道），码率从128Kbps到640kbps不等，一般来说看到AAC就说明这部片子视频和音频码率都比较低</li>
+<li><strong>MP3</strong>: 不支持 5.1 声道，电影中基本上不用了。</li>
+</ul>
+<p>就像视频中的 HDR，除了编码之外，声音也有一些额外效果，比较常见的是杜比全景声 Dolby Atmos。它不是一种专门的编码格式，而是封装在支持的格式中的元数据。支持此效果的资源通常文件名中包含 Atmos 的字样。同样，也需要软硬件支持才能真正感受到效果。</p>
+<h2 id="文件格式"><a href="#文件格式" class="headerlink" title="文件格式"></a>文件格式</h2><p>注意，mp4, mkv 等都是封装格式而不是编码&#x2F;压缩格式。换句话说，不能仅靠文件名来判断清晰度。封装就像是容器，里面装什么东西表面上看不出来。也就是说同样是 mp4 或 mkv 的文件，他们的实际编码可能不一样，质量也不一样，压缩率也不一样。</p>
+<p>不同的封装格式能容纳的东西（音视频编码&#x2F;字幕）都不一样。相对来讲 mkv 是包容性最好，几乎什么都能装。因此越来越多的资源倾向于用 mkv 发布。而 rmvb 几乎已经被时代淘汰了。</p>
+<h2 id="压制组"><a href="#压制组" class="headerlink" title="压制组"></a>压制组</h2><p>就是谁制作了这个资源。不同的团队采用不同的编码&#x2F;码率等等各种参数，最后的质量略有不同。</p>
+<p>NOGRP 表示来源不明，类似于「佚名」「群星」。</p>
+<h2 id="字幕"><a href="#字幕" class="headerlink" title="字幕"></a>字幕</h2><p>字幕也有分几种的：</p>
+<ul>
+<li><strong>硬字幕</strong>：又称内嵌字幕，就是把字幕跟画面一起压成了视频了，像水印一样，无法隐藏。</li>
+<li><strong>内挂字幕</strong>：又称内嵌字幕，封装到了资源文件中，但可通过播放器选择切换不同的字幕、隐藏字幕、调整字幕字体、时间轴等。</li>
+<li><strong>外挂字幕</strong>：字幕网站下载到的字幕文件，如sub，ass，srt，拖到播放器中就能使用，与内挂类似。</li>
+</ul>
+<p>建议下载外挂字幕（或者封装在 mkv 容器里的字幕）的资源，而不是压制在影片里的（硬字幕）。这种一般质量较高且便于调节。</p>
+<p>外挂字幕格式有这几种：</p>
+<ul>
+<li><strong>SRT</strong>:  最基本最流行的纯文本字幕。具体的颜色字体字号等可以由播放器即时调整。个人强烈推荐这个。</li>
+<li><strong>SSA</strong>: 可以设置文字大小&#x2F;效果，甚至添加水印。但难以由用户自定义，个人不喜欢。</li>
+<li><strong>ASS</strong>: <code>SSA</code> 增强版。</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://linyin022.github.io">Linyin</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://linyin022.github.io/posts/1362166353.html">https://linyin022.github.io/posts/1362166353.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://linyin022.github.io" target="_blank">Linyin</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a></div><div class="post-share"><div class="social-share" data-image="https://cdn.yome.cc/avatar.jpg" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/posts/2785130421.html" title="kingbase连接池爆满"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">kingbase连接池爆满</div></div><div class="info-2"><div class="info-item-1">由于项目需要，所以使用的人大金仓这个国产库，今天在idea中突然报错显示：致命错误:  对不起, 已经有太多的客户 网上一查原来是之前配置的kingbase.conf配置文件中虽然配置了max_connections&#x3D;100，但是由于弄的授权文件是开发版，导致最大连接数限制在了最大10(蛋疼)  解决办法：去官网下载企业版的授权文件替换并重启kingbase即可解决。  下载企业版授权文件 - 点我去下载  替换服务器中的授权文件  替换配置文件，一般配置文件在ES&#x2F;V9或者V8&#x2F;data 目录下 ，记得备份原文件后再进行企业授权文件上传  给新的授权文件加权限 12chown -R kingbase:kingbase license.dat chmod 751 license.dat  重启kingbase  重启后进入sys_log目录下，查看startup.log文件，如果没有出现将max_connect的值设置为10的话，就代表成功替换了企业授权文件。     以下是几个linux命令 1234567891011121314151617查看文...</div></div></div></a><a class="pagination-related" href="/posts/1976206219.html" title="Windows关闭自动更新"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">Windows关闭自动更新</div></div><div class="info-2"><div class="info-item-1"> 本文介绍如何关闭Windows自动更新  1. 修改注册表 Win+R打开运行窗口，输入regedit打开注册表 找到HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings路径 在右侧窗口中的空白区域右键，选择新建DWORD(32)值，命名为FlightSettingsMaxPauseDays，双击修改数值为你想暂停更新Windows的天数，基数修改为十进制点击确定  2. 修改Windows更新设置 打开Windows设置，选择暂停更新那边 可以选择你刚刚设置的天数    后续如果想恢复的话，点击恢复更新即可 </div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/posts/423099740.html" title="Markdown-语法"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2022-05-11</div><div class="info-item-2">Markdown-语法</div></div><div class="info-2"><div class="info-item-1">一、注释1、代码法123&lt;div style=&#x27;display: none&#x27;&gt;哈哈我是注释，不会在浏览器中显示。&lt;/div&gt;  2、html注释快捷键  [ctrl + &#x2F; ]   || [comment + &#x2F;] 123456&lt;!--哈哈我是注释，不会在浏览器中显示。--&gt;&lt;!--哈哈我是多段注释，不会在浏览器中显示。    --&gt;  3、hack方法hack方法就是利用markdown的解析原理来实现注释的。一般有的markdown解析器不支持上面的注释方法，这个时候就可以用hack方法。hack方法比上面2种方法稳定得多，但是语义化太差。 1234[//]: # (哈哈我是最强注释，不会在浏览器中显示。)[^_^]: # (哈哈我是最萌注释，不会在浏览器中显示。)[//]: &lt;&gt; (哈哈我是注释，不会在浏览器中显示。)[comment]: &lt;&gt; (哈哈我是注释，不会在浏览器中显示。  二、标题Markdown 标题有两种格式。 1、使用 &#x3D; 和 - 标记...</div></div></div></a><a class="pagination-related" href="/posts/552050446.html" title="THINKPHP6 php-jwt"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-13</div><div class="info-item-2">THINKPHP6 php-jwt</div></div><div class="info-2"><div class="info-item-1">PHP-JWT使用教程官方使用教程firebase&#x2F;php-jwt - Packagist InstallationUse composer to manage your dependencies and download PHP-JWT: 1composer require firebase/php-jwt  Optionally, install the paragonie/sodium_compat package from composer if your php is &lt; 7.2 or does not have libsodium installed: 1composer require paragonie/sodium_compat  123456789101112131415161718192021222324//生成验签tokenuse Firebase\JWT\JWT;class compareToken&#123;    public function signToken ($uid) &#123;        //这里是自定义的一个随机字...</div></div></div></a><a class="pagination-related" href="/posts/3245331531.html" title="利用GitHub+jsDelivr[第三方CDN加速]创建属于自己的床图"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2022-04-22</div><div class="info-item-2">利用GitHub+jsDelivr[第三方CDN加速]创建属于自己的床图</div></div><div class="info-2"><div class="info-item-1"> 本文章转载自[烟雨星空]的文章并且二次简化修改原文章：https://www.cnblogs.com/starry-skys/p/13905766.html  1. 创建一个GitHub仓库[任意名字]2. 在仓库中上传你的图片3. 使用jsDelivr加速访问GitHub的床图 创建好床图之后如果想要原生查看床图就进入任意图片，后查看url，例如这是我当前的床图中的一个logo，他的url地址为：  https://github.com/linyin022/image/blob/main/logo.png  如果想要使用原生床图就将url路径中的blob修改成raw。或者是在原本的url路径末尾加上?raw&#x3D;true。以下是两种原生查看床图的方法实例 https://github.com/linyin022/image/raw/main/logo.pnghttps://github.com/linyin022/image/blob/main/logo.png?raw=true 如果使用GitHub的原生床图访问速度非常慢。我们就得利用cdn来加速实现快速访问。 使用...</div></div></div></a><a class="pagination-related" href="/posts/3790416737.html" title="EDGE浏览器的强制HTTPS"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-07</div><div class="info-item-2">EDGE浏览器的强制HTTPS</div></div><div class="info-2"><div class="info-item-1"> EDGE访问过https的url之后。后面就会强制访问https。无法访问http。以下是关闭强制https  对某个网站生效12345671、在edge浏览器地址输入：edge://net-internals/#hsts2、在打开的页面中有一项：Query HSTS/PKP domain3、它用于查询你浏览的地址是否被强制转换https4、清除你的浏览器缓存，该网址再也不会强制转换https。     因为我已经清理过。所以搜索出来的是Not found. 将url输入到Delete domain security policies中。选择Delete即可删除针对网站的强制https。这样子该网站也能通过http进行访问。 针对全局网站12345671、在edge浏览器地址输入：edge://flags/#edge-automatic-https2、在打开的页面中有一项已经被标黄：Automatic HTTPS3、在下拉框选择disabled关闭所有网站强制https4、提示重启，在清除缓存后重启，所有网站都不再强制转换https    </div></div></div></a><a class="pagination-related" href="/posts/3070531670.html" title="PHP常用封装"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-19</div><div class="info-item-2">PHP常用封装</div></div><div class="info-2"><div class="info-item-1">常用封装1234567891011121314// config下的文件：statusreturn [    // 请求成功    &#x27;success&#x27; =&gt; 200,    // 未登录    &#x27;not_logged&#x27; =&gt; 401,    // 没有权限访问    &#x27;not_permission&#x27; =&gt; 403,    // 服务器内部错误    &#x27;error&#x27; =&gt; 500,];    1234567891011/** * 打印调试函数 html * @param $content * @param bool $export */function pre($content, bool $export = false)&#123;    $output = $export ? var_export($content, true) : print_r($content, true);    echo &quot;&lt;pre&gt;&#123;$output&#125;&lt...</div></div></div></a><a class="pagination-related" href="/posts/816768764.html" title="Hexo永久化链接"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-19</div><div class="info-item-2">Hexo永久化链接</div></div><div class="info-2"><div class="info-item-1"> 设置文章永久链接的主要目的就是因为路径中出现中文情况的话，会导致变成一串很长的16进制。影响美观性。 1.安装要用到 abbrlink 插件来使文章永久化，以下是npm安装包，安装在hexo文件中 1npm install hexo-abbrlink --save   可能会出现依赖，依据提示安装即可。  2.配置修改博客根目录配置文件 _config.yml 的 permalink： 12345# permalink: :year/:month/:day/:title/permalink: p/:abbrlink.html  # p 是自定义的前缀abbrlink:    alg: crc32   #算法： crc16(default) and crc32    rep: dec     #进制： dec(default) and hex  不同算法和进制生成不同的格式： 123456789crc16 &amp; hexhttps://xxx.com/posts/66c8.htmlcrc16 &amp; dechttps://xxx.com/posts/65535.htmlc...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://cdn.yome.cc/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Linyin</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">28</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">11</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BE%8B%E5%AD%90"><span class="toc-number">1.</span> <span class="toc-text">例子</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%AA%E8%BE%91%E7%89%88%E6%9C%AC"><span class="toc-number">2.</span> <span class="toc-text">剪辑版本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E8%BE%A8%E7%8E%87"><span class="toc-number">3.</span> <span class="toc-text">分辨率</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%87%E6%BA%90"><span class="toc-number">4.</span> <span class="toc-text">片源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%86%E9%A2%91%E7%BC%96%E7%A0%81"><span class="toc-number">5.</span> <span class="toc-text">视频编码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%89%B2%E6%B7%B1"><span class="toc-number">6.</span> <span class="toc-text">色深</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%89%B2%E5%BD%A9%E5%8A%A8%E6%80%81%E8%8C%83%E5%9B%B4"><span class="toc-number">7.</span> <span class="toc-text">色彩动态范围</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A3%B0%E9%9F%B3"><span class="toc-number">8.</span> <span class="toc-text">声音</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F"><span class="toc-number">9.</span> <span class="toc-text">文件格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%8B%E5%88%B6%E7%BB%84"><span class="toc-number">10.</span> <span class="toc-text">压制组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E5%B9%95"><span class="toc-number">11.</span> <span class="toc-text">字幕</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/3024701503.html" title="运维日记-更新redis版本">运维日记-更新redis版本</a><time datetime="2025-08-18T02:25:32.000Z" title="发表于 2025-08-18 10:25:32">2025-08-18</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/2302022538.html" title="Debian快速开启bbr+fq">Debian快速开启bbr+fq</a><time datetime="2024-09-29T08:45:03.000Z" title="发表于 2024-09-29 16:45:03">2024-09-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/3258015936.html" title="Liunx系统禁用ipv6的方法">Liunx系统禁用ipv6的方法</a><time datetime="2024-09-24T02:18:38.000Z" title="发表于 2024-09-24 10:18:38">2024-09-24</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/2785130421.html" title="kingbase连接池爆满">kingbase连接池爆满</a><time datetime="2024-08-19T11:13:51.000Z" title="发表于 2024-08-19 19:13:51">2024-08-19</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/1362166353.html" title="解析电影种子文件命名">解析电影种子文件命名</a><time datetime="2024-07-15T10:05:14.000Z" title="发表于 2024-07-15 18:05:14">2024-07-15</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2020 - 2026 By Linyin</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.2</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.4</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.4"></script><script src="/js/main.js?v=5.5.4"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js"></script><div class="js-pjax"></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

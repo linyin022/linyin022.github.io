@@ -1,0 +1,191 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>bitwarden搭建 | Linyin</title><meta name="author" content="Linyin"><meta name="copyright" content="Linyin"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="官网：Bitwarden Open Source Password Manager | Bitwarden  简介bitwarden是一款开源的密码管理器。支持全平台使用。还有分免费版本和付费版本。仅个人使用的话。免费版本完全够用。以下是宝塔面板使用docker进行项目部署搭建过程。 安装过程宝塔面板安装docker,以下是docker安装好之后的命令 12systemctl enable do">
+<meta property="og:type" content="article">
+<meta property="og:title" content="bitwarden搭建">
+<meta property="og:url" content="https://linyin022.github.io/posts/958565882.html">
+<meta property="og:site_name" content="Linyin">
+<meta property="og:description" content="官网：Bitwarden Open Source Password Manager | Bitwarden  简介bitwarden是一款开源的密码管理器。支持全平台使用。还有分免费版本和付费版本。仅个人使用的话。免费版本完全够用。以下是宝塔面板使用docker进行项目部署搭建过程。 安装过程宝塔面板安装docker,以下是docker安装好之后的命令 12systemctl enable do">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.yome.cc/avatar.jpg">
+<meta property="article:published_time" content="2022-12-05T15:20:30.000Z">
+<meta property="article:modified_time" content="2025-04-17T07:29:16.000Z">
+<meta property="article:author" content="Linyin">
+<meta property="article:tag" content="OpenSource">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.yome.cc/avatar.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "bitwarden搭建",
+  "url": "https://linyin022.github.io/posts/958565882.html",
+  "image": "https://cdn.yome.cc/avatar.jpg",
+  "datePublished": "2022-12-05T15:20:30.000Z",
+  "dateModified": "2025-04-17T07:29:16.000Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Linyin",
+      "url": "https://linyin022.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="https://cdn.yome.cc/avatar.jpg"><link rel="canonical" href="https://linyin022.github.io/posts/958565882.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.4"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":true},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'medium_zoom',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'bitwarden搭建',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 8.1.2"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://cdn.yome.cc/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">28</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">11</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Linyin</span></a><a class="nav-page-title" href="/"><span class="site-name">bitwarden搭建</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">bitwarden搭建</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-12-05T15:20:30.000Z" title="发表于 2022-12-05 23:20:30">2022-12-05</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-04-17T07:29:16.000Z" title="更新于 2025-04-17 15:29:16">2025-04-17</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Tools/">Tools</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">644</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>2分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="container post-content" id="article-container"><blockquote>
+<p>官网：<a target="_blank" rel="noopener" href="https://bitwarden.com/">Bitwarden Open Source Password Manager | Bitwarden</a></p>
+</blockquote>
+<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>bitwarden是一款开源的密码管理器。支持全平台使用。还有分免费版本和付费版本。仅个人使用的话。免费版本完全够用。以下是宝塔面板使用docker进行项目部署搭建过程。</p>
+<h3 id="安装过程"><a href="#安装过程" class="headerlink" title="安装过程"></a>安装过程</h3><p>宝塔面板安装docker,以下是docker安装好之后的命令</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl enable docker <span class="comment">#设置docker开机自动启动</span></span><br><span class="line">systemctl status docker <span class="comment">#查看docker状态</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>正式部署：</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="keyword">run</span><span class="language-bash"> -d --name bitwardenrs \</span></span><br><span class="line"><span class="language-bash">  --restart unless-stopped \</span></span><br><span class="line"><span class="language-bash">  -e WEBSOCKET_ENABLED=<span class="literal">true</span> \</span></span><br><span class="line"><span class="language-bash">  -v /www/wwwroot/demo/:/data/ \</span></span><br><span class="line"><span class="language-bash">  -p 6666:80 \</span></span><br><span class="line"><span class="language-bash">  -p 3012:3012 \</span></span><br><span class="line"><span class="language-bash">  vaultwarden/server:latest</span></span><br></pre></td></tr></table></figure>
+
+<p>注意：&#x2F;www&#x2F;wwwroot&#x2F;demo&#x2F; 请修为自己的路径</p>
+<h3 id="反代理设置"><a href="#反代理设置" class="headerlink" title="反代理设置"></a>反代理设置</h3><p>上面设置好之后。创建一个站点。设置好SSL证书之后。使用反代理将域名映射到bitwarden站点：127.0.0.1:6666。</p>
+<p>以下是Nginx反代理代码：直接在站点的Nginx配置文件中写入</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="section">location</span> / &#123;</span><br><span class="line">   <span class="attribute">proxy_pass</span> http://127.0.0.1:6666/;</span><br><span class="line">   <span class="attribute">rewrite</span><span class="regexp"> ^/(.*)$</span> /<span class="variable">$1</span> <span class="literal">break</span>;</span><br><span class="line">   <span class="attribute">proxy_redirect</span> <span class="literal">off</span>;</span><br><span class="line">   <span class="attribute">proxy_set_header</span> Host <span class="variable">$host</span>;</span><br><span class="line">   <span class="attribute">proxy_set_header</span> X-Forwarded-Proto <span class="variable">$scheme</span>;</span><br><span class="line">   <span class="attribute">proxy_set_header</span> X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">   <span class="attribute">proxy_set_header</span> X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">   <span class="attribute">proxy_set_header</span> Upgrade-Insecure-Requests <span class="number">1</span>;</span><br><span class="line">   <span class="attribute">proxy_set_header</span> X-Forwarded-Proto https;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>配置好反代理之后。直接访问域名就可以打开bitwarden登录页面。</p>
+<hr>
+<h3 id="关闭bitwarden注册"><a href="#关闭bitwarden注册" class="headerlink" title="关闭bitwarden注册"></a>关闭bitwarden注册</h3><p>当前是所有人都可以通过网站来注册账号的，以下是自己注册账号之后。关闭注册功能。这样子这个项目就仅供你一个人使用。</p>
+<blockquote>
+<p>不必担心，因为指定了 volume 映射，删除容器后不会删除数据。SIGNUPS_ALLOWED&#x3D;false 代表禁止注册！</p>
+</blockquote>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker stop bitwardenrs  <span class="comment">#停止容器</span></span><br><span class="line">docker rm -f bitwardenrs  <span class="comment">#删除容器</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="keyword">run</span><span class="language-bash"> -d --name bitwardenrs \</span></span><br><span class="line"><span class="language-bash">  --restart unless-stopped \</span></span><br><span class="line"><span class="language-bash">  -e SIGNUPS_ALLOWED=<span class="literal">false</span> \</span></span><br><span class="line"><span class="language-bash">  -e WEBSOCKET_ENABLED=<span class="literal">true</span> \</span></span><br><span class="line"><span class="language-bash">  -v /www/wwwroot/demo/:/data/ \</span></span><br><span class="line"><span class="language-bash">  -p 6666:80 \</span></span><br><span class="line"><span class="language-bash">  -p 3012:3012 \</span></span><br><span class="line"><span class="language-bash">  vaultwarden/server:latest</span></span><br></pre></td></tr></table></figure>
+
+<p>设置好之后在重新进入网站就无法注册新的用户了。</p>
+<h3 id="备份"><a href="#备份" class="headerlink" title="备份"></a>备份</h3><p>目前还不会。个人是定期导出账号保存的数据到本地。这个方法目前对我来说完全适用，所有就没有去了解学习更多的备份知识。</p>
+<h3 id="体验"><a href="#体验" class="headerlink" title="体验"></a>体验</h3><p>毕竟是全平台的开源软件。使用体验还是不错的。在bitwarden之前用过一小段时间的Dashlane。使用体验都差不多。Dashlane胜在多了一些功能。例如黑网监控和警报，端到端保护，土耳其地区付费非常便宜[家庭组10人份合租人均5RMB]等等。但是对于只是账号密码保存来说。更何况自己也有几台vps，开源且免费的bitwarden更适用于我，能够部署在vps上，不至于浪费。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://linyin022.github.io">Linyin</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://linyin022.github.io/posts/958565882.html">https://linyin022.github.io/posts/958565882.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://linyin022.github.io" target="_blank">Linyin</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/OpenSource/">OpenSource</a></div><div class="post-share"><div class="social-share" data-image="https://cdn.yome.cc/avatar.jpg" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/posts/3815336783.html" title="实习工作笔记：No.4"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">实习工作笔记：No.4</div></div><div class="info-2"><div class="info-item-1">近期，我们新做的项目流程已经做完一半。结果高层开了一个会就直接把当前项目砍掉了。直接白忙活了一个月。同时也让我感觉到其实在计算机[编程领域]行业中。我们做项目也和流水线没有太大的区别，都是一个项目一个项目的接踵而至，这个赶项目完了。部署上线然后维护一段时间，没有太大问题之后就直接继续做下一个新项目了。无休止的精神损耗。  在被砍掉的项目做的是商城。其中有一个需求是商家入驻申请，第一版商家驻平台之后通过审核能够在商城中驻扎然后发布商品。我负责的内容则是商家入驻这一块。 第一次做这种需求还是蛮有意思的。UI图给的是入驻四个模块。  商户基本信息填写 法人信息填写 商户入账银行卡填写 信息校验并提交审核  最先开始的时候我设计的是前三个步骤三张表。最后一步的时候链表查询返回数据给客户对比之后提交审核。做完接口之后感觉有点问题。在仔细思考了之后才察觉。做三张表是在太复杂了。 例如：入账银行卡填写时会带有入账卡+身份信息核实的数据。一旦要修改的话。就要同时修改两张表 [银行卡表+实名认证表] 。这样子操作下来 后端的数据处理就会很驳杂。数据库也不太美观。所以我后面重构表+代码  表重新设计...</div></div></div></a><a class="pagination-related" href="/posts/3985230879.html" title="个人使用的编辑器以及工具配置和美化"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">个人使用的编辑器以及工具配置和美化</div></div><div class="info-2"><div class="info-item-1"> 此文章是我个人使用的编辑器和日常工具的设置和美化，不一定适用于所有人。如果心仪的在自行设置。  使用字体中文字体中文字体使用的是 阿里巴巴普惠体 第一代的字体。 普惠体2.0对我来说总感觉看着不太舒服。当然都可以下载下来试看看。 英文字体英文字体我用了两套，分别为 Alibaba Sans 和 JetBrains Mono Alibaba Sans 用于日常的英文字母显示，写代码的话我还是更喜欢用 JetBrainS Mono 还有一套是 Hack 。这套字体是开源的，为源代码设计的字体 也用过一段时间 也是不错的选择。 Typora编辑器 Typora 官方中文站 Typora的官方中文站 Markdown 官方教程 Markdown的中文教程  Typora是我主要的md编写工具。当真正用久了之后其实这个工具还是非常不错的。附上我收录到的md语法：传送门 偏好设置  自动保存  Pandoc  配合Pandoc可以更方便的将md文件导出成其他格式的文件 美化界面使用的Theme是默认的GitHub主题，并且在此做了一点改动 偏好设置-&gt;外观-&gt;打开主题文件 找到...</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://cdn.yome.cc/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Linyin</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">28</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">11</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B"><span class="toc-number">2.</span> <span class="toc-text">安装过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8D%E4%BB%A3%E7%90%86%E8%AE%BE%E7%BD%AE"><span class="toc-number">3.</span> <span class="toc-text">反代理设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E9%97%ADbitwarden%E6%B3%A8%E5%86%8C"><span class="toc-number">4.</span> <span class="toc-text">关闭bitwarden注册</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%87%E4%BB%BD"><span class="toc-number">5.</span> <span class="toc-text">备份</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%93%E9%AA%8C"><span class="toc-number">6.</span> <span class="toc-text">体验</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/3024701503.html" title="运维日记-更新redis版本">运维日记-更新redis版本</a><time datetime="2025-08-18T02:25:32.000Z" title="发表于 2025-08-18 10:25:32">2025-08-18</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/2302022538.html" title="Debian快速开启bbr+fq">Debian快速开启bbr+fq</a><time datetime="2024-09-29T08:45:03.000Z" title="发表于 2024-09-29 16:45:03">2024-09-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/3258015936.html" title="Liunx系统禁用ipv6的方法">Liunx系统禁用ipv6的方法</a><time datetime="2024-09-24T02:18:38.000Z" title="发表于 2024-09-24 10:18:38">2024-09-24</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/2785130421.html" title="kingbase连接池爆满">kingbase连接池爆满</a><time datetime="2024-08-19T11:13:51.000Z" title="发表于 2024-08-19 19:13:51">2024-08-19</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/1362166353.html" title="解析电影种子文件命名">解析电影种子文件命名</a><time datetime="2024-07-15T10:05:14.000Z" title="发表于 2024-07-15 18:05:14">2024-07-15</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2020 - 2026 By Linyin</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.2</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.4</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.4"></script><script src="/js/main.js?v=5.5.4"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js"></script><div class="js-pjax"></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

@@ -1,0 +1,234 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Linyin</title><meta name="author" content="Linyin"><meta name="copyright" content="Linyin"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta property="og:type" content="website">
+<meta property="og:title" content="Linyin">
+<meta property="og:url" content="https://linyin022.github.io/page/2/index.html">
+<meta property="og:site_name" content="Linyin">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.yome.cc/avatar.jpg">
+<meta property="article:author" content="Linyin">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.yome.cc/avatar.jpg"><script type="application/ld+json"></script><link rel="shortcut icon" href="https://cdn.yome.cc/avatar.jpg"><link rel="canonical" href="https://linyin022.github.io/page/2/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.4"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":true},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'medium_zoom',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Linyin',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'home'
+}</script><meta name="generator" content="Hexo 8.1.2"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://cdn.yome.cc/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">28</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">11</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Linyin</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><h1 class="title-seo">Linyin</h1></header><main class="layout" id="content-inner"><div class="recent-posts nc" id="recent-posts"><div class="recent-post-items"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/3985230879.html" title="个人使用的编辑器以及工具配置和美化">个人使用的编辑器以及工具配置和美化</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-11-12T19:29:01.000Z" title="发表于 2022-11-13 03:29:01">2022-11-13</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tools/">Tools</a></span></div><div class="content"> 此文章是我个人使用的编辑器和日常工具的设置和美化，不一定适用于所有人。如果心仪的在自行设置。  使用字体中文字体中文字体使用的是 阿里巴巴普惠体 第一代的字体。 普惠体2.0对我来说总感觉看着不太舒服。当然都可以下载下来试看看。 英文字体英文字体我用了两套，分别为 Alibaba Sans 和 JetBrains Mono Alibaba Sans 用于日常的英文字母显示，写代码的话我还是更喜欢用 JetBrainS Mono 还有一套是 Hack 。这套字体是开源的，为源代码设计的字体 也用过一段时间 也是不错的选择。 Typora编辑器 Typora 官方中文站 Typora的官方中文站 Markdown 官方教程 Markdown的中文教程  Typora是我主要的md编写工具。当真正用久了之后其实这个工具还是非常不错的。附上我收录到的md语法：传送门 偏好设置  自动保存  Pandoc  配合Pandoc可以更方便的将md文件导出成其他格式的文件 美化界面使用的Theme是默认的GitHub主题，并且在此做了一点改动 偏好设置-&gt;外观-&gt;打开主题文件 找到...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/2926484145.html" title="JetBrains编辑器优化">JetBrains编辑器优化</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-11-09T13:29:40.000Z" title="发表于 2022-11-09 21:29:40">2022-11-09</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Tools/">Tools</a></span></div><div class="content">本篇文章适用于jetbrains家的各类编辑器 例如 PhpStorm || WebStorm || IntelliJ IDEA || PyCharm 等等 Jetbrains家的编辑器依赖java运行环境 也就是java虚拟机我在网上看到的教程都是在软件根路径bin下xxx32.exe.vmoptions或者xxx64.exe.vmoptions中修改运行内存但是修改过后好像并没有什么用 直到找到了一篇文章说在软件中的帮助选项中修改。按着修改之后才有效果。 在PhpStorm2017之后的版本中，修改bin目录下的vmoptions文件可能是无效的这时需要打开PhpStorm，在顶部菜单中选择Help – Edit Custom VM Options然后修改其中的内容才行 以下就是操作过程 在打开的编辑器中找到help &gt; Edit Custom VM Options 在里面修改配置选项 12345678910-Xms1024m-Xmx2048m#最上面是运行最小内存 下面的是最大运行内存 根据自己电脑配置按需修改 我是16G内存-Dawt.useSystemAAFont...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/1444982063.html" title="实习工作笔记：No.3">实习工作笔记：No.3</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-11-02T07:23:48.000Z" title="发表于 2022-11-02 15:23:48">2022-11-02</time></span></div><div class="content">实习临近两个月整 近期没有太多的需要做的需求。只有一个编写及举例子的文档要写。 来工作两个月最大的一个感悟及被说过好几次的就是，能搬砖就搬砖(copy)，绝对不自己写代码。两个月的时间内。自己真正思考写代码实际上真的很少，大部分都是开源项目进行二改的。做什么需求基本上都是看原本项目是如何写的。照着他copy写一份，一些常规简单的函数甚至都不会自己去写了。直接就是百度搜索直接copy。 这和我当初学习编程。为了未来作为一个程序员的想象不太一样.. </div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/556244409.html" title="实习工作笔记：No.2">实习工作笔记：No.2</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-10-27T08:25:21.000Z" title="发表于 2022-10-27 16:25:21">2022-10-27</time></span></div><div class="content">今天重改了几个需求   在用户登录后加上用户的实名认证数据  在实名认证的表中添加手机号码字段  在查看实名认证的数据是给一些重要数据打*号  提交等待前端修改做完页面然后部署到正式线上   在做表中添加字段的时候发现了bug。 即：a用户绑定了x身份证信息之后。b用户居然也能绑定x身份证信息。发现之后这是一个很致命的问题。按照业务逻辑来说，只能是一对一绑定。而不能一对多绑定。立马找了我写的代码看看是哪里出问题。最后发现了问题所在。  这是我写的出现bug的代码 原因是接收到前端传来的姓名和身份证之后。我将数据加上当前用户登录的user_id传入了库中查询。如果当前用户没有实名认证的话。那么返回的数据永远是为空的。而后修改完成之后：  只传入姓名和身份证号带入去查询数据库即可。这样子能保证该数据是否有绑定其他账号。没有的话在去调用第三方接口核实身份信息。正确的话即可存入数据库。  再来就是给重要信息打上*号。这种助手项的函数自从使用了Copilot之后，就很少很少自己动脑子去写这类函数。简简单单的写个注释就能够自动生成我想要的函数。事实证明Copilot真的能让人解放双手，只要注...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/2904953832.html" title="实习工作笔记：No.1">实习工作笔记：No.1</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-10-26T06:18:26.000Z" title="发表于 2022-10-26 14:18:26">2022-10-26</time></span></div><div class="content">**序：**前两天碰到一个业务需求，当前项目中有两张表。 a表是余额变动日志表    log_id int 主键    user_id int 用户ID   scene tinyint 变动场景   source varchar 来源   money decimal 变动金额   describe varchar 说明   create_time int 创建时间   b表是积分变动日志表    log_id int 主键    user_id int 用户ID   scene tinyint 变动场景   source varchar 来源   value decimal 变动积分   describe varchar 说明   create_time int 创建时间    tips：现在的需求是两张表中的订单来源有些是一样，只是他们的变动场景不一样。及不同的用户获取到的金额和积分都不一样。可能有些是获得金额，有些是获得积分。要将他们整合起来。  主管给了一个整合的思路。即：  现根据指定的source找出两张表中的所有相关数据。在只求出每个数据中的表动场景(scene)的数...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/2490437164.html" title="hexo源文件多电脑提交和更新">hexo源文件多电脑提交和更新</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-10-23T15:34:58.000Z" title="发表于 2022-10-23 23:34:58">2022-10-23</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Hexo/">Hexo</a></span></div><div class="content"> 本文章转载并修改自：Hexo在多台电脑上提交和更新[作者Kakaluotuo]  做这篇文章的主要原因是我的hexo源文件在a电脑上。可是我并没有办法随身携带a电脑。有时要在b电脑上写文章。每次写完一篇文章都要保存然后拷贝到a电脑上才可以做到部署上传自网站。这令我很头痛。于是我在网上搜索有没有好的办法。结果在CSDN上看到开头转载的文章。于是根据Kakaluotuo的hexo多电脑提交和更新的文章写出这篇文章。文章内容多自修改Kakaluotuo的文章，如果想看更详细的说明请移步该作者的原贴：传送门 tips：由于该上文章是在GitHub上做文件上传。而我因为工作需要，电脑绑定的是Gitee的配置。无法推送到GitHub上。所以我使用的是Gitee创建仓库并且实现多电脑上hexo的提交和更新。  1.清楚那些文件是需要同步的这是a电脑上的目录结构     文件夹 说明 是否需要上传github&#x2F;gitee    node_modules hexo需要的模块，就是一些基础的npm安装模块，比如一些美化插件，在执行npm install的时候会重新生成 不需要   the...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/2077132032.html" title="Chic主题配置+修改样式">Chic主题配置+修改样式</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-10-19T15:54:03.000Z" title="发表于 2022-10-19 23:54:03">2022-10-19</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Hexo/">Hexo</a></span></div><div class="content">样式修改 底部copyright修改 post_copyright 样式 路径：themes/Chic/source/css/_page/_post/post_copyright.styl  在Chic目录下的_config.yml文件中的post_copyright_enable中只打开  post_copyright_author_enable post_copyright_permalink_enable post_copyright_license_enable  其余的都选择false category页面修改 修改路径 themes/Chic/layout/category.ejs  然后在 themes/Chic/source/css/_page/category.syl 文件下  永久化链接文章跳转：传送门 主题字体修改themes\Chic\source\css\font.styl文件注释$font-family前面的内容，将需要启用的字体放在最前面即可 1$font-family = Arial, Microsoft Yahei, &#x27;Microsof...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/816768764.html" title="Hexo永久化链接">Hexo永久化链接</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-10-19T08:39:45.000Z" title="发表于 2022-10-19 16:39:45">2022-10-19</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Hexo/">Hexo</a></span></div><div class="content"> 设置文章永久链接的主要目的就是因为路径中出现中文情况的话，会导致变成一串很长的16进制。影响美观性。 1.安装要用到 abbrlink 插件来使文章永久化，以下是npm安装包，安装在hexo文件中 1npm install hexo-abbrlink --save   可能会出现依赖，依据提示安装即可。  2.配置修改博客根目录配置文件 _config.yml 的 permalink： 12345# permalink: :year/:month/:day/:title/permalink: p/:abbrlink.html  # p 是自定义的前缀abbrlink:    alg: crc32   #算法： crc16(default) and crc32    rep: dec     #进制： dec(default) and hex  不同算法和进制生成不同的格式： 123456789crc16 &amp; hexhttps://xxx.com/posts/66c8.htmlcrc16 &amp; dechttps://xxx.com/posts/65535.htmlc...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/3070531670.html" title="PHP常用封装">PHP常用封装</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-10-19T08:14:35.000Z" title="发表于 2022-10-19 16:14:35">2022-10-19</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/PHP/">PHP</a></span></div><div class="content">常用封装1234567891011121314// config下的文件：statusreturn [    // 请求成功    &#x27;success&#x27; =&gt; 200,    // 未登录    &#x27;not_logged&#x27; =&gt; 401,    // 没有权限访问    &#x27;not_permission&#x27; =&gt; 403,    // 服务器内部错误    &#x27;error&#x27; =&gt; 500,];    1234567891011/** * 打印调试函数 html * @param $content * @param bool $export */function pre($content, bool $export = false)&#123;    $output = $export ? var_export($content, true) : print_r($content, true);    echo &quot;&lt;pre&gt;&#123;$output&#125;&lt...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/3488226267.html" title="宝塔使用git拉取远程仓库">宝塔使用git拉取远程仓库</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-10-19T07:01:50.000Z" title="发表于 2022-10-19 15:01:50">2022-10-19</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%AE%9D%E5%A1%94/">宝塔</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%AE%9D%E5%A1%94/Git/">Git</a></span></div><div class="content">宝塔一般自带git。请自行终端查询是否存在 1git version  若不存在的话，请自行安装 12# 安装命令yum install git  正常git clone下来的代码文件在jetbrains家的软件中能够正常拉取，推送的情况下。将代码文件中的.git文件夹直接上传到网站页面中去 然后服务器上的git要配置绑定好你的git账号密码 在git bash中执行命令 123456# 永久保存账号密码git config --global credential.helper store# 然后输入账号密码git config --global user.name &quot;用户名&quot;git config --global user.email &quot;邮箱&quot;git config --global user.password &quot;密码&quot;  输入完成之后可以查看绑定的账号密码 1git config --list  完成之后可以到指定目录下使用git push 如果能正常拉取的话。即完成。 在宝塔的shell脚本中添加一个任务 脚本内容为...</div></div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/#content-inner">3</a><a class="extend next" rel="next" href="/page/3/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://cdn.yome.cc/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Linyin</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">28</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">11</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/3024701503.html" title="运维日记-更新redis版本">运维日记-更新redis版本</a><time datetime="2025-08-18T02:25:32.000Z" title="发表于 2025-08-18 10:25:32">2025-08-18</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/2302022538.html" title="Debian快速开启bbr+fq">Debian快速开启bbr+fq</a><time datetime="2024-09-29T08:45:03.000Z" title="发表于 2024-09-29 16:45:03">2024-09-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/3258015936.html" title="Liunx系统禁用ipv6的方法">Liunx系统禁用ipv6的方法</a><time datetime="2024-09-24T02:18:38.000Z" title="发表于 2024-09-24 10:18:38">2024-09-24</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/2785130421.html" title="kingbase连接池爆满">kingbase连接池爆满</a><time datetime="2024-08-19T11:13:51.000Z" title="发表于 2024-08-19 19:13:51">2024-08-19</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/1362166353.html" title="解析电影种子文件命名">解析电影种子文件命名</a><time datetime="2024-07-15T10:05:14.000Z" title="发表于 2024-07-15 18:05:14">2024-07-15</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            
+          </div>
+          <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Hexo/"><span class="card-category-list-name">Hexo</span><span class="card-category-list-count">4</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Linux/"><span class="card-category-list-name">Linux</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Markdown/"><span class="card-category-list-name">Markdown</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/PHP/"><span class="card-category-list-name">PHP</span><span class="card-category-list-count">5</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Tools/"><span class="card-category-list-name">Tools</span><span class="card-category-list-count">6</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E4%B8%AA%E4%BA%BA%E7%AC%94%E8%AE%B0/"><span class="card-category-list-name">个人笔记</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%AE%9D%E5%A1%94/"><span class="card-category-list-name">宝塔</span><span class="card-category-list-count">1</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%AE%9D%E5%A1%94/Git/"><span class="card-category-list-name">Git</span><span class="card-category-list-count">1</span></a></li></ul></li>
+          </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/Git/" style="font-size: 1.26em; color: #999fa8">Git</a> <a href="/tags/Chic%E4%B8%BB%E9%A2%98/" style="font-size: 1.34em; color: #99a3b0">Chic主题</a> <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 1.5em; color: #99a9bf">笔记</a> <a href="/tags/OpenSource/" style="font-size: 1.1em; color: #999">OpenSource</a> <a href="/tags/%E5%AE%9D%E5%A1%94/" style="font-size: 1.1em; color: #999">宝塔</a> <a href="/tags/PHP/" style="font-size: 1.42em; color: #99a6b7">PHP</a> <a href="/tags/%E5%AE%9E%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 1.34em; color: #99a3b0">实习笔记</a> <a href="/tags/Windows/" style="font-size: 1.1em; color: #999">Windows</a> <a href="/tags/Browser/" style="font-size: 1.18em; color: #999ca1">Browser</a> <a href="/tags/Linux/" style="font-size: 1.26em; color: #999fa8">Linux</a> <a href="/tags/Editors/" style="font-size: 1.18em; color: #999ca1">Editors</a></div></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>归档</span>
+      <a class="card-more-btn" href="/archives/"
+            title="查看更多">
+            <i class="fas fa-angle-right"></i>
+          </a>
+    </div>
+  
+    <ul class="card-archive-list">
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/08/">
+            <span class="card-archive-list-date">
+              八月 2025
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2024/09/">
+            <span class="card-archive-list-date">
+              九月 2024
+            </span>
+            <span class="card-archive-list-count">2</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2024/08/">
+            <span class="card-archive-list-date">
+              八月 2024
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2024/07/">
+            <span class="card-archive-list-date">
+              七月 2024
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2023/07/">
+            <span class="card-archive-list-date">
+              七月 2023
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2023/05/">
+            <span class="card-archive-list-date">
+              五月 2023
+            </span>
+            <span class="card-archive-list-count">2</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2022/12/">
+            <span class="card-archive-list-date">
+              十二月 2022
+            </span>
+            <span class="card-archive-list-count">2</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2022/11/">
+            <span class="card-archive-list-date">
+              十一月 2022
+            </span>
+            <span class="card-archive-list-count">3</span>
+          </a>
+        </li>
+      
+    </ul>
+  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站信息</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">28</div></div><div class="webinfo-item"><div class="item-name">本站总字数 :</div><div class="item-count">18.8k</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总浏览量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2026-05-14T03:00:38.568Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2020 - 2026 By Linyin</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.2</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.4</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.4"></script><script src="/js/main.js?v=5.5.4"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js"></script><div class="js-pjax"></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
